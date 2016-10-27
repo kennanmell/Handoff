@@ -43,10 +43,13 @@ A bug was discovered where it would not finish the download on a home machine, b
 If Andriod Studio is not already on your machine, google it, download it, and install it. If you have already downloaded Andriod Studio, check that the latest SDK has been installed by going to Andriod Studio -> Preferences -> Appearance & Behavior -> System Settings -> Andriod SDK and checking that Andriod 7 has been installed.
 
 You must then set up a home environment with the command:
+
 export ANDROID_HOME=~/Library/Android/sdk
 
 To avoid doing this every time, add these lines to ~/.bashrc:
+
 export ANDROID_HOME=~/Library/Android/sdk
+
 export PATH=${PATH}:${ANDROID_HOME}/tools
 
 Andriod may fail to install the Android Virtual Device. The command "android adv" will open up a manager to display your ADVS.
