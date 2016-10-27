@@ -16,7 +16,9 @@ in a command line. If this does not work, there are more installation instructio
 https://github.com/Homebrew/brew/blob/master/docs/Installation.md#installation
 
 Now that homebrew has been installed, you can install Node.js and Watchman with the following commands:
+
 brew install node
+
 brew install watchman
 
 Note: It is possible that installing node will cause an error with user permissions when trying to install the sandbox. The only time we experienced this bug, the following two commands (after brew install node partially fails) solved the issue:
