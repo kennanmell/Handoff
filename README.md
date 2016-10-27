@@ -9,6 +9,7 @@ Installing Our Toolset for Andriod
 For Mac:
 
 React Native uses both Node.js and Watchman which can be installed with Homebrew
+
 If Homebrew has not been installed, run 
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 in a command line. If this does not work, there are more installation instructions here:
