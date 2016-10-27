@@ -29,9 +29,9 @@ Note: It is possible that installing node will cause an error with user permissi
 sudo chown -R $USER /usr/local
 
 brew postinstall node -v
-
-
-
+ 
+ 
+ 
 With Node and Watchman installed, you can now install React Native's command line interface with this command:
 
 npm install -g react-native-cli
