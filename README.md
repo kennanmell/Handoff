@@ -6,6 +6,7 @@ Handoff is a mobile application that bridges the communication gap between local
 
 Installing Our Toolset for Andriod
 
+
 For Mac:
 
 React Native uses both Node.js and Watchman which can be installed with Homebrew
@@ -14,6 +15,8 @@ If Homebrew has not been installed, run
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 in a command line. If this does not work, there are more installation instructions here:
 https://github.com/Homebrew/brew/blob/master/docs/Installation.md#installation
+
+
 
 Now that homebrew has been installed, you can install Node.js and Watchman with the following commands:
 
@@ -26,6 +29,8 @@ Note: It is possible that installing node will cause an error with user permissi
 sudo chown -R $USER /usr/local
 
 brew postinstall node -v
+
+
 
 With Node and Watchman installed, you can now install React Native's command line interface with this command:
 
