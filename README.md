@@ -32,6 +32,8 @@ With Node and Watchman installed, you can now install React Native's command lin
 npm install -g react-native-cli
 
 If you get a permission error, try using sudo: sudo npm install -g react-native-cli.
+
 If you get an error like Cannot find module 'npmlog', try installing npm directly: curl -0 -L http://npmjs.org/install.sh | sudo sh
+
 A bug was discovered where it would not finish the download on a home machine, but without any other commands it worked when run on the same machine but on a UW network.
 
