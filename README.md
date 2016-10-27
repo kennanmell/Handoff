@@ -7,7 +7,7 @@ Handoff is a mobile application that bridges the communication gap between local
 Installing Our Toolset for Andriod
 
 
-For Mac:
+------ For Mac:
 
 React Native uses both Node.js and Watchman which can be installed with Homebrew
 
@@ -16,9 +16,7 @@ If Homebrew has not been installed, run
 in a command line. If this does not work, there are more installation instructions here:
 https://github.com/Homebrew/brew/blob/master/docs/Installation.md#installation
 
-
-
-Now that homebrew has been installed, you can install Node.js and Watchman with the following commands:
+------ Now that homebrew has been installed, you can install Node.js and Watchman with the following commands:
 
 brew install node
 
@@ -30,9 +28,7 @@ sudo chown -R $USER /usr/local
 
 brew postinstall node -v
  
- 
- 
-With Node and Watchman installed, you can now install React Native's command line interface with this command:
+------- With Node and Watchman installed, you can now install React Native's command line interface with this command:
 
 npm install -g react-native-cli
 
@@ -42,3 +38,6 @@ If you get an error like Cannot find module 'npmlog', try installing npm directl
 
 A bug was discovered where it would not finish the download on a home machine, but without any other commands it worked when run on the same machine but on a UW network.
 
+------ Installing Andriod Studio
+
+If Andriod Studio is not already on your machine, google it, download it, and install it. There is an error here we are looking at right now.
