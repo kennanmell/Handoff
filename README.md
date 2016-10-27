@@ -6,7 +6,6 @@ Handoff is a mobile application that bridges the communication gap between local
 
 Installing Our Toolset for Andriod
 
-
 --------------- For Mac:
 
 React Native uses both Node.js and Watchman which can be installed with Homebrew
@@ -56,7 +55,16 @@ Andriod may fail to install the Android Virtual Device. The command "android adv
 If necissary, follow the instructions here:  https://developer.android.com/studio/run/managing-avds.html
 
 -------------- For Linux or Windows:
-Go to the following webpage and select Linux or Windows.
+Go to the following webpage and select Linux or Windows and Android, then follow the instructions
 http://facebook.github.io/react-native/docs/getting-started.html
+
+-------------- How to download our software:
+In the opening window of Android studio, for the first time select Check out project from Version Control -> Github. Otherwise, just open the existing project. Log in to github and chooise the repository https://github.com/kennanmell/Handoff.git. This assumes we have already added said person to our project.
+
+$$$$$$$$$$$$$$ How to run our software:
+
+############## How to use our software:
+
+@@@@@@@@@@@@@@ How to report a bug:
 
 
