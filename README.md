@@ -59,11 +59,16 @@ Go to the following webpage and select Linux or Windows and Android, then follow
 http://facebook.github.io/react-native/docs/getting-started.html
 
 -------------- How to download our software:
-In the opening window of Android studio, for the first time select Check out project from Version Control -> Github. Otherwise, just open the existing project. Log in to github and chooise the repository https://github.com/kennanmell/Handoff.git. This assumes we have already added said person to our project.
+In the opening window of Android studio, for the first time select Check out project from Version Control -> Github. Otherwise, just open the existing project. Log in to github and choose the repository https://github.com/kennanmell/Handoff.git. This assumes we have already added said person to our project.
 
 $$$$$$$$$$$$$$ How to run our software:
 
-############## How to use our software:
+-------------- How to use our software:
+There are two seperate users for our app, one representing an organization and one representing a community memeber.
+
+Organization: Upon logging in using their organizations username/passowrd, the app will display a Create Request button will take the user to a display where they can title their request, add keywords, and add a description, and then post the request to our request database. The organization should also have all the functionality of the community member. Organizations will be given a username/password by us until we design an automatic authentication system.
+
+Community Member: Users can log in through connecting Handoff to their Facebook. They can then select to view organization's requests either through a feed or a map and switch between them by pressing the button that represent the mode that the user is not already using. Alternatively, they can search for specific keywords through or search feature. Once they find an organization through some method, they can click on that organizations name to be taken to the organizations page, which the user can then subscribe to.
 
 @@@@@@@@@@@@@@ How to report a bug:
 
