@@ -11,7 +11,8 @@ For Mac:
 React Native uses both Node.js and Watchman which can be installed with Homebrew
 If Homebrew has not been installed, run 
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-in a command line. If this does not work, there are more installation instructions here: https://github.com/Homebrew/brew/blob/master/docs/Installation.md#installation
+in a command line. If this does not work, there are more installation instructions here:
+https://github.com/Homebrew/brew/blob/master/docs/Installation.md#installation
 
 Now that homebrew has been installed, you can install Node.js and Watchman with the following commands:
 brew install node
