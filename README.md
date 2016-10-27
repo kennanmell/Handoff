@@ -7,7 +7,7 @@ Handoff is a mobile application that bridges the communication gap between local
 Installing Our Toolset for Andriod
 
 
------- For Mac:
+--------------- For Mac:
 
 React Native uses both Node.js and Watchman which can be installed with Homebrew
 
@@ -40,4 +40,20 @@ A bug was discovered where it would not finish the download on a home machine, b
 
 ------ Installing Andriod Studio
 
-If Andriod Studio is not already on your machine, google it, download it, and install it. There is an error here we are looking at right now.
+If Andriod Studio is not already on your machine, google it, download it, and install it. If you have already downloaded Andriod Studio, check that the latest SDK has been installed by going to Andriod Studio -> Preferences -> Appearance & Behavior -> System Settings -> Andriod SDK and checking that Andriod 7 has been installed.
+
+You must then set up a home environment with the command:
+export ANDROID_HOME=~/Library/Android/sdk
+
+To avoid doing this every time, add these lines to ~/.bashrc:
+export ANDROID_HOME=~/Library/Android/sdk
+export PATH=${PATH}:${ANDROID_HOME}/tools
+
+Andriod may fail to install the Android Virtual Device. The command "android adv" will open up a manager to display your ADVS.
+If necissary, follow the instructions here:  https://developer.android.com/studio/run/managing-avds.html
+
+-------------- For Linux or Windows:
+Go to the following webpage and select Linux or Windows.
+http://facebook.github.io/react-native/docs/getting-started.html
+
+
