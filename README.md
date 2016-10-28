@@ -37,14 +37,33 @@ To report a bug go to this webpage: https://github.com/kennanmell/Handoff/issues
 Please note that you must log in to a Github account to report a bug. If you do not have one, I would make one.
 
 We would ask that any bug report contain certain information:
+
 -- Overview: 
+
 ---- a synopsis of the overall bug; basically a title
+
 ---- a more detailed description that talks about the issue and a potentially solution to it.
+
 -- Routing Information:
+
 ---- Category: As specific information as to what compontent displayed this issue.
+
 ---- Version: The release of the product that the bug was experienced on.
+
 ---- Regression version: What version did not have this issue.
+
 ---- Severity: Indicate the severity of the issue.
+
 -- Test Case: Give as much info as possible of the situation of the test case
+
 ---- Operating system/ Hardware: specify the platform
+
 ---- Steps to reproduce: Outline steps to reproduce this problem.
+
+---- Expected result: What should have happened if no bug was present
+
+---- Actual result: What did happen given this test case
+
+-- Contact Information
+
+---- Information that will allow us to contact you to either clarify some information in the bug report or provide an update
