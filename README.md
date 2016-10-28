@@ -18,9 +18,12 @@ sudo chown -R $USER /usr/local
 brew postinstall node -v
 
 -------------- How to download our software:
+
 In the opening window of Android studio, for the first time select Check out project from Version Control -> Github. Otherwise, just open the existing project. Log in to github and choose the repository https://github.com/kennanmell/Handoff.git. This assumes we have already added said person to our project.
 
-$$$$$$$$$$$$$$ How to run our software:
+-------------- How to run our software:
+
+Once the 
 
 -------------- How to use our software:
 There are two seperate users for our app, one representing an organization and one representing a community memeber.
