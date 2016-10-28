@@ -32,6 +32,19 @@ Organization: Upon logging in using their organizations username/passowrd, the a
 
 Community Member: Users can log in through connecting Handoff to their Facebook. They can then select to view organization's requests either through a feed or a map and switch between them by pressing the button that represent the mode that the user is not already using. Alternatively, they can search for specific keywords through or search feature. Once they find an organization through some method, they can click on that organizations name to be taken to the organizations page, which the user can then subscribe to.
 
-@@@@@@@@@@@@@@ How to report a bug:
+--------------- How to report a bug:
+To report a bug go to this webpage: https://github.com/kennanmell/Handoff/issues/new
+Please note that you must log in to a Github account to report a bug. If you do not have one, I would make one.
 
-
+We would ask that any bug report contain certain information:
+-- Overview: 
+---- a synopsis of the overall bug; basically a title
+---- a more detailed description that talks about the issue and a potentially solution to it.
+-- Routing Information:
+---- Category: As specific information as to what compontent displayed this issue.
+---- Version: The release of the product that the bug was experienced on.
+---- Regression version: What version did not have this issue.
+---- Severity: Indicate the severity of the issue.
+-- Test Case: Give as much info as possible of the situation of the test case
+---- Operating system/ Hardware: specify the platform
+---- Steps to reproduce: Outline steps to reproduce this problem.
