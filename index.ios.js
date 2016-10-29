@@ -3,7 +3,8 @@
  * https://github.com/facebook/react-native
  * @flow
  */
-
+/* Auto-generated. Will filled out with ios info later.
+*/
 import React, { Component } from 'react';
 import {
   AppRegistry,
