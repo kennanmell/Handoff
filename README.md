@@ -6,7 +6,7 @@ Handoff is a mobile application that bridges the communication gap between local
 
 Installing Our Toolset for Andriod
 
-Go to the following webpage and select Mac/Linux/Windows and Android, then follow the instructions to download Node/Watchman/ReactNative
+Go to the following webpage and select Mac/Linux/Windows and Android, then follow the instructions to download the dependancies:
 http://facebook.github.io/react-native/docs/getting-started.html
 
 Make sure that you install Android 7.0, despite it not being the latest release. Not being on 7.0 creates many issues.
