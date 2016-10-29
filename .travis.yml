@@ -4,3 +4,8 @@ script: ./run_tests.sh
 notifications:
   email:
     - kmell96@gmail.com
+    - epeach@uw.edu
+    - s.sholto.smith@gmail.com
+    - imhadden@gmail.com
+    - sethdp@uw.edu
+    - petergg@uw.edu

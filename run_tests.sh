@@ -1,3 +1,5 @@
 #!/bin/bash
 
-exit 0
+node index.android.js
+
+exit 1
