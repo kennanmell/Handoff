@@ -67,7 +67,7 @@ Please note that you must log in to a Github account to report a bug. If you do 
 
 We would ask that any bug report contain certain information:
 
-Overview: 
+Overview (Most of this format is taken from Oracle's How to Write a Helpful Bug Report): 
 
 ---- a synopsis of the overall bug; basically a title
 
