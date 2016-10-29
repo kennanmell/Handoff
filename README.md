@@ -9,6 +9,8 @@ Installing Our Toolset for Andriod
 Go to the following webpage and select Mac/Linux/Windows and Android, then follow the instructions to download Node/Watchman/ReactNative
 http://facebook.github.io/react-native/docs/getting-started.html
 
+Make sure that you install Android 7.0, despite it not being the latest release. Not being on 7.0 creates many issues.
+
 --For Mac:
 
 Note: It is possible that installing node will cause an error with user permissions when trying to install the sandbox. The only time we experienced this bug, the following two commands (after "brew install node" partially fails) solved the issue:
@@ -25,13 +27,15 @@ git clone https://github.com/kennanmell/Handoff.git
 
 -------------- How to run our software:
 
-Once in the cloned directory, run the command "npm install". In a seperate command line, run the command "android avd" to start running the android emulator. If that command results in an unknown command, add the following lines to ~/.bashrc: 
-
-export ANDROID_HOME=~/Library/Android/sdk
-
-export PATH=${PATH}:${ANDROID_HOME}/tools
+Once in the cloned directory, run the command "npm install". Open an emulator from Android Studio. This can be done by opening Android Studio, opening/creating a new project, and then clicking the icon that says Android AVD if you hover over it, 5th from the left on the toolbar at the top of Android Studio.
 
 In the original command line, run "react-native run-android". This will pop open a third command line instance - ignore this. This will run for a long time the first time you run it. When it's finished look at your emulator, it might take a minute to load but the app should pop up there, and then you can use the app.
+
+Frequent Errors:
+There are some issues with finding the paths to the android libraries. To resolve this, be sure to export the following: 
+Your paths to Android/sdk, Android/sdk/tools, and Android/sdk/platform-tools, which will depend on where they were installed as well as using the command "export PATH=${PATH}:${ANDROID_HOME}:${ANDROID_TOOLS}:${ANDROID_PLATFORM_TOOLS}".
+
+If you don't want to do that every time, you can add these commands to your bash_profile/ environment variables. To open this file from the command line, "open ~/.bash_profile" then "source ~/.bash_profile".
 
 -------------- How to use our software:
 There are two seperate users for our app, one representing an organization and one representing a community member.
