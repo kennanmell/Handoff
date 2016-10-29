@@ -64,11 +64,11 @@ Overview:
 
 ---- a synopsis of the overall bug; basically a title
 
----- a more detailed description that talks about the issue and a potentially solution to it.
+---- a more detailed description that talks about the issue and a potential solution to it.
 
 Routing Information:
 
----- Category: As specific information as to what compontent displayed this issue.
+---- Category: As specific information as to what component displayed this issue.
 
 ---- Version: The release of the product that the bug was experienced on.
 
