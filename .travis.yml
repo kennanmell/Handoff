@@ -1,0 +1,6 @@
+language: node_js
+  - "6"
+script: ./run_tests.sh
+notifications:
+  email:
+    - kmell96@gmail.com
