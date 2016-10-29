@@ -21,7 +21,7 @@ brew postinstall node -v
 
 -------------- How to download our software:
 
-After the installation of our toolset is complete, you must clone our repository. Run the following command:
+After the installation of our toolset is complete, you can either clone or download a .zip of our repository. To download the zip, click on this link: https://github.com/kennanmell/Handoff/archive/master.zip Run the following command to clone the repository: 
 
 git clone https://github.com/kennanmell/Handoff.git
 
@@ -43,6 +43,11 @@ Your paths to Android/sdk, Android/sdk/tools, and Android/sdk/platform-tools, wh
 export PATH=${PATH}:${ANDROID_HOME}:${ANDROID_TOOLS}:${ANDROID_PLATFORM_TOOLS}
 
 If you don't want to do that every time, you can add these commands to your environment variables. To open this file from the command line, "open ~/.bash_profile" then "source ~/.bash_profile". If the file does not exist, you should create it first.
+
+Another Error: If there are further errors running the program, you made need to change the permissions on a file in the Android folder.
+When in the Handoff directory, cd into the Android folder. From there run the following command:
+
+chmod 755 gradlew
 
 -------------- How to use our software:
 
