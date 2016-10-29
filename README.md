@@ -31,6 +31,8 @@ git checkout ZFR
 
 -------------- How to run our software:
 
+While we hope to have an executable as an .apk file in the future, currently the best working method to run our software is through the command line and a emulator from Android Studio.
+
 Once in the cloned directory, run the command "npm install". Open an emulator from Android Studio. This can be done by opening Android Studio, opening/creating a new project, and then clicking the icon that says Android AVD if you hover over it. It is located on the top toolbar of Android Studio, and the icon looks like a phone screen.
 
 In the original command line, run "react-native run-android". This will pop open a third command line instance - ignore this. This will run for a long time the first time you run it. When it's finished look at your emulator, it might take a minute to load but the app should pop up there, and then you can use the app.
