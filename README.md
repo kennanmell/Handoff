@@ -25,9 +25,13 @@ After the installation of our toolset is complete, you must clone our repository
 
 git clone https://github.com/kennanmell/Handoff.git
 
+For the zero feature release our current product is under a branch called ZFR, to reach/checkout this branch, you must additionally run the command:
+
+git checkout ZFR
+
 -------------- How to run our software:
 
-Once in the cloned directory, run the command "npm install". Open an emulator from Android Studio. This can be done by opening Android Studio, opening/creating a new project, and then clicking the icon that says Android AVD if you hover over it, 5th from the left on the toolbar at the top of Android Studio.
+Once in the cloned directory, run the command "npm install". Open an emulator from Android Studio. This can be done by opening Android Studio, opening/creating a new project, and then clicking the icon that says Android AVD if you hover over it. It is located on the top toolbar of Android Studio, and the icon looks like a phone screen.
 
 In the original command line, run "react-native run-android". This will pop open a third command line instance - ignore this. This will run for a long time the first time you run it. When it's finished look at your emulator, it might take a minute to load but the app should pop up there, and then you can use the app.
 
@@ -38,7 +42,7 @@ Your paths to Android/sdk, Android/sdk/tools, and Android/sdk/platform-tools, wh
 
 export PATH=${PATH}:${ANDROID_HOME}:${ANDROID_TOOLS}:${ANDROID_PLATFORM_TOOLS}
 
-If you don't want to do that every time, you can add these commands to your bash_profile/ environment variables. To open this file from the command line, "open ~/.bash_profile" then "source ~/.bash_profile". If the file does not exist, you should create it first.
+If you don't want to do that every time, you can add these commands to your environment variables. To open this file from the command line, "open ~/.bash_profile" then "source ~/.bash_profile". If the file does not exist, you should create it first.
 
 -------------- How to use our software:
 
