@@ -34,10 +34,11 @@ In the original command line, run "react-native run-android". This will pop open
 Frequent Errors:
 There are some issues with finding the paths to the android libraries. To resolve this, be sure to export the following: 
 
-Your paths to Android/sdk, Android/sdk/tools, and Android/sdk/platform-tools, which will depend on where they were installed as well as using the command 
+Your paths to Android/sdk, Android/sdk/tools, and Android/sdk/platform-tools, which will depend on where they were installed, as well as using the command 
+
 "export PATH=${PATH}:${ANDROID_HOME}:${ANDROID_TOOLS}:${ANDROID_PLATFORM_TOOLS}".
 
-If you don't want to do that every time, you can add these commands to your bash_profile/ environment variables. To open this file from the command line, "open ~/.bash_profile" then "source ~/.bash_profile".
+If you don't want to do that every time, you can add these commands to your bash_profile/ environment variables. To open this file from the command line, "open ~/.bash_profile" then "source ~/.bash_profile". If the file does not exist, you should create it first.
 
 -------------- How to use our software:
 
