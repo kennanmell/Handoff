@@ -2,7 +2,7 @@
 
 Product Description
 
-Handoff is a mobile application that bridges the communication gap between local organizations such as food banks and non-profits and community members looking to donate. The app allows organizations to post requests about general or specific needs, and then users can browse through this information through either a request feed or a map that displays requests at the location of the organization. A user might want to use it because it can keep them aware of the needs of organizations, and it provides an easy way to find a place where items to donate can be dropped off.
+Handoff is a mobile application that bridges the communication gap between local organizations such as food banks and non-profits, and community members looking to donate. The app allows organizations to post requests about general or specific needs, and then users can browse through this information through either a request feed or a map that displays requests at the location of the organization. A user might want to use it because it can keep them aware of the needs of organizations, and it provides an easy way to find a place where items to donate can be dropped off.
 
 Installing Our Toolset for Andriod
 
@@ -24,10 +24,6 @@ brew postinstall node -v
 After the installation of our toolset is complete, you can either clone or download a .zip of our repository. To download the zip, click on this link: https://github.com/kennanmell/Handoff/archive/master.zip Run the following command to clone the repository: 
 
 git clone https://github.com/kennanmell/Handoff.git
-
-For the zero feature release our current product is under a branch called ZFR, to reach/checkout this branch, you must additionally run the command:
-
-git checkout ZFR
 
 -------------- How to run our software:
 
