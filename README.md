@@ -32,7 +32,7 @@ Once in the cloned directory, run the command "npm install". Open an emulator fr
 In the original command line, run "react-native run-android". This will pop open a third command line instance - ignore this. This will run for a long time the first time you run it. When it's finished look at your emulator, it might take a minute to load but the app should pop up there, and then you can use the app.
 
 Frequent Errors:
-There are some issues with finding the paths to the android libraries. To resolve this, be sure to export the following: 
+There are some issues with finding the paths to the Android Libraries. To resolve this, be sure to export the following: 
 
 Your paths to Android/sdk, Android/sdk/tools, and Android/sdk/platform-tools, which will depend on where they were installed, as well as using the command 
 
