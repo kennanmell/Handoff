@@ -31,7 +31,7 @@ git checkout ZFR
 
 -------------- How to run our software:
 
-While we hope to have an executable as an .apk file in the future, currently the best working method to run our software is through the command line and a emulator from Android Studio.
+While we hope to have an executable as an .apk file in the future, currently the best working method to run our software is through the command line and an emulator from Android Studio.
 
 Once in the cloned directory, run the command "npm install". Open an emulator from Android Studio. This can be done by opening Android Studio, opening/creating a new project, and then clicking the icon that says Android AVD if you hover over it. It is located on the top toolbar of Android Studio, and the icon looks like a phone screen.
 
