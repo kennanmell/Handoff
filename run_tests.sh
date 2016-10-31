@@ -1,5 +1,5 @@
 #!/bin/bash
 
-node example.test.js
+node __tests__/example.test.js
 
 exit 1
