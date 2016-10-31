@@ -1,5 +1,5 @@
 #!/bin/bash
 
-node index.android.js
+node example.test.js
 
 exit 1
