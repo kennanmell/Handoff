@@ -2,7 +2,7 @@
 
 Product Description
 
-Handoff is a mobile application that bridges the communication gap between local organizations such as food banks and non-profits and community members looking to donate. The app allows organizations to post requests about general or specific needs, and then users can browse through this information through either a request feed or a map that displays requests at the location of the organization. A user might want to use it because it can keep them aware of the needs of organizations, and it provides an easy way to find a place where items to donate can be dropped off.
+Handoff is a mobile application that bridges the communication gap between local organizations such as food banks and non-profits, and community members looking to donate. The app allows organizations to post requests about general or specific needs, and then users can browse through this information through either a request feed or a map that displays requests at the location of the organization. A user might want to use it because it can keep them aware of the needs of organizations, and it provides an easy way to find a place where items to donate can be dropped off.
 
 Installing Our Toolset for Andriod
 
@@ -25,11 +25,9 @@ After the installation of our toolset is complete, you can either clone or downl
 
 git clone https://github.com/kennanmell/Handoff.git
 
-For the zero feature release our current product is under a branch called ZFR, to reach/checkout this branch, you must additionally run the command:
-
-git checkout ZFR
-
 -------------- How to run our software:
+
+While we hope to have an executable as an .apk file in the future, currently the best working method to run our software is through the command line and an emulator from Android Studio.
 
 Once in the cloned directory, run the command "npm install". Open an emulator from Android Studio. This can be done by opening Android Studio, opening/creating a new project, and then clicking the icon that says Android AVD if you hover over it. It is located on the top toolbar of Android Studio, and the icon looks like a phone screen.
 
@@ -65,7 +63,7 @@ Please note that you must log in to a Github account to report a bug. If you do 
 
 We would ask that any bug report contain certain information:
 
-Overview: 
+Overview (Most of this format is taken from Oracle's How to Write a Helpful Bug Report): 
 
 ---- a synopsis of the overall bug; basically a title
 
