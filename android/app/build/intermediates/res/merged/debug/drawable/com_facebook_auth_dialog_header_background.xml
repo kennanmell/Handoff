@@ -27,4 +27,4 @@
         android:topLeftRadius="@dimen/com_facebook_auth_dialog_corner_radius"
         android:topRightRadius="@dimen/com_facebook_auth_dialog_corner_radius" />
 </shape>
-<!-- From: file:/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/res/drawable/com_facebook_auth_dialog_header_background.xml -->
+<!-- From: file:/Users/Sholto/Desktop/HandOff%20Frontend/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/res/drawable/com_facebook_auth_dialog_header_background.xml -->
