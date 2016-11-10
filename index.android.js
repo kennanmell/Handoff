@@ -4,6 +4,7 @@
  * @flow
  */
 
+import FacebookLoginPage from './login';
 import React, { Component, PropTypes } from 'react';
 import {
   AppRegistry,
@@ -83,20 +84,6 @@ class RequestMaker extends Component {
           placeholder="Write your request"
           onChangeText={(text) => this.setState({text})}
         />
-      </View>
-    );
-  }
-}
-
-class FacebookLoginPage extends Component {
-     static propTypes = {
-      onLogin:PropTypes.func.isRequired
-    }
-  render() {
-    return (
-      <View>
-        <Text style={{fontSize: 20, textAlign: 'center'}} onPress={ this.props.onLogin }>Please log in with Facebook in order to use Handoff.</Text>
-        <Login style={{justifyContent:'center'}}/>
       </View>
     );
   }
