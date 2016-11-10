@@ -2,7 +2,7 @@
  * Organization and Organization Editor classes
  */
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
   AppRegistry,
   StyleSheet,
@@ -16,7 +16,11 @@ import {
 edit information about their organization. Has text boxes for their
 organization's name, description, and location. Has a save button
 to save changes. Currently the editor is loaded with dummy data */
-class OrganizationEditor extends Component {
+export default class OrganizationEditor extends Component {
+  static propTypes = {
+      onSave:PropTypes.func.isRequired
+  }
+
   constructor(props) {
     super(props);
 	this.org = new Organization("Hope Shelter", "1516 Brooklyn Ave",
@@ -59,15 +63,16 @@ class OrganizationEditor extends Component {
 			defaultValue={this.state.typedDesc}
 			onChangeText={(text) => this.setState({typedDesc: text})}
 		/>
-		
 		<TouchableHighlight 
 			onPress= {() => {this.org.name = this.state.typedName;
 							 this.org.loc = this.state.typedLoc;
-							 this.org.description = this.state.typedDesc;}}
+							 this.org.description = this.state.typedDesc;
+							 this.props.onSave}}
 			underlayColor={'#612e5f'}>
 			<Text style={styles.handoffButton}>Save</Text> 
 		</TouchableHighlight>
 		
+		<Text style={{fontSize: 30}} onPress={ this.props.onSave }>Close</Text>
       </View>
 		
     );
