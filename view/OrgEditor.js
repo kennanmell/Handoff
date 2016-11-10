@@ -2,6 +2,7 @@
  * Organization and Organization Editor classes
  */
 
+import Organization from '../model/Organization'
 import React, { Component, PropTypes } from 'react';
 import {
   AppRegistry,
@@ -77,16 +78,6 @@ export default class OrganizationEditor extends Component {
 		
     );
   }
-}
-
-/* Represents an organization. Has fields for the
-organization's name, location, and description */
-class Organization {
-	constructor(name, loc, description) {
-		this.name = name;
-		this.loc = loc;
-		this.description = description;
-	}
 }
 
 const styles = StyleSheet.create({

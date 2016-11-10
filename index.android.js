@@ -4,13 +4,13 @@
  * @flow
  */
 
-import FacebookLoginPage from './javascripts/login';
-import OrganizationEditor from './javascripts/OrgEditor';
-import RequestMaker from './javascripts/RequestMaker';
-import EditRequests from './javascripts/EditRequests';
-import ViewRequests from './javascripts/ViewRequests';
-import RequestFeed from './javascripts/RequestFeed';
-import Request from './javascripts/Request';
+import FacebookLoginPage from './view/login';
+import OrganizationEditor from './view/OrgEditor';
+import RequestMaker from './view/RequestMaker';
+import EditRequests from './view/EditRequests';
+import ViewRequests from './view/ViewRequests';
+import RequestFeed from './view/RequestFeed';
+import Request from './model/Request';
 
 import React, { Component, PropTypes } from 'react';
 import {
