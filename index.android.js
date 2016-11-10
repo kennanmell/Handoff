@@ -22,6 +22,8 @@ import {
   TouchableHighlight,
   Navigator
 } from 'react-native';
+import Request from './Request';
+import RequestFeed from './RequestFeed';
 
 /**
 The main navigation class for the Handoff app. Decides which scene to render with the
@@ -34,7 +36,7 @@ class MainNavigator extends Component {
   render() {
     return (
       <Navigator
-        initialRoute={{ name: 'Login' }}
+        initialRoute={{ name: 'RequestFeed' }}
         renderScene={ this.renderScene }
       />
     )
@@ -78,7 +80,7 @@ class MainNavigator extends Component {
     		}}
     	/>
     }
-    
+
     if (route.name == 'OrgEditProfile') {
     	return <OrganizationEditor
     	    onSave={ () => {
