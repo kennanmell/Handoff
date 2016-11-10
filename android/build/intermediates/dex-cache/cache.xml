@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/25.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="8a372c4191f80489770a231f7be4820b204b886a">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/classes-04d1a341b90247aa858e65561d90745fe70720c8.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/library-2.4.0-c3a3c11b30674a9873188e54e37b0af0f9b2676a.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.2.3/1a0113da2cab5f4c216b4e5e7c1dbfaa67087e14/jackson-core-2.2.3.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="1a0113da2cab5f4c216b4e5e7c1dbfaa67087e14">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/jackson-core-2.2.3-86231137300072000cd037801581b1eb1f1d8482.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="23c7c34bfb3cdc0599d49e581486b179bc6b2eee">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/classes-e409acb81d4872281dfa96f4cc4c239434333ddc.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="76fb65a4b41ea42dab8a1310ed772a2420c96b52">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/classes-b0ef7d6f2a227bdb823f666ae959bcd1696d8338.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-base/0.11.0/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="ca63c521b5745ae9a09629d7ca67ff6bc2a967fe">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/classes-6ea30cb839e8db2b7224332e64515ddc89fae015.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-okhttp3/0.11.0/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="2b8a01ad9da5d26d0067894c22e87597bca2c500">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/classes-026c11ad6ed75c18e1fd2e379db7948e8cc12b45.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.9.0/f824591a0016efbaeddb8300bee54832a1398cfa/okio-1.9.0.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="f824591a0016efbaeddb8300bee54832a1398cfa">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/okio-1.9.0-693756071707a7df6c770b79f20904ebe51b08a9.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="53a420cd4f49274db6bd43475f8006ba67ef6bbd">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/classes-59a712631f46d3aceb3909b1cd223e15d6d7e651.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.36.0/jars/libs/infer-annotations-1.5.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="3dae5cf34cd90e5e9adce76ae6d475456ca99c74">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/infer-annotations-1.5-26a3c2c84dea77e1f9245faf1be67c997c2edc4e.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.0/5871fb60dc68d67da54a663c3fd636a10a532948/jsr305-3.0.0.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="5871fb60dc68d67da54a663c3fd636a10a532948">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/jsr305-3.0.0-8ad12bcd9f6d7b880caa7f26b93d3a98eb24be28.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="8f615bca00639150c9eb6175d4b5471193f70794">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/classes-40f2a3277936d0d16bd0d03a2f89b52ac663f0be.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-applinks/1.4.0/8ad21bf21784dacce5f2043afb97218cc377e835/bolts-applinks-1.4.0.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="8ad21bf21784dacce5f2043afb97218cc377e835">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/bolts-applinks-1.4.0-cc9afe12d6f4b9dc3620d98234440cb1c0ff507c.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="8bc45ce1f63d1a391fd38b32a201be5a42f9c95d">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/classes-7765b87ae4fd3c655e13db9088f0ccb33004ad16.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="07daa0b6e1d455c82a38422ffe287c18823d339a">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/classes-c240b21edf509797b162817e39bf825238622352.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="3b61a70884adaf0be3fc06c70c801e3e6df13133">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/internal_impl-25.0.0-a66ec32003a1e06a76fc18ebb017a3ee4d8a6ad9.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="4356e230a981d1bbf047d848b91bc0d9b7c5bacc">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/classes-31fd26fb67842b62b6426e1b6e1ee464a85b15fe.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fresco/0.11.0/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="d31aadf33187c37a7cd63dc1b769f8c6e33f78c3">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/classes-4bcad03bfa813427e2be3ce6ccaa5929e3b21b5f.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/0.11.0/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="3341b66c54367e777a0647e2db96c045329bfeab">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/classes-47eb4c04f172dea57473177119387d3eb6e7f43d.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="4ccbcda5c72027c7f7c14be9ff8640d9cb0d8da0">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/classes-a5b99d04adb4697c2522824454d416a7d7172694.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="26674000177e45447a0326a6ad84612761199a13">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/classes-21dc3f70ba1261e0f0b28e7327f6dd3d40387f1c.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/HandOff/react-native-fbsdk/unspecified/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="7b2673b3277aa8648e231ddf418e16c4ed8ea62d">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/classes-1b85ab2a88ddb9c8d3a9fcda1c4935e7488f697f.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="f2e3b9bc1ec25f652e8007ce7774c991e38f6a00">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/internal_impl-25.0.0-6820a35407faad29ddda2b5bf5a0b1a241ecc029.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.fresco/drawee/0.11.0/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="1137942adeb03984c1311b662363dd38fc238fd3">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/classes-5bf8716cedae28524dbe94470fa21d2113112b07.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.0.0/support-annotations-25.0.0.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="a22d2cc94da87b254451fa8ed28afc30b4653773">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/support-annotations-25.0.0-1b13f6990a41419bdc61114e2da3c446f3e5b6f9.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="ee5faf4dee5b6a4364bf51587871047dde7c703a">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/internal_impl-25.0.0-08b830ebd73b32499d33ddb77c7cde6abf451b1b.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp-ws/3.4.1/8ace66ef7002d98f633377c9e67daeeb196d8c3b/okhttp-ws-3.4.1.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="8ace66ef7002d98f633377c9e67daeeb196d8c3b">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/okhttp-ws-3.4.1-f62300fd9162a5a2292d57b76ecd44c59437e7fe.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="d29714cc76b38157e3cbd034c66e1ec808eb4c19">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/classes-35e12d5b850e0e0226b5d5ce3249bb1aaf5a3936.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="6975da39a7040257bd51d21a231b76c915872d38">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/javax.inject-1-3ebeb3d01615f19db56c28304500d5cbaff87aca.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/customtabs/25.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="94ba691efc31bf53264db0716d9c9ec03843ea31">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/classes-923b71ca52685b60b16bbd53343803ed058257d9.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="665d21a8a069c96b4d9e8b434f5096d865b4e261">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/internal_impl-25.0.0-4cfb39e918e55d303e11f82effe8a640b3439103.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/internal_impl-25.0.0-0fefc53bfa6dcf607e80fe107e15cad85de7b204.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/0.11.0/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="98786c1770b531b9194fb6448b2a2692c64074b6">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/classes-e9b3da8411f1096c8a4c7a718c3d27fdcf1c0eb4.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.36.0/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="20c0d9382c06e0c7e105e2f5af6ade9f1dbf2170">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/classes-c67f773fe0da553328c9a1a56b8e1d2499ebee40.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/bolts-tasks-1.4.0-e9415129abf16f68bb9cf01ed793bba60400795c.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp-urlconnection/3.4.1/63994437f62bc861bc20c605d12962f7246116d1/okhttp-urlconnection-3.4.1.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="63994437f62bc861bc20c605d12962f7246116d1">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/okhttp-urlconnection-3.4.1-1d3cf3ff2c1bea143d20564ca3784cf11fab3f77.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.4.1/c7c4f9e35c2fd5900da24f9872e3971801f08ce0/okhttp-3.4.1.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="c7c4f9e35c2fd5900da24f9872e3971801f08ce0">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/okhttp-3.4.1-2bd42718ddb983735ab6fa57d34f5f625b90188f.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/classes-001e3c859d6a21e0bac022b2a9cef12f7bcce744.jar" />
+    </item>
+    <item
+        jar="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="24.0.3"
+        sha1="75b1f366ff0bbc78f8b1f7cf0dc82e7c53afef6a">
+        <dex dex="/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/pre-dexed/debug/classes-9226d7307139b8c0a6d6a0b5520a1175237d9c94.jar" />
+    </item>
+
+</items>
