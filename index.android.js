@@ -4,6 +4,7 @@
  * @flow
  */
 
+import FacebookLoginPage from './login';
 import React, { Component, PropTypes } from 'react';
 import {
   AppRegistry,
@@ -222,7 +223,6 @@ class ViewRequests extends Component {
     );
   }
 }
-
 
 class MainNavigator extends Component {
   render() {
