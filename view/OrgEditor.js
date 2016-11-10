@@ -1,5 +1,6 @@
 /**
- * Organization and Organization Editor classes
+ * Organization Editor view class, which allows organizations
+ * to change their profile information
  */
 
 import Organization from '../model/Organization'
@@ -96,5 +97,3 @@ const styles = StyleSheet.create({
 	color: '#00cc99',
   },
   });
-
-//AppRegistry.registerComponent('HandOff', () => OrganizationEditor);
