@@ -9,6 +9,8 @@ import OrganizationEditor from './javascripts/OrgEditor';
 import RequestMaker from './javascripts/RequestMaker';
 import EditRequests from './javascripts/EditRequests';
 import ViewRequests from './javascripts/ViewRequests';
+import RequestFeed from './javascripts/RequestFeed';
+import Request from './javascripts/Request';
 
 import React, { Component, PropTypes } from 'react';
 import {
@@ -22,8 +24,6 @@ import {
   TouchableHighlight,
   Navigator
 } from 'react-native';
-import Request from './Request';
-import RequestFeed from './RequestFeed';
 
 /**
 The main navigation class for the Handoff app. Decides which scene to render with the
@@ -36,7 +36,7 @@ class MainNavigator extends Component {
   render() {
     return (
       <Navigator
-        initialRoute={{ name: 'RequestFeed' }}
+        initialRoute={{ name: 'Login' }}
         renderScene={ this.renderScene }
       />
     )
@@ -48,7 +48,7 @@ class MainNavigator extends Component {
     	
     		onUserLogin={ () => {
     			navigator.push({
-    				name: 'MakeRequest',
+    				name: 'UserFeed',
     			})
     		}}
     		
@@ -101,26 +101,12 @@ class MainNavigator extends Component {
     	return <ViewRequests />
     }
     
+    if (route.name == 'UserFeed') {
+    	return <RequestFeed />
+    }
+    
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
-
+// Register the main navigator so it will run when the app starts.
 AppRegistry.registerComponent('MainNavigator', () => MainNavigator);

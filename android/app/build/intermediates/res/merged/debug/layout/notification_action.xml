@@ -41,4 +41,4 @@
         android:singleLine="true"
         android:ellipsize="end"
         android:clickable="false"/>
-</LinearLayout><!-- From: file:/Users/petergiseburt/Documents/School/403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/layout/notification_action.xml -->
+</LinearLayout><!-- From: file:/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/layout/notification_action.xml -->
