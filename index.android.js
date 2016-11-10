@@ -4,8 +4,12 @@
  * @flow
  */
 
-import FacebookLoginPage from './login';
+import FacebookLoginPage from './javascripts/login';
 import OrganizationEditor from './javascripts/OrgEditor';
+import RequestMaker from './javascripts/RequestMaker';
+import EditRequests from './javascripts/EditRequests';
+import ViewRequests from './javascripts/ViewRequests';
+
 import React, { Component, PropTypes } from 'react';
 import {
   AppRegistry,
@@ -15,169 +19,17 @@ import {
   View,
   TouchableNativeFeedback,
   Modal,
-  TouchableHighlight
+  TouchableHighlight,
   Navigator
 } from 'react-native';
 
-/*Builds a RequestMaker - prompts user to type a request and has a text entry box*/
-class RequestMaker extends Component {
-    static propTypes = {
-      onLogout:PropTypes.func.isRequired
-    }
-  constructor(props) {
-    super(props);
-    this.state = {text: ''};
-  }
-
-  render() {
-    return (
-
-      <View style={{padding: 10}}>
-      <Text style={styles.welcome}>
-                    Handoff
-                  </Text>
-        <TextInput
-          style={{height: 40}}
-          placeholder="Give your request a snappy title"
-          onChangeText={(text) => this.setState({text})}
-        />
-         <TextInput
-                  style={{height: 40}}
-                  placeholder="Provide details on what you are requesting"
-                  onChangeText={(text) => this.setState({text})}
-                />
-         <TextInput
-                  style={{height: 40}}
-                  placeholder="Tag your request with keywords so people can find it"
-                  onChangeText={(text) => this.setState({text})}
-                />
-        <TouchableNativeFeedback
-                    style={styles.button}
-                    >
-                    <View>
-                        <Text style={styles.buttonText}>Edit Profile</Text>
-                    </View>
-                  </TouchableNativeFeedback>
-                  <TouchableNativeFeedback
-                              style={styles.button}
-                              >
-                              <View>
-                                  <Text style={styles.buttonText}>Edit Request</Text>
-                              </View>
-                            </TouchableNativeFeedback>
-      </View>
-    );
-  }
-}
-
-class EditRequests extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {text: ''};
-  }
-
-  setModalVisible(visible) {
-    this.setState({modalVisible: visible});
-  }
-
-  render() {
-    return (
-
-      <View style={{padding: 10}}>
-      <Modal
-        animationType={"slide"}
-                  transparent={false}
-                  visible={this.state.modalVisible}
-                  onRequestClose={() => {alert("Modal has been closed.")}}
-       >
-       <View style={{marginTop: 22}}>
-                 <View>
-                   <Text>Hello World!</Text>
-                    <TouchableHighlight onPress={() => {
-                                  this.setModalVisible(false)
-                                }}>
-                                  <Text>Hide Modal</Text>
-                                </TouchableHighlight>
-                 </View>
-                </View>
-               </Modal>
-               <TouchableHighlight onPress={() => {
-                         this.setModalVisible(true)
-                       }}>
-                         <Text>Show Modal</Text>
-                       </TouchableHighlight>
-      <Text style={styles.welcome}>
-                    Handoff
-                  </Text>
-        <Text style={styles.instructions}>
-                  Request Feed Goes Here
-                </Text>
-		</View>
-    );
-  }
-}
-
-class FacebookLoginPage extends Component {
-     static propTypes = {
-      onLogin:PropTypes.func.isRequired
-    }
-  render() {
-    return (
-      <View>
-        <Text style={{fontSize: 20, textAlign: 'center'}} onPress={ this.props.onLogin }>Please log in with Facebook in order to use Handoff.</Text>
-        <Login style={{justifyContent:'center'}}/>
-      </View>
-    );
-  }
-}
-
-class ViewRequests extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {text: ''};
-  }
-
-  setModalVisible(visible) {
-    this.setState({modalVisible: visible});
-  }
-
-  render() {
-    return (
-
-      <View style={{padding: 10}}>
-      <Modal
-        animationType={"slide"}
-                  transparent={false}
-                  visible={this.state.modalVisible}
-                  onRequestClose={() => {alert("Modal has been closed.")}}
-       >
-       <View style={{marginTop: 22}}>
-                 <View>
-                   <Text>Hello World!</Text>
-                    <TouchableHighlight onPress={() => {
-                                  this.setModalVisible(false)
-                                }}>
-                                  <Text>Hide Modal</Text>
-                                </TouchableHighlight>
-                 </View>
-                </View>
-               </Modal>
-               <TouchableHighlight onPress={() => {
-                         this.setModalVisible(true)
-                       }}>
-                         <Text>Show Modal</Text>
-                       </TouchableHighlight>
-      <Text style={styles.welcome}>
-                    Handoff
-                  </Text>
-        <Text style={styles.instructions}>
-                  Request Feed Goes Here
-                </Text>
-      </View>
-    );
-  }
-}
-
+/**
+The main navigation class for the Handoff app. Decides which scene to render with the
+renderScene function, and this function contains a possible if-case for each scene the
+user can navigate to. This class is responsible for setting up navigation between
+all scenes, typically by providing callback functions for each button press that
+triggers navigation.
+*/
 class MainNavigator extends Component {
   render() {
     return (
@@ -192,15 +44,15 @@ class MainNavigator extends Component {
     if (route.name == 'Login') {
     	return <FacebookLoginPage
     	
-    		onLogin={ () => {
+    		onUserLogin={ () => {
     			navigator.push({
     				name: 'MakeRequest',
     			})
     		}}
     		
-    		orgTempLogin={ () => {
+    		onOrgLogin={ () => {
     			navigator.push({
-    				name: 'OrgLoggedIn',
+    				name: 'MakeRequest',
     			})
     		}}
     	/>
@@ -212,16 +64,41 @@ class MainNavigator extends Component {
     				name: 'Login',
     			})
     		}}
+    		
+    		onEditRequest={ () => {
+    			navigator.push({
+    				name: 'OrgEditRequests',
+    			})
+    		}}
+    		
+    		onEditProfile={ () => {
+    			navigator.push({
+    				name:'OrgEditProfile',
+    			})
+    		}}
     	/>
     }
     
-    if (route.name == 'OrgLoggedIn') {
+    if (route.name == 'OrgEditProfile') {
     	return <OrganizationEditor
     	    onSave={ () => {
     			navigator.pop()
     		}}
     	/>
     }
+    
+    if (route.name == 'OrgEditRequests') {
+        return <EditRequests
+        	onClose={ () => {
+        		navigator.pop()
+        	}}
+         />
+    }
+    
+    if (route.name == 'OrgViewRequests') {
+    	return <ViewRequests />
+    }
+    
   }
 }
 

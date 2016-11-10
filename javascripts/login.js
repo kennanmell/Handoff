@@ -13,7 +13,7 @@ const {
   LoginButton,
 } = FBSDK;
       
-// Facebook Log-In button.
+// Facebook Log-In button. Based on Facebook's example code.
 var Login = React.createClass({
   render: function() {
     return (
@@ -37,17 +37,22 @@ var Login = React.createClass({
   }
 });
 
+/**
+The login screen. Allows the user to log in with Facebook. Currently offers dummy log-in buttons to allow access
+to the rest of the app.
+*/
 export default class FacebookLoginPage extends Component {
      static propTypes = {
-      onLogin:PropTypes.func.isRequired,
-      orgTempLogin:PropTypes.func.isRequired
+      onOrgLogin:PropTypes.func.isRequired,
+      onUserLogin:PropTypes.func.isRequired
     }
   render() {
     return (
       <View>
-        <Text style={{fontSize: 20, textAlign: 'center'}} onPress={ this.props.onLogin }>Please log in with Facebook in order to use Handoff.</Text>
+        <Text style={{fontSize: 20, textAlign: 'center'}}>Please log in with Facebook in order to use Handoff.</Text>
         <Login style={{justifyContent:'center'}}/>
-        <Text style={{fontSize: 15, textAlign: 'center'}} onPress={ this.props.orgTempLogin }>(click for temp organization login)</Text>
+        <Text style={{fontSize: 15, textAlign: 'center'}} onPress={ this.props.onOrgLogin }>(click for temp organization login)</Text>
+        <Text style={{fontSize: 15, textAlign: 'center'}} onPress={ this.props.onUserLogin }>(click for temp user login)</Text>
       </View>
     );
   }
