@@ -39,13 +39,15 @@ var Login = React.createClass({
 
 export default class FacebookLoginPage extends Component {
      static propTypes = {
-      onLogin:PropTypes.func.isRequired
+      onLogin:PropTypes.func.isRequired,
+      orgTempLogin:PropTypes.func.isRequired
     }
   render() {
     return (
       <View>
         <Text style={{fontSize: 20, textAlign: 'center'}} onPress={ this.props.onLogin }>Please log in with Facebook in order to use Handoff.</Text>
         <Login style={{justifyContent:'center'}}/>
+        <Text style={{fontSize: 15, textAlign: 'center'}} onPress={ this.props.orgTempLogin }>(click for temp organization login)</Text>
       </View>
     );
   }
