@@ -18,6 +18,8 @@ import {
   TouchableHighlight,
   Navigator
 } from 'react-native';
+import Request from './Request';
+import RequestFeed from './RequestFeed';
 
 /*Builds a RequestMaker - prompts user to type a request and has a text entry box*/
 class RequestMaker extends Component {
@@ -169,7 +171,7 @@ class MainNavigator extends Component {
   render() {
     return (
       <Navigator
-        initialRoute={{ name: 'Login' }}
+        initialRoute={{ name: 'RequestFeed' }}
         renderScene={ this.renderScene }
       />
     )
@@ -201,6 +203,7 @@ class MainNavigator extends Component {
     		}}
     	/>
     }
+<<<<<<< Updated upstream
     
     if (route.name == 'OrgLoggedIn') {
     	return <OrganizationEditor
@@ -208,6 +211,16 @@ class MainNavigator extends Component {
     			navigator.pop()
     		}}
     	/>
+=======
+    if (route.name == 'RequestFeed') {
+        return <RequestFeed
+            onLogout={ () => {
+                navigator.push({
+                    name: 'Login',
+                })
+            }}
+        />
+>>>>>>> Stashed changes
     }
   }
 }
