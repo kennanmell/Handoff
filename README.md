@@ -1,17 +1,17 @@
 # Handoff
 
-Product Description
+### Product Description
 
 Handoff is a mobile application that bridges the communication gap between local organizations such as food banks and non-profits, and community members looking to donate. The app allows organizations to post requests about general or specific needs, and then users can browse through this information through either a request feed or a map that displays requests at the location of the organization. A user might want to use it because it can keep them aware of the needs of organizations, and it provides an easy way to find a place where items to donate can be dropped off.
 
-Installing Our Toolset for Andriod
+### Installing Our Toolset for Andriod
 
 Go to the following webpage and select Mac/Linux/Windows and Android, then follow the instructions to download the dependancies:
 http://facebook.github.io/react-native/docs/getting-started.html
 
 Make sure that you install Android 7.0, despite it not being the latest release. Not being on 7.0 creates many issues.
 
---For Mac:
+### For Mac:
 
 Note: It is possible that installing node will cause an error with user permissions when trying to install the sandbox. The only time we experienced this bug, the following two commands (after "brew install node" partially fails) solved the issue:
 
@@ -19,13 +19,13 @@ sudo chown -R $USER /usr/local
 
 brew postinstall node -v
 
--------------- How to download our software:
+### How to download our software:
 
 After the installation of our toolset is complete, you can either clone or download a .zip of our repository. To download the zip, click on this link: https://github.com/kennanmell/Handoff/archive/master.zip Run the following command to clone the repository: 
 
 git clone https://github.com/kennanmell/Handoff.git
 
--------------- How to run our software:
+### How to run our software:
 
 While we hope to have an executable as an .apk file in the future, currently the best working method to run our software is through the command line and an emulator from Android Studio.
 
@@ -47,7 +47,7 @@ When in the Handoff directory, cd into the Android folder. From there run the fo
 
 chmod 755 gradlew
 
--------------- How to use our software:
+### How to use our software:
 
 There are two seperate users for our app, one representing an organization and one representing a community member.
 
@@ -57,7 +57,7 @@ Organization: Upon logging in using their organizations username/password, the a
 
 Community Member: Users can log in through connecting Handoff to their Facebook. They can then select to view organization's requests either through a feed or a map and switch between them by pressing the button that represent the mode that the user is not already using. Alternatively, they can search for specific keywords through or search feature. Once they find an organization through some method, they can click on that organizations name to be taken to the organizations page, which the user can then subscribe to.
 
---------------- How to report a bug:
+### How to report a bug:
 To report a bug go to this webpage: https://github.com/kennanmell/Handoff/issues/new
 Please note that you must log in to a Github account to report a bug. If you do not have one, I would make one.
 
