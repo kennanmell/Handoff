@@ -12,8 +12,11 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  Navigator,
-  View
+  View,
+  TouchableNativeFeedback,
+  Modal,
+  TouchableHighlight
+  Navigator
 } from 'react-native';
 
 /*Builds a RequestMaker - prompts user to type a request and has a text entry box*/
@@ -35,9 +38,141 @@ class RequestMaker extends Component {
                   </Text>
         <TextInput
           style={{height: 40}}
-          placeholder="Write your request"
+          placeholder="Give your request a snappy title"
           onChangeText={(text) => this.setState({text})}
         />
+         <TextInput
+                  style={{height: 40}}
+                  placeholder="Provide details on what you are requesting"
+                  onChangeText={(text) => this.setState({text})}
+                />
+         <TextInput
+                  style={{height: 40}}
+                  placeholder="Tag your request with keywords so people can find it"
+                  onChangeText={(text) => this.setState({text})}
+                />
+        <TouchableNativeFeedback
+                    style={styles.button}
+                    >
+                    <View>
+                        <Text style={styles.buttonText}>Edit Profile</Text>
+                    </View>
+                  </TouchableNativeFeedback>
+                  <TouchableNativeFeedback
+                              style={styles.button}
+                              >
+                              <View>
+                                  <Text style={styles.buttonText}>Edit Request</Text>
+                              </View>
+                            </TouchableNativeFeedback>
+      </View>
+    );
+  }
+}
+
+class EditRequests extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {text: ''};
+  }
+
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  }
+
+  render() {
+    return (
+
+      <View style={{padding: 10}}>
+      <Modal
+        animationType={"slide"}
+                  transparent={false}
+                  visible={this.state.modalVisible}
+                  onRequestClose={() => {alert("Modal has been closed.")}}
+       >
+       <View style={{marginTop: 22}}>
+                 <View>
+                   <Text>Hello World!</Text>
+                    <TouchableHighlight onPress={() => {
+                                  this.setModalVisible(false)
+                                }}>
+                                  <Text>Hide Modal</Text>
+                                </TouchableHighlight>
+                 </View>
+                </View>
+               </Modal>
+               <TouchableHighlight onPress={() => {
+                         this.setModalVisible(true)
+                       }}>
+                         <Text>Show Modal</Text>
+                       </TouchableHighlight>
+      <Text style={styles.welcome}>
+                    Handoff
+                  </Text>
+        <Text style={styles.instructions}>
+                  Request Feed Goes Here
+                </Text>
+		</View>
+    );
+  }
+}
+
+class FacebookLoginPage extends Component {
+     static propTypes = {
+      onLogin:PropTypes.func.isRequired
+    }
+  render() {
+    return (
+      <View>
+        <Text style={{fontSize: 20, textAlign: 'center'}} onPress={ this.props.onLogin }>Please log in with Facebook in order to use Handoff.</Text>
+        <Login style={{justifyContent:'center'}}/>
+      </View>
+    );
+  }
+}
+
+class ViewRequests extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {text: ''};
+  }
+
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  }
+
+  render() {
+    return (
+
+      <View style={{padding: 10}}>
+      <Modal
+        animationType={"slide"}
+                  transparent={false}
+                  visible={this.state.modalVisible}
+                  onRequestClose={() => {alert("Modal has been closed.")}}
+       >
+       <View style={{marginTop: 22}}>
+                 <View>
+                   <Text>Hello World!</Text>
+                    <TouchableHighlight onPress={() => {
+                                  this.setModalVisible(false)
+                                }}>
+                                  <Text>Hide Modal</Text>
+                                </TouchableHighlight>
+                 </View>
+                </View>
+               </Modal>
+               <TouchableHighlight onPress={() => {
+                         this.setModalVisible(true)
+                       }}>
+                         <Text>Show Modal</Text>
+                       </TouchableHighlight>
+      <Text style={styles.welcome}>
+                    Handoff
+                  </Text>
+        <Text style={styles.instructions}>
+                  Request Feed Goes Here
+                </Text>
       </View>
     );
   }
