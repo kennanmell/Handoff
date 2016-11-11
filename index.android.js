@@ -22,6 +22,7 @@ import {
   TouchableNativeFeedback,
   Modal,
   TouchableHighlight,
+  BackAndroid,
   Navigator
 } from 'react-native';
 
@@ -34,6 +35,7 @@ triggers navigation.
 */
 class MainNavigator extends Component {
   render() {
+	
     return (
       <Navigator
         initialRoute={{ name: 'Login' }}
@@ -41,7 +43,7 @@ class MainNavigator extends Component {
       />
     )
   }
-  
+
   renderScene(route, navigator) {
     if (route.name == 'Login') {
     	return <FacebookLoginPage
@@ -108,5 +110,8 @@ class MainNavigator extends Component {
   }
 }
 
-// Register the main navigator so it will run when the app starts.
+BackAndroid.addEventListener('hardwareBackPress', function() {
+  return true;
+});
+
 AppRegistry.registerComponent('MainNavigator', () => MainNavigator);
