@@ -74,7 +74,7 @@ export default class OrganizationEditor extends Component {
 			<Text style={styles.handoffButton}>Save</Text> 
 		</TouchableHighlight>
 		
-		<Text style={{fontSize: 30}} onPress={ this.props.onSave }>Close</Text>
+		<Text style={styles.handoffButton} onPress={ this.props.onSave }>Close</Text>
       </View>
 		
     );
