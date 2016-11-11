@@ -1,3 +1,9 @@
+/**
+ * Request Maker view class, which allows organizations
+ * to make submit requests
+ */
+
+
 import React, { Component, PropTypes } from 'react';
 import {
   AppRegistry,
@@ -11,7 +17,10 @@ import {
   Navigator
 } from 'react-native';
 
-/*Builds a RequestMaker - prompts user to type a request and has a text entry box*/
+/*Builds a RequestMaker, which an Organization User uses to
+submit requests. Has text boxes for the request title, description,
+and tags. Acts as initial page for orgs. Has a button to submit requests,
+edit org profile, edit previous requests and logout.*/
 export default class RequestMaker extends Component {
     static propTypes = {
       onLogout:PropTypes.func.isRequired,
@@ -65,7 +74,7 @@ export default class RequestMaker extends Component {
                               onPress={this.props.onEditRequest}
                               >
                               <View>
-                                  <Text style={styles.buttonText}>Edit Request</Text>
+                                  <Text style={styles.buttonText}>Edit Requests</Text>
                               </View>
                             </TouchableNativeFeedback>
                     <TouchableNativeFeedback

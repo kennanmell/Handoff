@@ -1,3 +1,8 @@
+/**
+ * Edit Requests view class, which allows organizations to see
+ * previous requests and edit them.
+ */
+
 import React, { Component, PropTypes } from 'react';
 import {
   AppRegistry,
@@ -11,6 +16,9 @@ import {
   Navigator
 } from 'react-native';
 
+/*Builds a EditRequests class, which an organization User uses to
+select a request to edit and edit it in a pop-up. Has a RequestFeed
+that the donor can interact with for more information in pop-ups.*/
 export default class EditRequests extends Component {
   static propTypes = {
       onClose:PropTypes.func.isRequired,

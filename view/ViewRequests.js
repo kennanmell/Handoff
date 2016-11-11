@@ -1,3 +1,8 @@
+/**
+ * View Requests view class, which allows donors to see
+ * relevant requests.
+ */
+
 import React, { Component, PropTypes } from 'react';
 import {
   AppRegistry,
@@ -11,6 +16,9 @@ import {
   Navigator
 } from 'react-native';
 
+/*Builds a ViewRequests class, which a donor User uses to
+view relevant requests. Has a RequestFeed that the donor can interact with
+for more information in pop-ups. */
 export default class ViewRequests extends Component {
   constructor(props) {
     super(props);
