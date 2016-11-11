@@ -379,6 +379,11 @@
     <string name="com_facebook_smart_login_confirmation_continue_as">Continue as %1$s</string>
     <string name="com_facebook_smart_login_confirmation_title">Confirm Login</string>
     <string name="com_facebook_tooltip_default">New! You\'re in control - choose what info you want to share with apps.</string>
+    <!-- From: file:/Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="facebook_app_id">1239602669393351</string>
+    <!-- From: file:/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/res/values/values.xml -->
+    <eat-comment/>
     <string name="messenger_send_button_text">Send</string>
     <!-- From: file:/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/values/values.xml -->
     <eat-comment/>
