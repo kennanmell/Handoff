@@ -33,23 +33,27 @@ export default class ViewRequests extends Component {
     return (
 
       <View style={{padding: 10}}>
-      <Modal
-        animationType={"slide"}
-                  transparent={false}
-                  visible={this.state.modalVisible}
-                  onRequestClose={() => {alert("Modal has been closed.")}}
-       >
-       <View style={{marginTop: 22}}>
-                 <View>
-                   <Text>Hello World!</Text>
-                    <TouchableHighlight onPress={() => {
-                                  this.setModalVisible(false)
-                                }}>
-                                  <Text>Hide Modal</Text>
-                                </TouchableHighlight>
-                 </View>
-                </View>
-               </Modal>
+          <Modal
+            animationType={"slide"}
+                      transparent={false}
+                      visible={false}
+                      onRequestClose={() => {alert("Modal has been closed.")}}
+          >
+            <View style={{marginTop: 22}}>
+             <View>
+               <Text>Hello World!</Text>
+               <TouchableHighlight onPress={() => {
+                this.setModalVisible(false)
+               }}> <Text>ClickMe!</Text>
+                </TouchableHighlight>
+                <TouchableHighlight onPress={() => {
+                              this.setModalVisible(false)
+                            }}>
+                              <Text>Hide Modal</Text>
+                            </TouchableHighlight>
+             </View>
+            </View>
+           </Modal>
                <TouchableHighlight onPress={() => {
                          this.setModalVisible(true)
                        }}>

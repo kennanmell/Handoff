@@ -28,6 +28,9 @@ export default class EditRequests extends Component {
     this.state = {text: ''};
   }
 
+    state = {
+        modalVisible: false,
+    }
   setModalVisible(visible) {
     this.setState({modalVisible: visible});
   }
@@ -35,39 +38,35 @@ export default class EditRequests extends Component {
   render() {
     return (
 
-      <View style={{padding: 10}}>
-      <Modal
-        animationType={"slide"}
-                  transparent={false}
-                  visible={this.state.modalVisible}
-                  onRequestClose={() => {alert("Modal has been closed.")}}
-       >
-       <View style={{marginTop: 22}}>
-                 <View>
-                   <Text>Hello World!</Text>
-                    <TouchableHighlight onPress={() => {
-                                  this.setModalVisible(false)
-                                }}>
-                                  <Text>Hide Modal</Text>
-                                </TouchableHighlight>
-                    <TouchableHighlight onPress={this.props.onClose}>
-                                  <Text>Close</Text>
-                                </TouchableHighlight>
-                 </View>
-                </View>
-               </Modal>
-               <TouchableHighlight onPress={() => {
-                         this.setModalVisible(true)
-                       }}>
-                         <Text>Show Modal</Text>
-                       </TouchableHighlight>
-      <Text style={styles.welcome}>
-                    Handoff
-                  </Text>
-        <Text style={styles.instructions}>
-                  Request Feed Goes Here
-                </Text>
-		</View>
+    <View style={{padding: 10}}>
+        <Modal
+                animationType={"slide"}
+                transparent={false}
+                visible={this.state.modalVisible}
+                onRequestClose={() => {this.props.onClose}}
+        >
+            <View style={{marginTop: 22}}>
+            <View>
+                <Text>Hello World!</Text>
+                <TouchableHighlight onPress={() => {
+                          this.setModalVisible(false)
+                        }}>
+                          <Text>Hide Modal</Text>
+                        </TouchableHighlight>
+                <TouchableHighlight onPress={this.props.onClose}>
+                          <Text>Close</Text>
+                        </TouchableHighlight>
+            </View>
+            </View>
+        </Modal>
+        <TouchableHighlight onPress={() => {
+                 this.setModalVisible(true)
+               }}>
+                 <Text>Show Modal</Text>
+               </TouchableHighlight>
+        <Text style={styles.welcome}> Handoff </Text>
+        <Text style={styles.instructions}> Request Feed Goes Here </Text>
+  </View>
     );
   }
 }
