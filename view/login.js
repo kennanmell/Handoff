@@ -21,17 +21,8 @@ var Login = React.createClass({
         <LoginButton
           publishPermissions={["public_profile"]}
           onLoginFinished={
-            (error, result) => {
-              if (error) {
-                alert("Login failed with error: " + result.error);
-              } else if (result.isCancelled) {
-                alert("Login was cancelled");
-              } else {
-                alert("Login was successful with permissions: " + result.grantedPermissions)
-              }
-            }
           }
-          onLogoutFinished={() => alert("User logged out")}/>
+          onLogoutFinished={}/>
       </View>
     );
   }
@@ -50,7 +41,7 @@ export default class FacebookLoginPage extends Component {
     return (
       <View>
         <Text style={{fontSize: 20, textAlign: 'center'}}>Please log in with Facebook in order to use Handoff.</Text>
-        <Login style={{justifyContent:'center'}}/>
+        <Login />
         <Text style={{fontSize: 15, textAlign: 'center'}} onPress={ this.props.onOrgLogin }>(click for temp organization login)</Text>
         <Text style={{fontSize: 15, textAlign: 'center'}} onPress={ this.props.onUserLogin }>(click for temp user login)</Text>
       </View>
