@@ -35,7 +35,6 @@ triggers navigation.
 */
 class MainNavigator extends Component {
   render() {
-	
     return (
       <Navigator
         initialRoute={{ name: 'Login' }}
@@ -110,8 +109,10 @@ class MainNavigator extends Component {
   }
 }
 
+//Add an event listener to handle android's back button
 BackAndroid.addEventListener('hardwareBackPress', function() {
   return true;
 });
 
+// Register the main navigator so it will run when the app starts.
 AppRegistry.registerComponent('MainNavigator', () => MainNavigator);
