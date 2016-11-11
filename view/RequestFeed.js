@@ -11,7 +11,7 @@ organization to go to the page of the organization. */
         to hardcode the data for requests
         */
 import React, { Component, PropTypes } from 'react';
-import { Alert, Button, TouchableHighlight, TextInput,
+import { TouchableHighlight, TextInput,
             StyleSheet, AppRegistry, ListView, Text, View } from 'react-native';
 //import Request from './Request';
 
@@ -51,6 +51,24 @@ const Header = (props) => (
   </View>
 );
 
+function getRequests() {
+    return fetch('https://u116vqy0l2.execute-api.us-west-2.amazonaws.com/prod/requests', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }})
+      .then((response) => response.json())
+      .then((responseJson) => {
+        console.log('RIGHT HERE lololol')
+        console.log(responseJson)
+        return responseJson.requests;
+      })
+      .catch((error) => {
+        console.error(error);
+    });
+}
+
 const Row = (props) => (
   <View style={{padding: 10}}>
     <Text style={{fontSize: 20}}>  {props.title}</Text>
@@ -64,33 +82,35 @@ export default class RequestFeed extends Component {
     constructor(props) {
         super(props);
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+        requests = [{
+           "organization": "Foood Bank",
+           "time": 7,
+           "title": "Need some of them dons",
+           "description": "But for real tho if this works this is gonna be so hype like you" +
+             "dont even know yet. Dont pretend to be ready",
+           "tags": ["food",]
+        },
+        {
+           "organization": "Fooodie Banker",
+           "time": 7,
+           "title": "Lets goooooooooo",
+           "description": "No you aren't ready. This shit works now.",
+           "tags": ["food",]
+        },
+        {
+           "organization": "Foood Bank",             // organization id
+           "time": 7,                        // Unix time in ms
+           "title": "Need some of them dons",
+           "description": "Neymmmamamamamamamamamamamam and a good night to you too booooo" +
+             "helolololol neymare klsdfjksdkljfsjkl sdkjfjkfkdsj dfkjfdkj fdfd fd fd",
+           "tags": ["food",]
+        }]
+        console.log('RIGHT HERE')
+        console.log(getRequests())
+        console.log('END HERE')
         this.state = {
 
-          dataSource: ds.cloneWithRows([
-            {
-               "organization": "Foood Bank",
-               "time": 7,
-               "title": "Need some of them dons",
-               "description": "But for real tho if this works this is gonna be so hype like you" +
-                 "dont even know yet. Dont pretend to be ready",
-               "tags": ["food",]
-            },
-            {
-               "organization": "Fooodie Banker",
-               "time": 7,
-               "title": "Lets goooooooooo",
-               "description": "No you aren't ready. This shit works now.",
-               "tags": ["food",]
-            },
-            {
-               "organization": "Foood Bank",             // organization id
-               "time": 7,                        // Unix time in ms
-               "title": "Need some of them dons",
-               "description": "Neymmmamamamamamamamamamamam and a good night to you too booooo" +
-                 "helolololol neymare klsdfjksdkljfsjkl sdkjfjkfkdsj dfkjfdkj fdfd fd fd",
-               "tags": ["food",]
-            },
-          ])
+          dataSource: ds.cloneWithRows(requests)
         };
     }
 
