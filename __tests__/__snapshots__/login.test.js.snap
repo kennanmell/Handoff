@@ -1,0 +1,58 @@
+exports[`test renders correctly 1`] = `
+<View>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "fontSize": 20,
+        "textAlign": "center",
+      }
+    }>
+    Please log in with Facebook in order to use Handoff.
+  </Text>
+  <View>
+    <View
+      style={
+        Array [
+          Object {
+            "alignSelf": "flex-start",
+            "borderColor": "red",
+            "borderWidth": 1,
+          },
+          Object {
+            "height": 30,
+            "width": 180,
+          },
+        ]
+      } />
+  </View>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    onPress={[Function]}
+    style={
+      Object {
+        "fontSize": 15,
+        "textAlign": "center",
+      }
+    }>
+    (click for temp organization login)
+  </Text>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    onPress={[Function]}
+    style={
+      Object {
+        "fontSize": 15,
+        "textAlign": "center",
+      }
+    }>
+    (click for temp user login)
+  </Text>
+</View>
+`;

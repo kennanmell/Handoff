@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/Sholto/Desktop/HandOff%20Frontend/Handoff/node_modules/react-native-fbsdk/android/src/main/res/values/strings.xml -->
+    <!-- From: file:/Users/Kennan/Documents/CSE403/Handoff/node_modules/react-native-fbsdk/android/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="app_name">AndroidSDK</string>
 </resources>
