@@ -26,6 +26,9 @@ import {
   Navigator
 } from 'react-native';
 
+//to store a reference to the navigator to use for event listeners
+var _navigator;
+
 /**
 The main navigation class for the Handoff app. Decides which scene to render with the
 renderScene function, and this function contains a possible if-case for each scene the
@@ -35,15 +38,14 @@ triggers navigation.
 */
 class MainNavigator extends Component {
   render() {
-    return (
-      <Navigator
-        initialRoute={{ name: 'Login' }}
-        renderScene={ this.renderScene }
-      />
-    )
+	return (<Navigator
+				initialRoute={{ name: 'Login' }}
+				renderScene={ this.renderScene }
+			/>);
   }
 
   renderScene(route, navigator) {
+	_navigator = navigator;
     if (route.name == 'Login') {
     	return <FacebookLoginPage
     	
@@ -63,10 +65,8 @@ class MainNavigator extends Component {
     if (route.name == 'MakeRequest') {
     	return <RequestMaker
     		onLogout={ () => {
-    			navigator.push({
-    				name: 'Login',
-    			})
-    		}}
+    			navigator.pop()
+			}}
     		
     		onEditRequest={ () => {
     			navigator.push({
@@ -111,6 +111,9 @@ class MainNavigator extends Component {
 
 //Add an event listener to handle android's back button
 BackAndroid.addEventListener('hardwareBackPress', function() {
+  if (_navigator.getCurrentRoutes().length > 1){
+	  _navigator.pop();
+  }
   return true;
 });
 
