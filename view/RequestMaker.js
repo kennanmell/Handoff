@@ -100,6 +100,9 @@ export default class RequestMaker extends Component {
   }
 }
 
+/* Given a requestName and a requestDescription, creates a request in the database.
+For the moment, the request's organization and its tags are not modifiable. This functionality
+will be added later.*/
 async function makeRequest(requestName, requestDescription) {
     fetch('https://u116vqy0l2.execute-api.us-west-2.amazonaws.com/prod/requests/new', {
       method: 'POST',
