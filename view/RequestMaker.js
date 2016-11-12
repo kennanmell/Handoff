@@ -29,7 +29,11 @@ export default class RequestMaker extends Component {
     }
   constructor(props) {
     super(props);
-    this.state = {text: ''};
+    this.state = {text: '',
+				  requestName: '',
+				  requestDescription: '',
+				  requestTags: ''
+				  };
   }
 
   render() {
@@ -42,20 +46,21 @@ export default class RequestMaker extends Component {
         <TextInput
           style={{height: 40}}
           placeholder="Give your request a snappy title"
-          onChangeText={(text) => this.setState({text})}
+          onChangeText={(text) => this.setState({requestName: text})}
         />
          <TextInput
                   style={{height: 40}}
                   placeholder="Provide details on what you are requesting"
-                  onChangeText={(text) => this.setState({text})}
+                  onChangeText={(text) => this.setState({requestDescription: text})}
                 />
          <TextInput
                   style={{height: 40}}
                   placeholder="Tag your request with keywords so people can find it"
-                  onChangeText={(text) => this.setState({text})}
+                  onChangeText={(text) => this.setState({requestTags: text})}
                 />
         <TouchableNativeFeedback
                     style={{textAlign: 'center'}}
+					onPress={() => {makeRequest(this.state.requestName, this.state.requestDescription); console.log("attempting to make request"); }}
                     >
                     <View>
                         <Text style={styles.buttonText}>Submit Request</Text>
@@ -88,6 +93,24 @@ export default class RequestMaker extends Component {
       </View>
     );
   }
+}
+
+async function makeRequest(requestName, requestDescription) {
+    fetch('https://u116vqy0l2.execute-api.us-west-2.amazonaws.com/prod/requests/new', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+            "organization": "Hope Shelter",
+			"time": 50,
+			"title": requestName,
+	        "description": requestDescription,
+			"tags": ["food","test"]
+      })
+    })
+	console.log("fetch maybe did something");
 }
 
 const styles = StyleSheet.create({
