@@ -42,20 +42,24 @@ export default class RequestMaker extends Component {
         <TextInput
           style={{height: 40}}
           placeholder="Give your request a snappy title"
+          tag='titleInput'
           onChangeText={(text) => this.setState({text})}
         />
          <TextInput
                   style={{height: 40}}
                   placeholder="Provide details on what you are requesting"
+                  tag='detailsInput'
                   onChangeText={(text) => this.setState({text})}
                 />
          <TextInput
                   style={{height: 40}}
                   placeholder="Tag your request with keywords so people can find it"
+                  tag='keywordsInput'
                   onChangeText={(text) => this.setState({text})}
                 />
         <TouchableNativeFeedback
                     style={{textAlign: 'center'}}
+                    tag='submitButton'
                     >
                     <View>
                         <Text style={styles.buttonText}>Submit Request</Text>
@@ -79,6 +83,7 @@ export default class RequestMaker extends Component {
                             </TouchableNativeFeedback>
                     <TouchableNativeFeedback
                               style={styles.button}
+                              tag='logoutButton'
                               onPress={this.props.onLogout}
                               >
                               <View>

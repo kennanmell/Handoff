@@ -38,7 +38,8 @@ exports[`test renders correctly 1`] = `
         "fontSize": 15,
         "textAlign": "center",
       }
-    }>
+    }
+    tag="orgLoginButton">
     (click for temp organization login)
   </Text>
   <Text

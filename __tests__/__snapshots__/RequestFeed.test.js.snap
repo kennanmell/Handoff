@@ -3,7 +3,7 @@ exports[`test renders correctly 1`] = `
   <ScrollView
     dataSource={
       ListViewDataSource {
-        "items": 12,
+        "items": 1,
       }
     }
     initialListSize={10}
@@ -48,50 +48,12 @@ exports[`test renders correctly 1`] = `
           }
         } />
     </View>
-    <View>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "fontSize": 20,
-          }
-        }>
-          Title: ________
-      </Text>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "fontSize": 20,
-          }
-        }>
-          Org: ________
-      </Text>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "fontSize": 18,
-          }
-        }>
-         Text for the request should go here. It can talk about how we needs some donations or something just want so get the format in here.
-      </Text>
-    </View>
     <View
       style={
         Object {
-          "backgroundColor": "#C1C1C1",
-          "flex": 1,
-          "height": 6,
+          "padding": 10,
         }
-      } />
-    <View>
+      }>
       <Text
         accessible={true}
         allowFontScaling={true}
@@ -101,7 +63,8 @@ exports[`test renders correctly 1`] = `
             "fontSize": 20,
           }
         }>
-          Title: ________
+          
+        Waiting on data
       </Text>
       <Text
         accessible={true}
@@ -112,7 +75,8 @@ exports[`test renders correctly 1`] = `
             "fontSize": 20,
           }
         }>
-          Org: ________
+          
+        HandOff Team
       </Text>
       <Text
         accessible={true}
@@ -123,351 +87,8 @@ exports[`test renders correctly 1`] = `
             "fontSize": 18,
           }
         }>
-         Text for the request should go here. It can talk about how we needs some donations or something just want so get the format in here.
-      </Text>
-    </View>
-    <View
-      style={
-        Object {
-          "backgroundColor": "#C1C1C1",
-          "flex": 1,
-          "height": 6,
-        }
-      } />
-    <View>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "fontSize": 20,
-          }
-        }>
-          Title: ________
-      </Text>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "fontSize": 20,
-          }
-        }>
-          Org: ________
-      </Text>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "fontSize": 18,
-          }
-        }>
-         Text for the request should go here. It can talk about how we needs some donations or something just want so get the format in here.
-      </Text>
-    </View>
-    <View
-      style={
-        Object {
-          "backgroundColor": "#C1C1C1",
-          "flex": 1,
-          "height": 6,
-        }
-      } />
-    <View>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "fontSize": 20,
-          }
-        }>
-          Title: ________
-      </Text>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "fontSize": 20,
-          }
-        }>
-          Org: ________
-      </Text>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "fontSize": 18,
-          }
-        }>
-         Text for the request should go here. It can talk about how we needs some donations or something just want so get the format in here.
-      </Text>
-    </View>
-    <View
-      style={
-        Object {
-          "backgroundColor": "#C1C1C1",
-          "flex": 1,
-          "height": 6,
-        }
-      } />
-    <View>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "fontSize": 20,
-          }
-        }>
-          Title: ________
-      </Text>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "fontSize": 20,
-          }
-        }>
-          Org: ________
-      </Text>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "fontSize": 18,
-          }
-        }>
-         Text for the request should go here. It can talk about how we needs some donations or something just want so get the format in here.
-      </Text>
-    </View>
-    <View
-      style={
-        Object {
-          "backgroundColor": "#C1C1C1",
-          "flex": 1,
-          "height": 6,
-        }
-      } />
-    <View>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "fontSize": 20,
-          }
-        }>
-          Title: ________
-      </Text>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "fontSize": 20,
-          }
-        }>
-          Org: ________
-      </Text>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "fontSize": 18,
-          }
-        }>
-         Text for the request should go here. It can talk about how we needs some donations or something just want so get the format in here.
-      </Text>
-    </View>
-    <View
-      style={
-        Object {
-          "backgroundColor": "#C1C1C1",
-          "flex": 1,
-          "height": 6,
-        }
-      } />
-    <View>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "fontSize": 20,
-          }
-        }>
-          Title: ________
-      </Text>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "fontSize": 20,
-          }
-        }>
-          Org: ________
-      </Text>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "fontSize": 18,
-          }
-        }>
-         Text for the request should go here. It can talk about how we needs some donations or something just want so get the format in here.
-      </Text>
-    </View>
-    <View
-      style={
-        Object {
-          "backgroundColor": "#C1C1C1",
-          "flex": 1,
-          "height": 6,
-        }
-      } />
-    <View>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "fontSize": 20,
-          }
-        }>
-          Title: ________
-      </Text>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "fontSize": 20,
-          }
-        }>
-          Org: ________
-      </Text>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "fontSize": 18,
-          }
-        }>
-         Text for the request should go here. It can talk about how we needs some donations or something just want so get the format in here.
-      </Text>
-    </View>
-    <View
-      style={
-        Object {
-          "backgroundColor": "#C1C1C1",
-          "flex": 1,
-          "height": 6,
-        }
-      } />
-    <View>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "fontSize": 20,
-          }
-        }>
-          Title: ________
-      </Text>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "fontSize": 20,
-          }
-        }>
-          Org: ________
-      </Text>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "fontSize": 18,
-          }
-        }>
-         Text for the request should go here. It can talk about how we needs some donations or something just want so get the format in here.
-      </Text>
-    </View>
-    <View
-      style={
-        Object {
-          "backgroundColor": "#C1C1C1",
-          "flex": 1,
-          "height": 6,
-        }
-      } />
-    <View>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "fontSize": 20,
-          }
-        }>
-          Title: ________
-      </Text>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "fontSize": 20,
-          }
-        }>
-          Org: ________
-      </Text>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "fontSize": 18,
-          }
-        }>
-         Text for the request should go here. It can talk about how we needs some donations or something just want so get the format in here.
+          
+        Should be fetching requests, if this takes too long, checkyour internet connection.
       </Text>
     </View>
     <View
