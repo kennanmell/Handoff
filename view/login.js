@@ -51,7 +51,7 @@ export default class FacebookLoginPage extends Component {
       <View>
         <Text style={{fontSize: 20, textAlign: 'center'}}>Please log in with Facebook in order to use Handoff.</Text>
         <Login />
-        <Text style={{fontSize: 15, textAlign: 'center'}} onPress={ this.props.onOrgLogin }>(click for temp organization login)</Text>
+        <Text style={{fontSize: 15, textAlign: 'center'}} tag='orgLoginButton' onPress={ this.props.onOrgLogin }>(click for temp organization login)</Text>
         <Text style={{fontSize: 15, textAlign: 'center'}} onPress={ this.props.onUserLogin }>(click for temp user login)</Text>
       </View>
     );
