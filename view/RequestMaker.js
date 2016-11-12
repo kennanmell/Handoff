@@ -46,40 +46,25 @@ export default class RequestMaker extends Component {
         <TextInput
           style={{height: 40}}
           placeholder="Give your request a snappy title"
-<<<<<<< HEAD
           onChangeText={(text) => this.setState({requestName: text})}
-=======
           tag='titleInput'
-          onChangeText={(text) => this.setState({text})}
->>>>>>> c1e68b23c4f22ee4b0efae912919729840ad7f3d
         />
          <TextInput
                   style={{height: 40}}
                   placeholder="Provide details on what you are requesting"
-<<<<<<< HEAD
                   onChangeText={(text) => this.setState({requestDescription: text})}
-=======
                   tag='detailsInput'
-                  onChangeText={(text) => this.setState({text})}
->>>>>>> c1e68b23c4f22ee4b0efae912919729840ad7f3d
                 />
          <TextInput
                   style={{height: 40}}
                   placeholder="Tag your request with keywords so people can find it"
-<<<<<<< HEAD
+                  tag='keywordsInput'
                   onChangeText={(text) => this.setState({requestTags: text})}
                 />
         <TouchableNativeFeedback
                     style={{textAlign: 'center'}}
 					onPress={() => {makeRequest(this.state.requestName, this.state.requestDescription); console.log("attempting to make request"); }}
-=======
-                  tag='keywordsInput'
-                  onChangeText={(text) => this.setState({text})}
-                />
-        <TouchableNativeFeedback
-                    style={{textAlign: 'center'}}
                     tag='submitButton'
->>>>>>> c1e68b23c4f22ee4b0efae912919729840ad7f3d
                     >
                     <View>
                         <Text style={styles.buttonText}>Submit Request</Text>

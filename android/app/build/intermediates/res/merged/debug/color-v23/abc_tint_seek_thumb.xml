@@ -17,4 +17,4 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_enabled="false" android:color="?attr/colorControlActivated" android:alpha="?android:attr/disabledAlpha"/>
     <item android:color="?attr/colorControlActivated"/>
-</selector><!-- From: file:/C:/Users/Ian/Documents/GitHub/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/color-v23/abc_tint_seek_thumb.xml -->
+</selector><!-- From: file:/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/color-v23/abc_tint_seek_thumb.xml -->
