@@ -51,22 +51,18 @@ const Header = (props) => (
   </View>
 );
 
-function getRequests() {
+// Returns a promise
+async function getRequests() {
     return fetch('https://u116vqy0l2.execute-api.us-west-2.amazonaws.com/prod/requests', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
-      }})
-      .then((response) => response.json())
-      .then((responseJson) => {
-        console.log('RIGHT HERE lololol')
-        console.log(responseJson)
-        return responseJson.requests;
+      },
+      body: JSON.stringify({
+          limit: 30,
       })
-      .catch((error) => {
-        console.error(error);
-    });
+    })
 }
 
 const Row = (props) => (
@@ -83,35 +79,32 @@ export default class RequestFeed extends Component {
         super(props);
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         requests = [{
-           "organization": "Foood Bank",
+           "organization": "HandOff Team",
            "time": 7,
-           "title": "Need some of them dons",
-           "description": "But for real tho if this works this is gonna be so hype like you" +
-             "dont even know yet. Dont pretend to be ready",
-           "tags": ["food",]
-        },
-        {
-           "organization": "Fooodie Banker",
-           "time": 7,
-           "title": "Lets goooooooooo",
-           "description": "No you aren't ready. This shit works now.",
-           "tags": ["food",]
-        },
-        {
-           "organization": "Foood Bank",             // organization id
-           "time": 7,                        // Unix time in ms
-           "title": "Need some of them dons",
-           "description": "Neymmmamamamamamamamamamamam and a good night to you too booooo" +
-             "helolololol neymare klsdfjksdkljfsjkl sdkjfjkfkdsj dfkjfdkj fdfd fd fd",
-           "tags": ["food",]
-        }]
-        console.log('RIGHT HERE')
-        console.log(getRequests())
-        console.log('END HERE')
-        this.state = {
+           "title": "Waiting on data",
+           "description": "Should be fetching requests, if this takes too long, check" +
+               "your internet connection.",
+        }];
 
-          dataSource: ds.cloneWithRows(requests)
-        };
+        getRequests()
+            .then((response) => response.json())
+            .then((responseJson) => {
+                //console.log('title below');
+                //console.log(responseJson.requests[0].title);
+                //result = [responseJson.requests[0], responseJson.requests[1], responseJson.requests[3]];
+
+                this.setState({
+                  dataSource: ds.cloneWithRows(responseJson.requests)
+                });
+              })
+              .catch((error) => {
+                console.error(error);
+        });
+
+       this.state = {
+            dataSource: ds.cloneWithRows(requests)
+        }
+
     }
 
     render() {
