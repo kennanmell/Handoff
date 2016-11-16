@@ -16,6 +16,7 @@ import {
   TouchableHighlight,
   Navigator
 } from 'react-native';
+import{Button} from 'native-base';
 
 /*Builds a RequestMaker, which an Organization User uses to
 submit requests. Has text boxes for the request title, description,
@@ -54,37 +55,10 @@ export default class RequestMaker extends Component {
                   placeholder="Tag your request with keywords so people can find it"
                   onChangeText={(text) => this.setState({text})}
                 />
-        <TouchableNativeFeedback
-                    style={{textAlign: 'center'}}
-                    >
-                    <View>
-                        <Text style={styles.buttonText}>Submit Request</Text>
-                    </View>
-        </TouchableNativeFeedback>
-        <TouchableNativeFeedback
-                    style={styles.button}
-                    onPress={this.props.onEditProfile}
-                    >
-                    <View>
-                        <Text style={styles.buttonText}>Edit Profile</Text>
-                    </View>
-                  </TouchableNativeFeedback>
-                  <TouchableNativeFeedback
-                              style={styles.button}
-                              onPress={this.props.onEditRequest}
-                              >
-                              <View>
-                                  <Text style={styles.buttonText}>Edit Requests</Text>
-                              </View>
-                            </TouchableNativeFeedback>
-                    <TouchableNativeFeedback
-                              style={styles.button}
-                              onPress={this.props.onLogout}
-                              >
-                              <View>
-                                  <Text style={styles.buttonText}>Logout</Text>
-                              </View>
-                            </TouchableNativeFeedback>
+        <Button style={styles.button}>Submit Request</Button>
+        <Button style={styles.button} onPress={this.props.onEditProfile} >Edit Profile</Button>
+        <Button style={styles.button} onPress={this.props.onEditRequest}>Edit Requests</Button>
+        <Button style={styles.button} onPress={this.props.onLogout} > Logout </Button>
       </View>
     );
   }
@@ -102,9 +76,17 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+
+    button: {
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'flex-end',
+          marginLeft: 3,
+          marginTop: 10,
+          borderWidth: 1,
+          padding: 5,
+          borderColor: 'black',
+          marginBottom: 15,
+          backgroundColor: '#642D64',
+      }
 });
