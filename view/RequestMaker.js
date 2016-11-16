@@ -14,7 +14,8 @@ import {
   TouchableNativeFeedback,
   Modal,
   TouchableHighlight,
-  Navigator
+  Navigator,
+  Alert
 } from 'react-native';
 import{Button} from 'native-base';
 
@@ -64,7 +65,7 @@ export default class RequestMaker extends Component {
                 />
         <Button
                     style={styles.button}
-					onPress={() => {makeRequest(this.state.requestName, this.state.requestDescription); console.log("attempting to make request"); }}
+					onPress={() => {Alert.alert('Request Successful', 'Your request was successfully posted.'); makeRequest(this.state.requestName, this.state.requestDescription); console.log("attempting to make request"); }}
                     tag='submitButton'
                     >Submit Request</Button>
         <Button
