@@ -1,5 +1,5 @@
 {
-  "name": "HandOff",
+  "name": "handoff",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -7,6 +7,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "native-base": "^0.5.13",
     "react": "15.3.2",
     "react-native": "0.36.0",
     "react-native-fbsdk": "^0.4.0"
@@ -22,5 +23,17 @@
   },
   "jest": {
     "preset": "jest-react-native"
-  }
+  },
+  "description": "Handoff is a mobile application that bridges the communication gap between local organizations such as food banks and non-profits, and community members looking to donate. The app allows organizations to post requests about general or specific needs, and then users can browse through this information through either a request feed or a map that displays requests at the location of the organization. A user might want to use it because it can keep them aware of the needs of organizations, and it provides an easy way to find a place where items to donate can be dropped off.",
+  "main": "index.android.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kennanmell/Handoff.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kennanmell/Handoff/issues"
+  },
+  "homepage": "https://github.com/kennanmell/Handoff#readme"
 }
