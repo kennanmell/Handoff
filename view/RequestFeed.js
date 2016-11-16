@@ -79,7 +79,7 @@ const Row = (props) => (
   <View style={{padding: 10}}>
     <Text style={{fontSize: 20}}>  {props.title}</Text>
     <Text style={styles.orgButton}
-        onPress={()=>Alert.alert('Organization Info', null,
+        onPress={()=>Alert.alert('Organization Info', props.organization,
                     [{text: 'Subscribe', onPress: ()=>console.log('subscribe, yo!')},
                     {text: 'Close', onPress:()=>console.log('done')}])}
                     >  {props.organization}</Text>
