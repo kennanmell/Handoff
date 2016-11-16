@@ -68,6 +68,15 @@ const Row = (props) => (
   </View>
 );
 
+const OrgRow = (props) => (
+   <View style={{padding: 10}}>
+       <Text style={{fontSize: 20}}>  {props.title}</Text>
+       <Text style={{fontSize: 20}}>  {props.organization}</Text>
+       <Text style={{alignItems: 'center'}, {fontSize: 18}}>  {props.description}
+       </Text>
+   </View>
+)
+
 // This component is a scrollable list of requests. Intially it will display a text that shows we
 // are still waiting on the server to provide our requests, but once the request to the server has
 // been completed the received requests will be displayed in the scrollable list.
@@ -88,19 +97,9 @@ export default class RequestFeed extends Component {
           dataSource: ds.cloneWithRows(startPage)
         }
 
-        // fetch returns a promise, and the .then statements will then handle the response
+        // the .then statements will then handle the response
         // and update the listviews datasource once there is data to update it with.
-        //getRequests()
-            response = fetch('https://u116vqy0l2.execute-api.us-west-2.amazonaws.com/prod/requests', {
-                  method: 'POST',
-                  headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                  },
-                  body: JSON.stringify({
-                      limit: 30,
-                  })
-            })
+        getRequests()
               .then((response) => response.json())
               .then((responseJson) => {
                   this.setState({
