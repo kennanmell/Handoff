@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/Sholto/Desktop/HandOff%20Frontend/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/values-v24/values-v24.xml -->
+    <!-- From: file:/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/values-v24/values-v24.xml -->
     <eat-comment/>
     <style name="TextAppearance.AppCompat.Notification.Info.Media"/>
     <style name="TextAppearance.AppCompat.Notification.Media"/>

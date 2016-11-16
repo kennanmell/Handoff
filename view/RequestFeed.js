@@ -2,18 +2,11 @@
 requests will display a pop up of the requests. The user will also be able to click on the
 organization to go to the page of the organization. */
 
-/*
-        Things I need to do:
-        1. Get a function call to get real data, which needs to be tranformed into requests
-        2. Turn those requests into requestcomponents and put them in the bottom thing
-        3. Figure out how to send variables through a callback
-        4. make a compentent that i can both initialize and pass in props so that we dont have
-        to hardcode the data for requests
-        */
-import React, { Component } from 'react';
-import { Alert, Button, TouchableHighlight, TextInput,
+import React, { Component, PropTypes } from 'react';
+import { TouchableHighlight, TextInput,
             StyleSheet, AppRegistry, ListView, Text, View } from 'react-native';
 
+// These are different styles that components use.
 const styles = StyleSheet.create({
   separator: {
     flex: 1,
@@ -38,6 +31,7 @@ const styles = StyleSheet.create({
   }
 });
 
+// This header is a search bar and it actually looks good.
 const Header = (props) => (
   <View style={styles.container}>
     <TextInput
@@ -48,72 +42,76 @@ const Header = (props) => (
   </View>
 );
 
-/*function Request(props) {
-  return <h1>Hello, {props.name}</h1>;
-};
-const elem1 = <Request name="Help"/>;
-const elem2 = <Request name="Help us"/>;
-*/
-/*
-class RequestComp extends Component {
-  constructor(props) {
-    super(props);
-    //this.request = new Request("Hell yeah", "descrip", "org", "Hell Yeah", ["stuff", "h"]);
-    //this.state = {text: ''};
-  }
-
-  render() {
-    return (
-      <View style={{padding: 10}}>
-      <Text> Title: _______ Org: ________</Text>
-      <Text> Text for the request should go here </Text>
-      <Button
-        onPress={onPressLearnMore}
-        title="Learn More"
-        color="#841584"
-      />
-      </View>
-    );
-  }
+// This method returns a Promise that will at some point, probably very quickly return
+// a list of 30 requests.
+async function getRequests() {
+    return fetch('https://u116vqy0l2.execute-api.us-west-2.amazonaws.com/prod/requests', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+          limit: 30,
+      })
+    })
 }
 
+// The row is a component that should have a title, organization, and description passed in as props
+// This component will display these components.
+const Row = (props) => (
+  <View style={{padding: 10}}>
+    <Text style={{fontSize: 20}}>  {props.title}</Text>
+    <Text style={{fontSize: 20}}>  {props.organization}</Text>
+    <Text style={{alignItems: 'center'}, {fontSize: 18}}>  {props.description}
+    </Text>
+  </View>
+);
 
-const elem1 = new RequestComp();
-const elem2 = new RequestComp();*/
-var Request = React.createClass ({
-    render: function() {
-        return (
-            <View>
-                <Text style={{fontSize: 20}}>  Title: ________</Text>
-                <Text style={{fontSize: 20}}>  Org: ________</Text>
-                <Text style={{alignItems: 'center'}, {fontSize: 18}}> Text for the request should
-                    go here. It can talk about how we needs some donations or something just want
-                    so get the format in here.
-                </Text>
-            </View>
-        );
-    }
-
-    /* more info button that looks terrible
-                <TouchableHighlight
-                    //onPress= {Alert.alert('This should display the info of the organization')}
-                    underlayColor={'#612e5f'}>
-                    <Text style={{alignSelf: 'flex-end'},{fontSize: 15}}>More Info</Text>
-                </TouchableHighlight>*/
-});
-
+// This component is a scrollable list of requests. Intially it will display a text that shows we
+// are still waiting on the server to provide our requests, but once the request to the server has
+// been completed the received requests will be displayed in the scrollable list.
 export default class RequestFeed extends Component {
     constructor(props) {
         super(props);
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-        this.state = {
+        startPage = [{
+           "organization": "HandOff Team",
+           "time": 7,
+           "title": "Waiting on data",
+           "description": "Should be fetching requests, if this takes too long, check" +
+               "your internet connection.",
+        }];
 
-          dataSource: ds.cloneWithRows([
-            <Request/>, <Request/>, <Request/>, <Request/>,
-            <Request/>, <Request/>, <Request/>, <Request/>,
-            <Request/>, <Request/>, <Request/>, <Request/>
-          ])
-        };
+        // Sets the initial page to a loading page
+        this.state = {
+          dataSource: ds.cloneWithRows(startPage)
+        }
+
+        // fetch returns a promise, and the .then statements will then handle the response
+        // and update the listviews datasource once there is data to update it with.
+        //getRequests()
+            response = fetch('https://u116vqy0l2.execute-api.us-west-2.amazonaws.com/prod/requests', {
+                  method: 'POST',
+                  headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({
+                      limit: 30,
+                  })
+            })
+              .then((response) => response.json())
+              .then((responseJson) => {
+                  this.setState({
+                    dataSource: ds.cloneWithRows(responseJson.requests)
+                  });
+                })
+              .catch((error) => {
+                console.error(error);
+        });
+
+
     }
 
     render() {
@@ -121,7 +119,7 @@ export default class RequestFeed extends Component {
         <View>
           <ListView
             dataSource={this.state.dataSource}
-            renderRow={(rowData) => <Request>{rowData}</Request>}
+            renderRow={(rowData) => <Row {...rowData} />}
             renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
             renderHeader={() => <Header />}
           />

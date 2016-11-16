@@ -30,7 +30,11 @@ export default class RequestMaker extends Component {
     }
   constructor(props) {
     super(props);
-    this.state = {text: ''};
+    this.state = {text: '',
+				  requestName: '',
+				  requestDescription: '',
+				  requestTags: ''
+				  };
   }
 
   render() {
@@ -43,25 +47,63 @@ export default class RequestMaker extends Component {
         <TextInput
           style={{height: 40}}
           placeholder="Give your request a snappy title"
-          onChangeText={(text) => this.setState({text})}
+          onChangeText={(text) => this.setState({requestName: text})}
+          tag='titleInput'
         />
          <TextInput
                   style={{height: 40}}
                   placeholder="Provide details on what you are requesting"
-                  onChangeText={(text) => this.setState({text})}
+                  onChangeText={(text) => this.setState({requestDescription: text})}
+                  tag='detailsInput'
                 />
          <TextInput
                   style={{height: 40}}
                   placeholder="Tag your request with keywords so people can find it"
-                  onChangeText={(text) => this.setState({text})}
+                  tag='keywordsInput'
+                  onChangeText={(text) => this.setState({requestTags: text})}
                 />
-        <Button style={styles.button}>Submit Request</Button>
-        <Button style={styles.button} onPress={this.props.onEditProfile} >Edit Profile</Button>
-        <Button style={styles.button} onPress={this.props.onEditRequest}>Edit Requests</Button>
-        <Button style={styles.button} onPress={this.props.onLogout} > Logout </Button>
+        <Button
+                    style={styles.button}
+					onPress={() => {makeRequest(this.state.requestName, this.state.requestDescription); console.log("attempting to make request"); }}
+                    tag='submitButton'
+                    >Submit Request</Button>
+        <Button
+                    style={styles.button}
+                    onPress={this.props.onEditProfile}
+                    >Edit Profile</Button>
+        <Button
+                    style={styles.button}
+                    onPress={this.props.onEditRequest}
+                    >Edit Requests</Button>
+        <Button
+                  style={styles.button}
+                  tag='logoutButton'
+                  onPress={this.props.onLogout}
+                  >Logout</Button>
       </View>
     );
   }
+}
+
+/* Given a requestName and a requestDescription, creates a request in the database.
+For the moment, the request's organization and its tags are not modifiable. This functionality
+will be added later.*/
+async function makeRequest(requestName, requestDescription) {
+    fetch('https://u116vqy0l2.execute-api.us-west-2.amazonaws.com/prod/requests/new', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+            "organization": "Hope Shelter",
+			"time": 50,
+			"title": requestName,
+	        "description": requestDescription,
+			"tags": ["food","test"]
+      })
+    })
+	console.log("fetch maybe did something");
 }
 
 const styles = StyleSheet.create({

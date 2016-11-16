@@ -23,4 +23,4 @@
         <corners android:radius="2dp" />
         <solid android:color="@android:color/white" />
     </shape>
-</inset><!-- From: file:/Users/Sholto/Desktop/HandOff%20Frontend/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/drawable/abc_dialog_material_background.xml -->
+</inset><!-- From: file:/Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/drawable/abc_dialog_material_background.xml -->
