@@ -3,8 +3,9 @@ requests will display a pop up of the requests. The user will also be able to cl
 organization to go to the page of the organization. */
 
 import React, { Component, PropTypes } from 'react';
-import { TouchableHighlight, TextInput,
+import { TouchableHighlight, TextInput, Alert,
             StyleSheet, AppRegistry, ListView, Text, View } from 'react-native';
+import{Button} from 'native-base';
 
 // These are different styles that components use.
 const styles = StyleSheet.create({
@@ -28,7 +29,22 @@ const styles = StyleSheet.create({
       fontSize: 25,
       backgroundColor: '#FFFFFF',
       borderRadius: 2,
-  }
+  },
+    orgButton: {
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'flex-end',
+            marginLeft: 3,
+            marginTop: 3,
+            marginRight: 3,
+            borderWidth: 1,
+            borderRadius: 5,
+            padding: 3,
+            borderColor: 'black',
+            marginBottom: 3,
+            backgroundColor: '#642D64',
+            color: 'white',
+        }
 });
 
 // This header is a search bar and it actually looks good.
@@ -62,9 +78,13 @@ async function getRequests() {
 const Row = (props) => (
   <View style={{padding: 10}}>
     <Text style={{fontSize: 20}}>  {props.title}</Text>
-    <Text style={{fontSize: 20}}>  {props.organization}</Text>
-    <Text style={{alignItems: 'center'}, {fontSize: 18}}>  {props.description}
-    </Text>
+    <Text style={styles.orgButton}
+        onPress={()=>Alert.alert('Organization Info', null,
+                    [{text: 'Subscribe', onPress: ()=>console.log('subscribe, yo!')},
+                    {text: 'Close', onPress:()=>console.log('done')}])}
+                    >  {props.organization}</Text>
+    <Text style={{alignItems: 'center'}, {fontSize: 18}}>  {props.description}</Text>
+    <Text style={styles.orgButton}> More info . . . </Text>
   </View>
 );
 

@@ -13,6 +13,7 @@ import {
   TouchableHighlight,
   View
 } from 'react-native';
+import{Button} from 'native-base';
 
 /*Builds a OrganizationEditor, which an Organization User uses to
 edit information about their organization. Has text boxes for their
@@ -65,16 +66,15 @@ export default class OrganizationEditor extends Component {
 			defaultValue={this.state.typedDesc}
 			onChangeText={(text) => this.setState({typedDesc: text})}
 		/>
-		<TouchableHighlight 
+		<Button
 			onPress= {() => {this.org.name = this.state.typedName;
 							 this.org.loc = this.state.typedLoc;
 							 this.org.description = this.state.typedDesc;
 							 this.props.onSave}}
-			underlayColor={'#612e5f'}>
-			<Text style={styles.handoffButton}>Save</Text> 
-		</TouchableHighlight>
+			style={styles.button}> Save
+		</Button>
 		
-		<Text style={styles.handoffButton} onPress={ this.props.onSave }>Close</Text>
+		<Button style={styles.button} onPress={ this.props.onSave }>Close</Button>
       </View>
 		
     );
@@ -96,4 +96,16 @@ const styles = StyleSheet.create({
     margin: 0,
 	color: '#00cc99',
   },
+    button: {
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'flex-end',
+          marginLeft: 3,
+          marginTop: 10,
+          borderWidth: 1,
+          padding: 5,
+          borderColor: 'black',
+          marginBottom: 15,
+          backgroundColor: '#642D64',
+      }
   });
