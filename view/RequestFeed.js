@@ -111,6 +111,9 @@ edit the request specified by the row and post that update to the server */
 class OrgRow extends Component {
     constructor(props) {
         super(props);
+        // These are what is displayed, while the this.state variables are what the edit is set to
+        this.title = props.title;
+        this.description = props.description;
 
         this.state = {
           title: props.title,
@@ -157,17 +160,25 @@ class OrgRow extends Component {
               <Button
                   style={styles.button}
                 onPress={() => {Alert.alert('Update Successful', 'Sent your edited request.');
+                    /* RIGHT HERE is where the update request method should go
+                    but the functionality doesnt exist yet so i have not implemented it.
+                    FOR THE CANCEL BUTTON BELOW: should removed the changes? can we do that?
                     makeRequest(this.state.requestName, this.state.requestDescription);
-                    console.log("attempting to make request"); }}
+                    console.log("attempting to make request");*/
+                    this.title = this.state.title;
+                    this.description = this.state.description;
+                    this.setModalVisible(!this.state.modalVisible);}}
                     tag='submitButton'>Submit Request</Button>
               <Button
                   style={styles.button}
-                  onPress={() => {this.setModalVisible(!this.state.modalVisible)}}> Cancel
+                  onPress={() => {this.setModalVisible(!this.state.modalVisible);
+                                  this.state.title = this.title;
+                                  this.state.description = this.description;}}> Cancel
               </Button>
             </View>
           </Modal>
-          <Text style={{fontSize: 20}}>  {this.state.title}</Text>
-          <Text style={{alignItems: 'center'}, {fontSize: 18}}>{this.state.description}</Text>
+          <Text style={{fontSize: 20}}>  {this.title}</Text>
+          <Text style={{alignItems: 'center'}, {fontSize: 18}}>{this.description}</Text>
           <Text style={styles.orgButton} onPress={() => {this.setModalVisible(true)}}>
                 Edit Request </Text>
         </View>);
