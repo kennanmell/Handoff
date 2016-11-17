@@ -91,15 +91,16 @@ class MainNavigator extends Component {
     }
     
     if (route.name == 'OrgEditRequests') {
-        return <EditRequests
+        return <RequestFeed organization="Hope Shelter" />
+        /*return <EditRequests
         	onClose={ () => {
         		navigator.pop()
         	}}
-         />
+         />*/
     }
     
     if (route.name == 'OrgViewRequests') {
-    	return <ViewRequests />
+    	return <RequestFeed organization="Hope Shelter" />
     }
     
     if (route.name == 'UserFeed') {

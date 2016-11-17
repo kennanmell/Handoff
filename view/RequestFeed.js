@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   separator: {
     flex: 1,
     height: 6,
-    backgroundColor: '#C1C1C1',
+    backgroundColor: '#642D64',
   },
   container: {
       flex: 1,
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
       height: 70,
       flexDirection: 'row',
       alignItems: 'center',
-      backgroundColor: '#C1C1C1',
+      backgroundColor: '#642D64',
   },
   input: {
       height: 50,
@@ -59,17 +59,21 @@ const Header = (props) => (
 );
 
 // This method returns a Promise that will at some point, probably very quickly return
-// a list of 30 requests.
-async function getRequests() {
+// a list of 30 requests. Passed organization is a string to filter by
+async function getRequests(organization) {
+    params = null;
+    if (false) {
+        params = JSON.stringify({ limit: 30, organizations: [organization]})
+    } else {
+        params = JSON.stringify({ limit: 30})
+    }
     return fetch('https://u116vqy0l2.execute-api.us-west-2.amazonaws.com/prod/requests', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-          limit: 30,
-      })
+      body: params
     })
 }
 
@@ -90,10 +94,12 @@ const Row = (props) => (
 
 const OrgRow = (props) => (
    <View style={{padding: 10}}>
-       <Text style={{fontSize: 20}}>  {props.title}</Text>
-       <Text style={{fontSize: 20}}>  {props.organization}</Text>
-       <Text style={{alignItems: 'center'}, {fontSize: 18}}>  {props.description}
-       </Text>
+     <Text style={{fontSize: 20}}>  {props.title}</Text>
+     <Text style={{alignItems: 'center'}, {fontSize: 18}}>  {props.description}</Text>
+     <Text style={styles.orgButton} onPress={()=>Alert.alert('Organization Info', null,
+                                            [{text: 'Subscribe', onPress: ()=>console.log('subscribe, yo!')},
+                                            {text: 'Close', onPress:()=>console.log('done')}])}
+                                            > Edit Request </Text>
    </View>
 )
 
@@ -112,6 +118,11 @@ export default class RequestFeed extends Component {
                "your internet connection.",
         }];
 
+        this.organization = null;
+        if (props.organization != null) {
+            this.organization = props.organization;
+        }
+
         // Sets the initial page to a loading page
         this.state = {
           dataSource: ds.cloneWithRows(startPage)
@@ -119,7 +130,7 @@ export default class RequestFeed extends Component {
 
         // the .then statements will then handle the response
         // and update the listviews datasource once there is data to update it with.
-        getRequests()
+        getRequests(this.organization)
               .then((response) => response.json())
               .then((responseJson) => {
                   this.setState({
@@ -129,20 +140,31 @@ export default class RequestFeed extends Component {
               .catch((error) => {
                 console.error(error);
         });
-
-
     }
 
     render() {
-      return (
-        <View>
-          <ListView
-            dataSource={this.state.dataSource}
-            renderRow={(rowData) => <Row {...rowData} />}
-            renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
-            renderHeader={() => <Header />}
-          />
-        </View>
-      );
+      if (this.organization == null) {
+         return (
+            <View>
+              <ListView
+                dataSource={this.state.dataSource}
+                renderRow={(rowData) => <Row {...rowData} />}
+                renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
+                renderHeader={() => <Header />}
+              />
+            </View>
+         );
+      } else {
+        return (
+            <View>
+              <ListView
+                dataSource={this.state.dataSource}
+                renderRow={(rowData) => <OrgRow {...rowData} />}
+                renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
+                renderHeader={() => <Header />}
+              />
+            </View>
+        );
+      }
     }
 }
