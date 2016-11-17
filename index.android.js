@@ -6,6 +6,7 @@
 
 import FacebookLoginPage from './view/login';
 import OrganizationEditor from './view/OrgEditor';
+import OrganizationCreator from './view/OrgCreator';
 import RequestMaker from './view/RequestMaker';
 import EditRequests from './view/EditRequests';
 import ViewRequests from './view/ViewRequests';
@@ -60,6 +61,12 @@ class MainNavigator extends Component {
     				name: 'MakeRequest',
     			})
     		}}
+			
+			onOrgCreation={ () => {
+    			navigator.push({
+    				name: 'OrgCreateProfile',
+    			})
+    		}}
     	/>
     }
     if (route.name == 'MakeRequest') {
@@ -86,6 +93,16 @@ class MainNavigator extends Component {
     	return <OrganizationEditor
     	    onSave={ () => {
     			navigator.pop()
+    		}}
+    	/>
+    }
+	
+	if (route.name == 'OrgCreateProfile') {
+    	return <OrganizationCreator
+    	    onContinue={ () => {
+				navigator.push({
+					name: 'MakeRequest',
+				})
     		}}
     	/>
     }
