@@ -67,8 +67,9 @@ const Header = (props) => (
 // a list of 30 requests. Passed organization is a string to filter by
 async function getRequests(organization) {
     params = null;
-    if (false) {
-        params = JSON.stringify({ limit: 30, organizations: [organization]})
+    listOfOrg = [organization];
+    if (organization != null) {
+        params = JSON.stringify({ limit: 30, organizations: listOfOrg})
     } else {
         params = JSON.stringify({ limit: 30})
     }
@@ -92,7 +93,7 @@ const Row = (props) => (
                     [{text: 'Subscribe', onPress: ()=>console.log('subscribe, yo!')},
                     {text: 'Close', onPress:()=>console.log('done')}])}
                     >  {props.organization}</Text>
-    <Text style={{alignItems: 'center'}, {fontSize: 18}}>  {props.description}</Text>
+    <Text style={{alignItems: 'center'}, {fontSize: 18}}>{props.description}</Text>
     <Text style={styles.orgButton}> More info . . . </Text>
   </View>
 );
@@ -110,13 +111,12 @@ edit the request specified by the row and post that update to the server */
 class OrgRow extends Component {
     constructor(props) {
         super(props);
-        this.title = props.title;
-        this.organization = props.organization;
-        this.description = props.description;
-        this.time = props.time;
-        this.tags = props.tags;
 
         this.state = {
+          title: props.title,
+          organization: props.organization,
+          description: props.description,
+          tags: props.tags,
           modalVisible: false,
         }
     }
@@ -132,27 +132,27 @@ class OrgRow extends Component {
             animationType={"slide"}
             transparent={false}
             visible={this.state.modalVisible}
-            onRequestClose={() => {alert("Modal has been closed.")}}
+            onRequestClose={() => {alert("Close through the cancel button.")}}
             >
             <View style={{marginTop: 22}}>
               <Text style={styles.welcome}> Handoff</Text>
               <TextInput
                 style={{height: 40}}
-                placeholder="Give your request a snappy title"
-                onChangeText={(text) => this.setState({requestName: text})}
+                defaultValue={this.state.title}
+                onChangeText={(text) => this.setState({title: text})}
                 tag='titleInput'
               />
                <TextInput
                     style={{height: 40}}
-                    placeholder="Provide details on what you are requesting"
-                    onChangeText={(text) => this.setState({requestDescription: text})}
+                    defaultValue={this.state.description}
+                    onChangeText={(text) => this.setState({description: text})}
                     tag='detailsInput'
                />
                <TextInput
                 style={{height: 40}}
-                placeholder="Tag your request with keywords so people can find it"
+                defaultValue={this.state.tags}
                 tag='keywordsInput'
-                onChangeText={(text) => this.setState({requestTags: text})}
+                onChangeText={(text) => this.setState({tags: text})}
                 />
               <Button
                   style={styles.button}
@@ -166,8 +166,8 @@ class OrgRow extends Component {
               </Button>
             </View>
           </Modal>
-          <Text style={{fontSize: 20}}>  {this.title}</Text>
-          <Text style={{alignItems: 'center'}, {fontSize: 18}}>  {this.description}</Text>
+          <Text style={{fontSize: 20}}>  {this.state.title}</Text>
+          <Text style={{alignItems: 'center'}, {fontSize: 18}}>{this.state.description}</Text>
           <Text style={styles.orgButton} onPress={() => {this.setModalVisible(true)}}>
                 Edit Request </Text>
         </View>);
@@ -190,8 +190,7 @@ export default class RequestFeed extends Component {
            "organization": "HandOff Team",
            "time": 7,
            "title": "Waiting on data",
-           "description": "Should be fetching requests, if this takes too long, check" +
-               "your internet connection.",
+           "description": "If this takes too long, check your internet connection.",
         }];
 
         this.organization = props.organization;
