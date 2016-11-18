@@ -78,7 +78,18 @@ export default class OrganizationCreator extends Component {
 			onPress= {() => {this.org.name = this.state.typedName;
 							 this.org.loc = this.state.typedLoc;
 							 this.org.description = this.state.typedDesc;
-							 this.org.password = this.state.typedPass;}}
+							 this.org.password = this.state.typedPass;
+							 createOrg(this.state.typedName, this.state.typedLoc, this.state.typedDesc)
+								.then((response) => response.json())
+								.then((responseJson) => {
+									this.org.uuid = responseJson.uuid;
+									console.log(responseJson.uuid);
+								})
+								.catch((error) => {
+									console.error(error);
+								});
+							}
+					}
 			style={styles.button}> Save
 		</Button>
 		
@@ -87,6 +98,21 @@ export default class OrganizationCreator extends Component {
 		
     );
   }
+}
+
+async function createOrg(name, loc, description) {
+    return fetch('https://u116vqy0l2.execute-api.us-west-2.amazonaws.com/prod/organizations/new', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body:  JSON.stringify({
+            "name": name,
+			"location": loc,
+			"description": description
+      })
+    })
 }
 
 const styles = StyleSheet.create({

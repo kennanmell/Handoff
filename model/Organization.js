@@ -6,5 +6,6 @@ export default class Organization {
 		this.loc = loc;
 		this.description = description;
 		this.password = password;
+		this.uuid = "temp"
 	}
 }
