@@ -8,16 +8,25 @@ import {
   View
 } from 'react-native';
 import{Button} from 'native-base';
+import Organization from '../model/Organization';
 
 /**
 The login screen. Allows the user to log in with Facebook. Currently offers dummy log-in buttons to allow access
 to the rest of the app.
 */
 export default class FacebookLoginPage extends Component {
-     static propTypes = {
-      onOrgLogin:PropTypes.func.isRequired,
-      onUserLogin:PropTypes.func.isRequired
-    }
+  static propTypes = {
+    onOrgLogin:PropTypes.func.isRequired,
+    onUserLogin:PropTypes.func.isRequired
+  }
+    
+  constructor(props) {
+    super(props);
+    this.state = {text: '',
+				  typedName: "a",
+				  typedPass: "b"
+	};
+  }
   render() {
     return (
       <View>
@@ -36,11 +45,17 @@ export default class FacebookLoginPage extends Component {
 			style={{height: 40}}
 			onChangeText={(text) => this.setState({typedPass: text})}
 		/>
-        <Button style={styles.button} onPress={ this.props.onOrgLogin }>Login</Button>
+        <Button style={styles.button} onPress={ this.beforeOrgLogin.bind(this) }>Login</Button>
         <Button style={styles.button} onPress={ this.props.onOrgCreation }>New Organization</Button>
 		<Button style={styles.button} onPress={ this.props.onUserLogin }>I'm a donator</Button>
       </View>
     );
+  }
+  
+  beforeOrgLogin() {
+    window.org.name = this.state.typedName
+    window.org.password = this.state.typedPass
+  	this.props.onOrgLogin()
   }
 }
 

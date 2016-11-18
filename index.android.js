@@ -12,6 +12,7 @@ import EditRequests from './view/EditRequests';
 import ViewRequests from './view/ViewRequests';
 import RequestFeed from './view/RequestFeed';
 import Request from './model/Request';
+import Organization from './model/Organization';
 
 import React, { Component, PropTypes } from 'react';
 import {
@@ -124,6 +125,8 @@ BackAndroid.addEventListener('hardwareBackPress', function() {
   }
   return true;
 });
+
+window.org = new Organization(null, null, null, null);
 
 // Register the main navigator so it will run when the app starts.
 AppRegistry.registerComponent('MainNavigator', () => MainNavigator);
