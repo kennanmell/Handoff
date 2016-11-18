@@ -68,6 +68,7 @@ const Header = (props) => (
 async function getRequests(organization) {
     params = null;
     listOfOrg = [organization];
+    console.log(organization);
     if (organization != null) {
         params = JSON.stringify({ limit: 30, organizations: listOfOrg})
     } else {
@@ -150,7 +151,9 @@ class Row extends Component {
 }
 
 
-
+/* This class represents an request by a specific organization, and will display a button that will
+allow the organization to edit the request.
+*/
 class OrgRow extends Component {
     constructor(props) {
         super(props);
@@ -168,6 +171,7 @@ class OrgRow extends Component {
         }
     }
 
+    // This method will create update the request for the request that the orgrow represents
     async updateRequest() {
         return fetch('https://u116vqy0l2.execute-api.us-west-2.amazonaws.com/prod/requests/update', {
               method: 'POST',

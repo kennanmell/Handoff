@@ -109,7 +109,7 @@ class MainNavigator extends Component {
     }
     
     if (route.name == 'OrgViewRequests') {
-    	return <RequestFeed organization="Hope Shelter"/>
+    	return <RequestFeed organization={window.org.name} />
     }
     
     if (route.name == 'UserFeed') {
