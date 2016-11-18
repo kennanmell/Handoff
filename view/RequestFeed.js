@@ -117,11 +117,27 @@ class OrgRow extends Component {
 
         this.state = {
           title: props.title,
+          time: props.time,
           organization: props.organization,
           description: props.description,
           tags: props.tags,
           modalVisible: false,
         }
+    }
+
+    async updateRequest() {
+        return fetch('https://u116vqy0l2.execute-api.us-west-2.amazonaws.com/prod/requests/update', {
+              method: 'POST',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ organization: this.state.organization,
+                                     time: this.state.time,
+                                     title: this.state.title,
+                                     description: this.state.description,
+                                     tags: this.state.tags})
+        })
     }
 
     setModalVisible(visible) {
@@ -160,14 +176,10 @@ class OrgRow extends Component {
               <Button
                   style={styles.button}
                 onPress={() => {Alert.alert('Update Successful', 'Sent your edited request.');
-                    /* RIGHT HERE is where the update request method should go
-                    but the functionality doesnt exist yet so i have not implemented it.
-                    FOR THE CANCEL BUTTON BELOW: should removed the changes? can we do that?
-                    makeRequest(this.state.requestName, this.state.requestDescription);
-                    console.log("attempting to make request");*/
                     this.title = this.state.title;
                     this.description = this.state.description;
-                    this.setModalVisible(!this.state.modalVisible);}}
+                    this.setModalVisible(!this.state.modalVisible);
+                    this.updateRequest();}}
                     tag='submitButton'>Submit Request</Button>
               <Button
                   style={styles.button}
