@@ -7,36 +7,7 @@ import {
   Navigator,
   View
 } from 'react-native';
-
 import{Button} from 'native-base';
-const FBSDK = require('react-native-fbsdk');
-const {
-  LoginButton,
-} = FBSDK;
-      
-// Facebook Log-In button. Based on Facebook's example code.
-var Login = React.createClass({
-  render: function() {
-    return (
-      <View>
-        <LoginButton
-          publishPermissions={["public_profile"]}
-          onLoginFinished={
-            (error, result) => {
-              if (error) {
-                alert("Login failed with error: " + result.error);
-              } else if (result.isCancelled) {
-                alert("Login was cancelled");
-              } else {
-                alert("Login was successful with permissions: " + result.grantedPermissions)
-              }
-            }
-          }
-          onLogoutFinished={() => alert("User logged out")}/>
-      </View>
-    );
-  }
-});
 
 /**
 The login screen. Allows the user to log in with Facebook. Currently offers dummy log-in buttons to allow access
@@ -50,18 +21,37 @@ export default class FacebookLoginPage extends Component {
   render() {
     return (
       <View>
-        <Text style={{fontSize: 20, textAlign: 'center'}}>Please log in with Facebook in order to use Handoff.</Text>
-        <Login style={{justifyContent:'center'}}/>
-        <Button style={styles.button} onPress={ this.props.onOrgLogin }>(click for temp organization login)</Button>
-        <Button  style={styles.button} onPress={ this.props.onOrgCreation }>(click for temp organization creation)</Button>
-		<Button  style={styles.button} onPress={ this.props.onUserLogin }>(click for temp user login)</Button>
+        <Text style={{fontSize: 20, textAlign: 'center'}}>Handoff Login</Text>
+        <Text style={styles.editing}>
+			Name
+        </Text>
+		<TextInput
+			style={{height: 40}}
+			onChangeText={(text) => this.setState({typedName: text})}
+		/>
+        <Text style={styles.editing}>
+        	Password
+        </Text>
+		<TextInput
+			style={{height: 40}}
+			onChangeText={(text) => this.setState({typedPass: text})}
+		/>
+        <Button style={styles.button} onPress={ this.props.onOrgLogin }>Login</Button>
+        <Button style={styles.button} onPress={ this.props.onOrgCreation }>New Organization</Button>
+		<Button style={styles.button} onPress={ this.props.onUserLogin }>I'm a donator</Button>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-
+  editing: {
+	fontWeight: 'bold',
+    fontSize: 15,
+    textAlign: 'left',
+    margin: 0,
+	color: '#612e5f',
+  },
   button: {
         flexDirection: 'column',
         justifyContent: 'center',

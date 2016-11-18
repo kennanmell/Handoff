@@ -28,11 +28,12 @@ export default class OrganizationCreator extends Component {
   constructor(props) {
     super(props);
 	this.org = new Organization("Hope Shelter", "1516 Brooklyn Ave",
-							   "Providing a space for those in need");
+							   "Providing a space for those in need", "password");
     this.state = {text: '',
 				  typedName: this.org.name,
 				  typedLoc: this.org.loc,
-				  typedDesc: this.org.description
+				  typedDesc: this.org.description,
+				  typedPass: this.org.password
 				};
   }
 	
@@ -64,10 +65,20 @@ export default class OrganizationCreator extends Component {
 			style={{height: 90}}
 			onChangeText={(text) => this.setState({typedDesc: text})}
 		/>
+		
+		<Text style={styles.editing}>
+                    Password
+        </Text>
+		<TextInput
+			style={{height: 40}}
+			onChangeText={(text) => this.setState({typedPass: text})}
+		/>
+		
 		<Button
 			onPress= {() => {this.org.name = this.state.typedName;
 							 this.org.loc = this.state.typedLoc;
-							 this.org.description = this.state.typedDesc;}}
+							 this.org.description = this.state.typedDesc;
+							 this.org.password = this.state.typedPass;}}
 			style={styles.button}> Save
 		</Button>
 		
