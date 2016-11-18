@@ -67,8 +67,9 @@ const Header = (props) => (
 // a list of 30 requests. Passed organization is a string to filter by
 async function getRequests(organization) {
     params = null;
-    if (false) {
-        params = JSON.stringify({ limit: 30, organizations: [organization]})
+    listOfOrg = [organization];
+    if (organization != null) {
+        params = JSON.stringify({ limit: 30, organizations: listOfOrg})
     } else {
         params = JSON.stringify({ limit: 30})
     }
@@ -92,33 +93,41 @@ const Row = (props) => (
                     [{text: 'Subscribe', onPress: ()=>console.log('subscribe, yo!')},
                     {text: 'Close', onPress:()=>console.log('done')}])}
                     >  {props.organization}</Text>
-    <Text style={{alignItems: 'center'}, {fontSize: 18}}>  {props.description}</Text>
+    <Text style={{alignItems: 'center'}, {fontSize: 18}}>{props.description}</Text>
     <Text style={styles.orgButton}> More info . . . </Text>
   </View>
 );
 
-/* This is a display of a specific orgs request, with an edit request button that allows one to
-edit the request specified by the row and post that update to the server */
-/*const OrgRow = (props) => (
-   <View style={{padding: 10}}>
-     <Text style={{fontSize: 20}}>  {props.title}</Text>
-     <Text style={{alignItems: 'center'}, {fontSize: 18}}>  {props.description}</Text>
-     <Text style={styles.orgButton} onPress=props.onPress> Edit Request </Text>
-   </View>
-)*/
-
 class OrgRow extends Component {
     constructor(props) {
         super(props);
+        // These are what is displayed, while the this.state variables are what the edit is set to
         this.title = props.title;
-        this.organization = props.organization;
         this.description = props.description;
-        this.time = props.time;
-        this.tags = props.tags;
 
         this.state = {
+          title: props.title,
+          time: props.time,
+          organization: props.organization,
+          description: props.description,
+          tags: props.tags,
           modalVisible: false,
         }
+    }
+
+    async updateRequest() {
+        return fetch('https://u116vqy0l2.execute-api.us-west-2.amazonaws.com/prod/requests/update', {
+              method: 'POST',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ organization: this.state.organization,
+                                     time: this.state.time,
+                                     title: this.state.title,
+                                     description: this.state.description,
+                                     tags: this.state.tags})
+        })
     }
 
     setModalVisible(visible) {
@@ -132,52 +141,51 @@ class OrgRow extends Component {
             animationType={"slide"}
             transparent={false}
             visible={this.state.modalVisible}
-            onRequestClose={() => {alert("Modal has been closed.")}}
+            onRequestClose={() => {alert("Close through the cancel button.")}}
             >
             <View style={{marginTop: 22}}>
               <Text style={styles.welcome}> Handoff</Text>
               <TextInput
                 style={{height: 40}}
-                placeholder="Give your request a snappy title"
-                onChangeText={(text) => this.setState({requestName: text})}
+                defaultValue={this.state.title}
+                onChangeText={(text) => this.setState({title: text})}
                 tag='titleInput'
               />
                <TextInput
                     style={{height: 40}}
-                    placeholder="Provide details on what you are requesting"
-                    onChangeText={(text) => this.setState({requestDescription: text})}
+                    defaultValue={this.state.description}
+                    onChangeText={(text) => this.setState({description: text})}
                     tag='detailsInput'
                />
                <TextInput
                 style={{height: 40}}
-                placeholder="Tag your request with keywords so people can find it"
+                defaultValue={this.state.tags}
                 tag='keywordsInput'
-                onChangeText={(text) => this.setState({requestTags: text})}
+                onChangeText={(text) => this.setState({tags: text})}
                 />
               <Button
                   style={styles.button}
                 onPress={() => {Alert.alert('Update Successful', 'Sent your edited request.');
-                    makeRequest(this.state.requestName, this.state.requestDescription);
-                    console.log("attempting to make request"); }}
-                    tag='submitButton'>Submit Request</Button>
+                    this.title = this.state.title;
+                    this.description = this.state.description;
+                    this.setModalVisible(!this.state.modalVisible);
+                    this.updateRequest();}}
+                    tag='submitButton'>Submit Edit</Button>
               <Button
                   style={styles.button}
-                  onPress={() => {this.setModalVisible(!this.state.modalVisible)}}> Cancel
+                  onPress={() => {this.setModalVisible(!this.state.modalVisible);
+                                  this.state.title = this.title;
+                                  this.state.description = this.description;}}> Cancel
               </Button>
             </View>
           </Modal>
           <Text style={{fontSize: 20}}>  {this.title}</Text>
-          <Text style={{alignItems: 'center'}, {fontSize: 18}}>  {this.description}</Text>
+          <Text style={{alignItems: 'center'}, {fontSize: 18}}>{this.description}</Text>
           <Text style={styles.orgButton} onPress={() => {this.setModalVisible(true)}}>
                 Edit Request </Text>
         </View>);
     }
 }
-
-/*<Text style={styles.orgButton} onPress= {()=>Alert.alert(props.title, props.description,
-                                            [{text: 'Submit Edit', onPress: ()=>console.log('subscribe, yo!')},
-                                            {text: 'Close', onPress:()=>console.log('done')}])}
-                                            > Edit Request </Text>*/
 
 // This component is a scrollable list of requests. Intially it will display a text that shows we
 // are still waiting on the server to provide our requests, but once the request to the server has
@@ -190,15 +198,14 @@ export default class RequestFeed extends Component {
            "organization": "HandOff Team",
            "time": 7,
            "title": "Waiting on data",
-           "description": "Should be fetching requests, if this takes too long, check" +
-               "your internet connection.",
+           "description": "If this takes too long, check your internet connection.",
         }];
 
         this.organization = props.organization;
 
         // Sets the initial page to a loading page
         this.state = {
-          dataSource: ds.cloneWithRows(startPage)
+          dataSource: ds.cloneWithRows([])
         }
 
         // the .then statements will then handle the response
@@ -220,6 +227,7 @@ export default class RequestFeed extends Component {
          return (
             <View>
               <ListView
+                enableEmptySections={true}
                 dataSource={this.state.dataSource}
                 renderRow={(rowData) => <Row {...rowData} />}
                 renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
@@ -231,6 +239,7 @@ export default class RequestFeed extends Component {
         return (
             <View>
               <ListView
+                enableEmptySections={true}
                 dataSource={this.state.dataSource}
                 renderRow={(rowData) => <OrgRow {...rowData}/>}
                 renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}

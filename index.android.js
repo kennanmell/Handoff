@@ -77,7 +77,7 @@ class MainNavigator extends Component {
     		
     		onEditRequest={ () => {
     			navigator.push({
-    				name: 'OrgEditRequests',
+    				name: 'OrgViewRequests',
     			})
     		}}
     		
@@ -107,23 +107,13 @@ class MainNavigator extends Component {
     	/>
     }
     
-    if (route.name == 'OrgEditRequests') {
-        return <RequestFeed organization="Hope Shelter" />
-        /*return <EditRequests
-        	onClose={ () => {
-        		navigator.pop()
-        	}}
-         />*/
-    }
-    
     if (route.name == 'OrgViewRequests') {
-    	return <RequestFeed organization="Hope Shelter" />
+    	return <RequestFeed organization="Hope Shelter"/>
     }
     
     if (route.name == 'UserFeed') {
     	return <RequestFeed />
     }
-    
   }
 }
 
