@@ -65,7 +65,9 @@ export default class RequestMaker extends Component {
                 />
         <Button
                     style={styles.button}
-					onPress={() => {Alert.alert('Request Successful', 'Your request was successfully posted.'); makeRequest(this.state.requestName, this.state.requestDescription); console.log("attempting to make request"); }}
+					onPress={() => {Alert.alert('Request Successful', 'Your request was successfully posted.');
+					makeRequest(this.state.requestName, this.state.requestDescription);
+					console.log("attempting to make request"); }}
                     tag='submitButton'
                     >Submit Request</Button>
         <Button
