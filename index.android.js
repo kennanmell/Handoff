@@ -6,6 +6,7 @@
 
 import FacebookLoginPage from './view/login';
 import OrganizationEditor from './view/OrgEditor';
+import OrganizationCreator from './view/OrgCreator';
 import RequestMaker from './view/RequestMaker';
 import EditRequests from './view/EditRequests';
 import ViewRequests from './view/ViewRequests';
@@ -60,6 +61,12 @@ class MainNavigator extends Component {
     				name: 'MakeRequest',
     			})
     		}}
+			
+			onOrgCreation={ () => {
+    			navigator.push({
+    				name: 'OrgCreateProfile',
+    			})
+    		}}
     	/>
     }
     if (route.name == 'MakeRequest') {
@@ -70,7 +77,7 @@ class MainNavigator extends Component {
     		
     		onEditRequest={ () => {
     			navigator.push({
-    				name: 'OrgEditRequests',
+    				name: 'OrgViewRequests',
     			})
     		}}
     		
@@ -89,23 +96,24 @@ class MainNavigator extends Component {
     		}}
     	/>
     }
-    
-    if (route.name == 'OrgEditRequests') {
-        return <EditRequests
-        	onClose={ () => {
-        		navigator.pop()
-        	}}
-         />
+	
+	if (route.name == 'OrgCreateProfile') {
+    	return <OrganizationCreator
+    	    onContinue={ () => {
+				navigator.push({
+					name: 'MakeRequest',
+				})
+    		}}
+    	/>
     }
     
     if (route.name == 'OrgViewRequests') {
-    	return <ViewRequests />
+    	return <RequestFeed organization="Hope Shelter"/>
     }
     
     if (route.name == 'UserFeed') {
     	return <RequestFeed />
     }
-    
   }
 }
 

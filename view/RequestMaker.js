@@ -14,8 +14,10 @@ import {
   TouchableNativeFeedback,
   Modal,
   TouchableHighlight,
-  Navigator
+  Navigator,
+  Alert
 } from 'react-native';
+import{Button} from 'native-base';
 
 /*Builds a RequestMaker, which an Organization User uses to
 submit requests. Has text boxes for the request title, description,
@@ -61,40 +63,24 @@ export default class RequestMaker extends Component {
                   tag='keywordsInput'
                   onChangeText={(text) => this.setState({requestTags: text})}
                 />
-        <TouchableNativeFeedback
-                    style={{textAlign: 'center'}}
-					onPress={() => {makeRequest(this.state.requestName, this.state.requestDescription); console.log("attempting to make request"); }}
+        <Button
+                    style={styles.button}
+					onPress={() => {Alert.alert('Request Successful', 'Your request was successfully posted.'); makeRequest(this.state.requestName, this.state.requestDescription); console.log("attempting to make request"); }}
                     tag='submitButton'
-                    >
-                    <View>
-                        <Text style={styles.buttonText}>Submit Request</Text>
-                    </View>
-        </TouchableNativeFeedback>
-        <TouchableNativeFeedback
+                    >Submit Request</Button>
+        <Button
                     style={styles.button}
                     onPress={this.props.onEditProfile}
-                    >
-                    <View>
-                        <Text style={styles.buttonText}>Edit Profile</Text>
-                    </View>
-                  </TouchableNativeFeedback>
-                  <TouchableNativeFeedback
-                              style={styles.button}
-                              onPress={this.props.onEditRequest}
-                              >
-                              <View>
-                                  <Text style={styles.buttonText}>Edit Requests</Text>
-                              </View>
-                            </TouchableNativeFeedback>
-                    <TouchableNativeFeedback
-                              style={styles.button}
-                              tag='logoutButton'
-                              onPress={this.props.onLogout}
-                              >
-                              <View>
-                                  <Text style={styles.buttonText}>Logout</Text>
-                              </View>
-                            </TouchableNativeFeedback>
+                    >Edit Profile</Button>
+        <Button
+                    style={styles.button}
+                    onPress={this.props.onEditRequest}
+                    >Edit Requests</Button>
+        <Button
+                  style={styles.button}
+                  tag='logoutButton'
+                  onPress={this.props.onLogout}
+                  >Logout</Button>
       </View>
     );
   }
@@ -133,9 +119,17 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+
+    button: {
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'flex-end',
+          marginLeft: 3,
+          marginTop: 10,
+          borderWidth: 1,
+          padding: 5,
+          borderColor: 'black',
+          marginBottom: 15,
+          backgroundColor: '#642D64',
+      }
 });

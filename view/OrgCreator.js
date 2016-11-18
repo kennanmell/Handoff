@@ -15,13 +15,14 @@ import {
 } from 'react-native';
 import{Button} from 'native-base';
 
-/*Builds a OrganizationEditor, which an Organization User uses to
-edit information about their organization. Has text boxes for their
-organization's name, description, and location. Has a save button
-to save changes. Currently the editor is loaded with dummy data */
-export default class OrganizationEditor extends Component {
+/*Builds a OrganizationCreator, which an Organization User uses upon
+their first login to set up their organization's information to be
+displayed to users. Has text boxes for theirorganization's name, 
+description, and location. Has a save buttonto save changes, and a
+continue button for when they are finished. */
+export default class OrganizationCreator extends Component {
   static propTypes = {
-      onSave:PropTypes.func.isRequired
+      onContinue:PropTypes.func.isRequired
   }
 
   constructor(props) {
@@ -43,7 +44,6 @@ export default class OrganizationEditor extends Component {
         </Text>
 		<TextInput
 			style={{height: 40}}
-			defaultValue={this.state.typedName}
 			onChangeText={(text) => this.setState({typedName: text})}
 		/>
 		
@@ -52,7 +52,6 @@ export default class OrganizationEditor extends Component {
         </Text>
 		<TextInput
 			style={{height: 40}}
-			defaultValue={this.state.typedLoc}
 			onChangeText={(text) => this.setState({typedLoc: text})}
 		/>
 		
@@ -63,18 +62,16 @@ export default class OrganizationEditor extends Component {
 			multiline={true}
 			numberOfLines={4}
 			style={{height: 90}}
-			defaultValue={this.state.typedDesc}
 			onChangeText={(text) => this.setState({typedDesc: text})}
 		/>
 		<Button
 			onPress= {() => {this.org.name = this.state.typedName;
 							 this.org.loc = this.state.typedLoc;
-							 this.org.description = this.state.typedDesc;
-							 this.props.onSave}}
+							 this.org.description = this.state.typedDesc;}}
 			style={styles.button}> Save
 		</Button>
 		
-		<Button style={styles.button} onPress={ this.props.onSave }>Close</Button>
+		<Button style={styles.button} onPress={ this.props.onContinue }>Continue</Button>
       </View>
 		
     );

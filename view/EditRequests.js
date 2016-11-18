@@ -15,6 +15,7 @@ import {
   TouchableHighlight,
   Navigator
 } from 'react-native';
+import{Button} from 'native-base';
 
 /*Builds a EditRequests class, which an organization User uses to
 select a request to edit and edit it in a pop-up. Has a RequestFeed
@@ -23,6 +24,7 @@ export default class EditRequests extends Component {
   static propTypes = {
       onClose:PropTypes.func.isRequired,
   }
+
   constructor(props) {
     super(props);
     this.state = {text: '', modalVisible:false};
@@ -37,11 +39,9 @@ export default class EditRequests extends Component {
 
     <View style={{padding: 10}}>
 
-        <TouchableHighlight onPress={() => {
+        <Button style={styles.button} onPress={() => {
                  this.setModalVisible(true)
-               }}>
-                 <Text>Edit a Request</Text>
-               </TouchableHighlight>
+               }}>Edit a Request</Button>
         <Text style={styles.welcome}> Handoff </Text>
         <Text style={styles.instructions}> Request Feed Goes Here </Text>
         <Modal
@@ -53,14 +53,8 @@ export default class EditRequests extends Component {
                     <View style={{marginTop: 22}}>
                     <View>
                         <Text>Edit Request Here. Click Save When Done.</Text>
-                        <TouchableHighlight onPress={() => {
-                                  this.setModalVisible(!this.state.modalVisible)
-                                }}>
-                                  <Text>Save</Text>
-                                </TouchableHighlight>
-                        <TouchableHighlight onPress={this.props.onClose}>
-                                  <Text>Cancel</Text>
-                                </TouchableHighlight>
+                         <Button save style={styles.button} onPress={() => { this.setModalVisible(!this.state.modalVisible)}}>Save</Button>
+                        <Button close style={styles.button} onPress={this.props.onClose}> Cancel </Button>
                     </View>
                     </View>
                 </Modal>
@@ -86,4 +80,16 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  button: {
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'flex-end',
+        marginLeft: 3,
+        marginTop: 10,
+        borderWidth: 1,
+        padding: 5,
+        borderColor: 'black',
+        marginBottom: 15,
+        backgroundColor: '#642D64',
+    }
 });

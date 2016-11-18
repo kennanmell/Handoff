@@ -8,6 +8,7 @@ import {
   View
 } from 'react-native';
 
+import{Button} from 'native-base';
 const FBSDK = require('react-native-fbsdk');
 const {
   LoginButton,
@@ -50,10 +51,27 @@ export default class FacebookLoginPage extends Component {
     return (
       <View>
         <Text style={{fontSize: 20, textAlign: 'center'}}>Please log in with Facebook in order to use Handoff.</Text>
-        <Login />
-        <Text style={{fontSize: 15, textAlign: 'center'}} tag='orgLoginButton' onPress={ this.props.onOrgLogin }>(click for temp organization login)</Text>
-        <Text style={{fontSize: 15, textAlign: 'center'}} onPress={ this.props.onUserLogin }>(click for temp user login)</Text>
+        <Login style={{justifyContent:'center'}}/>
+        <Button style={styles.button} onPress={ this.props.onOrgLogin }>(click for temp organization login)</Button>
+        <Button  style={styles.button} onPress={ this.props.onOrgCreation }>(click for temp organization creation)</Button>
+		<Button  style={styles.button} onPress={ this.props.onUserLogin }>(click for temp user login)</Button>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+
+  button: {
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'flex-end',
+        marginLeft: 3,
+        marginTop: 10,
+        borderWidth: 1,
+        padding: 5,
+        borderColor: 'black',
+        marginBottom: 15,
+        backgroundColor: '#642D64',
+    }
+});
