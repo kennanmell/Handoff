@@ -85,28 +85,71 @@ async function getRequests(organization) {
 
 // The row is a component that should have a title, organization, and description passed in as props
 // This component will display these components.
-const Row = (props) => (
+/*const Row = (props) => (
   <View style={{padding: 10}}>
     <Text style={{fontSize: 20}}>  {props.title}</Text>
     <Text style={styles.orgButton}
-        onPress={()=>Alert.alert('Organization Info', null,
+        onPress={()=>Alert.alert('Organization Info', props.organization,
                     [{text: 'Subscribe', onPress: ()=>console.log('subscribe, yo!')},
                     {text: 'Close', onPress:()=>console.log('done')}])}
                     >  {props.organization}</Text>
     <Text style={{alignItems: 'center'}, {fontSize: 18}}>{props.description}</Text>
     <Text style={styles.orgButton}> More info . . . </Text>
   </View>
-);
+);*/
 
-/* This is a display of a specific orgs request, with an edit request button that allows one to
-edit the request specified by the row and post that update to the server */
-/*const OrgRow = (props) => (
-   <View style={{padding: 10}}>
-     <Text style={{fontSize: 20}}>  {props.title}</Text>
-     <Text style={{alignItems: 'center'}, {fontSize: 18}}>  {props.description}</Text>
-     <Text style={styles.orgButton} onPress=props.onPress> Edit Request </Text>
-   </View>
-)*/
+class Row extends Component {
+    constructor(props) {
+        super(props);
+        // These are what is displayed, while the this.state variables are what the edit is set to
+        this.title = props.title;
+        this.description = props.description;
+        this.organization = props.organization;
+        this.tags = props.tags;
+        this.time = (new Date(props.time)).toString();
+
+        this.state = {
+          modalVisible: false,
+        }
+    }
+
+    setModalVisible(visible) {
+      this.setState({modalVisible: visible});
+    }
+
+    render() {
+      return(
+        <View style={{padding: 10}}>
+          <Modal
+            animationType={"slide"}
+            transparent={false}
+            visible={this.state.modalVisible}
+            onRequestClose={() => {alert("Close through the cancel button.")}}
+            >
+            <View style={{marginTop: 22}}>
+                  <View>
+                      <Text>{this.title}</Text>
+                      <Text>{this.description}</Text>
+                      <Text>Organization: {this.organization}</Text>
+                      <Text>Tags: {this.tags}</Text>
+                      <Text>Time Posted: {this.time}</Text>
+                      <Button close style={styles.button} onPress={() => { this.setModalVisible(!this.state.modalVisible)}}>Return to Feed</Button>
+                  </View>
+                  </View>
+          </Modal>
+          <Text style={{fontSize: 20}}>  {this.title}</Text>
+          <Text style={styles.orgButton}
+              onPress={()=>Alert.alert('Organization Info', this.organization,
+                          [{text: 'Subscribe', onPress: ()=>console.log('subscribe, yo!')},
+                          {text: 'Close', onPress:()=>console.log('done')}])}
+                          >{this.organization}</Text>
+          <Text style={{alignItems: 'center'}, {fontSize: 18}}>{this.description}</Text>
+          <Text style={styles.orgButton} onPress={() => {this.setModalVisible(true)}}> More info . . . </Text>
+        </View>);
+    }
+}
+
+
 
 class OrgRow extends Component {
     constructor(props) {
@@ -180,7 +223,7 @@ class OrgRow extends Component {
                     this.description = this.state.description;
                     this.setModalVisible(!this.state.modalVisible);
                     this.updateRequest();}}
-                    tag='submitButton'>Submit Request</Button>
+                    tag='submitButton'>Submit Edit</Button>
               <Button
                   style={styles.button}
                   onPress={() => {this.setModalVisible(!this.state.modalVisible);
@@ -196,11 +239,6 @@ class OrgRow extends Component {
         </View>);
     }
 }
-
-/*<Text style={styles.orgButton} onPress= {()=>Alert.alert(props.title, props.description,
-                                            [{text: 'Submit Edit', onPress: ()=>console.log('subscribe, yo!')},
-                                            {text: 'Close', onPress:()=>console.log('done')}])}
-                                            > Edit Request </Text>*/
 
 // This component is a scrollable list of requests. Intially it will display a text that shows we
 // are still waiting on the server to provide our requests, but once the request to the server has
@@ -220,7 +258,7 @@ export default class RequestFeed extends Component {
 
         // Sets the initial page to a loading page
         this.state = {
-          dataSource: ds.cloneWithRows(startPage)
+          dataSource: ds.cloneWithRows([])
         }
 
         // the .then statements will then handle the response
@@ -242,6 +280,7 @@ export default class RequestFeed extends Component {
          return (
             <View>
               <ListView
+                enableEmptySections={true}
                 dataSource={this.state.dataSource}
                 renderRow={(rowData) => <Row {...rowData} />}
                 renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
@@ -253,6 +292,7 @@ export default class RequestFeed extends Component {
         return (
             <View>
               <ListView
+                enableEmptySections={true}
                 dataSource={this.state.dataSource}
                 renderRow={(rowData) => <OrgRow {...rowData}/>}
                 renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
