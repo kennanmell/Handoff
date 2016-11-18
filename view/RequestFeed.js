@@ -85,7 +85,7 @@ async function getRequests(organization) {
 
 // The row is a component that should have a title, organization, and description passed in as props
 // This component will display these components.
-const Row = (props) => (
+/*const Row = (props) => (
   <View style={{padding: 10}}>
     <Text style={{fontSize: 20}}>  {props.title}</Text>
     <Text style={styles.orgButton}
@@ -96,7 +96,60 @@ const Row = (props) => (
     <Text style={{alignItems: 'center'}, {fontSize: 18}}>{props.description}</Text>
     <Text style={styles.orgButton}> More info . . . </Text>
   </View>
-);
+);*/
+
+class Row extends Component {
+    constructor(props) {
+        super(props);
+        // These are what is displayed, while the this.state variables are what the edit is set to
+        this.title = props.title;
+        this.description = props.description;
+        this.organization = props.organization;
+        this.tags = props.tags;
+        this.time = (new Date(props.time)).toString();
+
+        this.state = {
+          modalVisible: false,
+        }
+    }
+
+    setModalVisible(visible) {
+      this.setState({modalVisible: visible});
+    }
+
+    render() {
+      return(
+        <View style={{padding: 10}}>
+          <Modal
+            animationType={"slide"}
+            transparent={false}
+            visible={this.state.modalVisible}
+            onRequestClose={() => {alert("Close through the cancel button.")}}
+            >
+            <View style={{marginTop: 22}}>
+                  <View>
+                      <Text>{this.title}</Text>
+                      <Text>{this.description}</Text>
+                      <Text>Organization: {this.organization}</Text>
+                      <Text>Tags: {this.tags}</Text>
+                      <Text>Time Posted: {this.time}</Text>
+                      <Button close style={styles.button} onPress={() => { this.setModalVisible(!this.state.modalVisible)}}>Return to Feed</Button>
+                  </View>
+                  </View>
+          </Modal>
+          <Text style={{fontSize: 20}}>  {this.title}</Text>
+          <Text style={styles.orgButton}
+              onPress={()=>Alert.alert('Organization Info', this.organization,
+                          [{text: 'Subscribe', onPress: ()=>console.log('subscribe, yo!')},
+                          {text: 'Close', onPress:()=>console.log('done')}])}
+                          >{this.organization}</Text>
+          <Text style={{alignItems: 'center'}, {fontSize: 18}}>{this.description}</Text>
+          <Text style={styles.orgButton} onPress={() => {this.setModalVisible(true)}}> More info . . . </Text>
+        </View>);
+    }
+}
+
+
 
 class OrgRow extends Component {
     constructor(props) {
