@@ -125,7 +125,7 @@ async function createOrg(name, loc, description, username, pass) {
 			"description": description,
 			"location": loc,
 			"username": username,
-			"auth": pass
+			"password": pass
       })
     })
 }
