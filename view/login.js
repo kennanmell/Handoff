@@ -17,7 +17,8 @@ to the rest of the app.
 export default class FacebookLoginPage extends Component {
   static propTypes = {
     onOrgLogin:PropTypes.func.isRequired,
-    onUserLogin:PropTypes.func.isRequired
+    onUserLogin:PropTypes.func.isRequired,
+    onSubAccess:PropTypes.func.isRequired
   }
     
   constructor(props) {
@@ -47,7 +48,8 @@ export default class FacebookLoginPage extends Component {
 		/>
         <Button style={styles.button} onPress={ this.beforeOrgLogin.bind(this) }>Login</Button>
         <Button style={styles.button} onPress={ this.props.onOrgCreation }>New Organization</Button>
-		<Button style={styles.button} onPress={ this.props.onUserLogin }>I'm a donator</Button>
+		    <Button style={styles.button} onPress={ this.props.onUserLogin }>I'm a donator</Button>
+        <Button style={styles.button} onPress={ this.props.onSubAccess}>Subscriptions</Button>
       </View>
     );
   }
