@@ -27,13 +27,13 @@ export default class OrganizationCreator extends Component {
 
   constructor(props) {
     super(props);
-	this.org = new Organization("Hope Shelter", "1516 Brooklyn Ave",
-							   "Providing a space for those in need", "password");
+	this.org = new Organization("", "", "", "");
     this.state = {text: '',
 				  typedName: this.org.name,
 				  typedLoc: this.org.loc,
 				  typedDesc: this.org.description,
-				  typedPass: this.org.password
+				  typedPass: this.org.password,
+				  typedUserName: this.org.userName
 				};
   }
 	
@@ -41,7 +41,7 @@ export default class OrganizationCreator extends Component {
     return (
 		<View style={{padding: 10}}>
 		<Text style={styles.editing}>
-			Name
+			Organization Name
         </Text>
 		<TextInput
 			style={{height: 40}}
@@ -67,6 +67,14 @@ export default class OrganizationCreator extends Component {
 		/>
 		
 		<Text style={styles.editing}>
+                    User Name
+        </Text>
+		<TextInput
+			style={{height: 40}}
+			onChangeText={(text) => this.setState({typedUserName: text})}
+		/>
+		
+		<Text style={styles.editing}>
                     Password
         </Text>
 		<TextInput
@@ -79,10 +87,15 @@ export default class OrganizationCreator extends Component {
 							 this.org.loc = this.state.typedLoc;
 							 this.org.description = this.state.typedDesc;
 							 this.org.password = this.state.typedPass;
-							 createOrg(this.state.typedName, this.state.typedLoc, this.state.typedDesc)
+							 this.org.userName = this.state.typedUsername;
+							 window.org = this.org;
+							 createOrg(this.state.typedName, this.state.typedLoc, this.state.typedDesc,
+									this.state.typedUserName, this.state.typedPass)
 								.then((response) => response.json())
 								.then((responseJson) => {
 									this.org.uuid = responseJson.uuid;
+									window.org.uuid = responseJson.uuid;
+									console.log("uuid = ");
 									console.log(responseJson.uuid);
 								})
 								.catch((error) => {
@@ -100,7 +113,7 @@ export default class OrganizationCreator extends Component {
   }
 }
 
-async function createOrg(name, loc, description) {
+async function createOrg(name, loc, description, username, pass) {
     return fetch('https://u116vqy0l2.execute-api.us-west-2.amazonaws.com/prod/organizations/new', {
       method: 'POST',
       headers: {
@@ -109,8 +122,10 @@ async function createOrg(name, loc, description) {
       },
       body:  JSON.stringify({
             "name": name,
+			"description": description,
 			"location": loc,
-			"description": description
+			"username": username,
+			"auth": pass
       })
     })
 }
