@@ -55,7 +55,55 @@ export default class FacebookLoginPage extends Component {
   beforeOrgLogin() {
     window.org.name = this.state.typedName
     window.org.password = this.state.typedPass
-  	this.props.onOrgLogin()
+          this.serverLogin()
+              .then((response) => response.json())
+              .then((responseJson) => {
+            	  window.org.uuid = responseJson.uuid
+            	  window.org.auth = responseJson.auth
+                })
+              .catch((error) => {
+                console.error(error);
+        }).then(() => {
+        	this.serverOrgData(window.org.uuid)
+              .then((response) => response.json())
+              .then((responseJson) => {
+            	  window.org.name = responseJson.name
+            	  window.org.description = responseJson.description
+            	  window.org.location = responseJson.location
+                })
+              .catch((error) => {
+                console.error(error);
+        }).then(() => {
+                if (window.org.description != null) {
+        	// Login successful.
+        	this.props.onOrgLogin()
+        }
+        })
+        })
+        
+  }
+  
+  async serverLogin() {
+    return fetch('https://u116vqy0l2.execute-api.us-west-2.amazonaws.com/prod/authenticate', {
+              method: 'POST',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ username: window.org.name,
+                                     password: window.org.password})
+    })
+  }
+  
+  async serverOrgData(uuid) {
+    return fetch('https://u116vqy0l2.execute-api.us-west-2.amazonaws.com/prod/organizations/info', {
+              method: 'POST',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ uuid: uuid })
+    })
   }
 }
 
