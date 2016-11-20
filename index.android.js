@@ -11,6 +11,7 @@ import RequestMaker from './view/RequestMaker';
 import EditRequests from './view/EditRequests';
 import ViewRequests from './view/ViewRequests';
 import RequestFeed from './view/RequestFeed';
+import SubList from './view/SubList';
 import Request from './model/Request';
 import Organization from './model/Organization';
 
@@ -62,6 +63,12 @@ class MainNavigator extends Component {
     				name: 'MakeRequest',
     			})
     		}}
+
+      onSubAccess={ () =>{
+        navigator.push({
+          name: 'SubList'
+        })
+      }}
 			
 			onOrgCreation={ () => {
     			navigator.push({
@@ -109,11 +116,15 @@ class MainNavigator extends Component {
     }
     
     if (route.name == 'OrgViewRequests') {
-    	return <RequestFeed organization="Hope Shelter"/>
+    	return <RequestFeed organization={window.org.name} />
     }
     
     if (route.name == 'UserFeed') {
     	return <RequestFeed />
+    }
+
+    if (route.name == 'SubList') {
+      return <SubList />
     }
   }
 }
