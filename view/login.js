@@ -6,9 +6,9 @@ import {
   TextInput,
   Navigator,
   View,
-  Button
 } from 'react-native';
 import Organization from '../model/Organization';
+import{Button} from 'native-base';
 
 /**
 The login screen. Allows the user to log in with Facebook. Currently offers dummy log-in buttons to allow access

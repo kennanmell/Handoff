@@ -4,7 +4,8 @@ organization to go to the page of the organization. */
 
 import React, { Component, PropTypes } from 'react';
 import { TouchableHighlight, TextInput, Alert, Modal,
-            StyleSheet, AppRegistry, ListView, Text, View, Button } from 'react-native';
+            StyleSheet, AppRegistry, ListView, Text, View } from 'react-native';
+import{Button} from 'native-base';
 
 // These are different styles that components use.
 const styles = StyleSheet.create({
