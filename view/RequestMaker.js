@@ -17,7 +17,6 @@ import {
   Navigator,
   Alert
 } from 'react-native';
-import{Button} from 'native-base';
 
 /*Builds a RequestMaker, which an Organization User uses to
 submit requests. Has text boxes for the request title, description,
@@ -63,26 +62,30 @@ export default class RequestMaker extends Component {
                   tag='keywordsInput'
                   onChangeText={(text) => this.setState({requestTags: text})}
                 />
-        <Button
+        <TouchableHighlight
                     style={styles.button}
 					onPress={() => {Alert.alert('Request Successful', 'Your request was successfully posted.');
 					makeRequest(this.state.requestName, this.state.requestDescription);
 					console.log("attempting to make request"); }}
-                    tag='submitButton'
-                    >Submit Request</Button>
-        <Button
+                    tag='submitButton'>
+                    <Text style={{color:'#FFFFFF', textAlign:'left'}}>"Submit Request"</Text>
+                    </TouchableHighlight>
+        <TouchableHighlight
                     style={styles.button}
-                    onPress={this.props.onEditProfile}
-                    >Edit Profile</Button>
-        <Button
+                    onPress={this.props.onEditProfile}>
+                    <Text style={{color:'#FFFFFF'}}>"Edit Profile"</Text>
+                    </TouchableHighlight>
+        <TouchableHighlight
                     style={styles.button}
-                    onPress={this.props.onEditRequest}
-                    >Edit Requests</Button>
-        <Button
+                    onPress={this.props.onEditRequest}>
+                    <Text style={{color:'#FFFFFF'}}>"Edit Requests"</Text>
+                    </TouchableHighlight>
+        <TouchableHighlight
                   style={styles.button}
                   tag='logoutButton'
-                  onPress={this.props.onLogout}
-                  >Logout</Button>
+                  onPress={this.props.onLogout}>
+                  <Text style={{color:'#FFFFFF'}}>"Logout"</Text>
+                  </TouchableHighlight>
       </View>
     );
   }
@@ -92,6 +95,10 @@ export default class RequestMaker extends Component {
 For the moment, the request's organization and its tags are not modifiable. This functionality
 will be added later.*/
 async function makeRequest(requestName, requestDescription) {
+    console.log(window.org.name);
+    console.log(requestName);
+    console.log(window.org.userName);
+    console.log(window.org.auth);
     fetch('https://u116vqy0l2.execute-api.us-west-2.amazonaws.com/prod/requests/new', {
       method: 'POST',
       headers: {
@@ -99,11 +106,12 @@ async function makeRequest(requestName, requestDescription) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-            "organization": "Hope Shelter",
-			"time": 50,
+            "organization": window.org.uuid,
 			"title": requestName,
 	        "description": requestDescription,
-			"tags": ["food","test"]
+			"tags": ["food","test"],
+			"username": window.org.userName,
+			"auth": window.org.auth
       })
     })
 	console.log("fetch maybe did something");

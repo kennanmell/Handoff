@@ -5,7 +5,6 @@ organization to go to the page of the organization. */
 import React, { Component, PropTypes } from 'react';
 import { TouchableHighlight, TextInput, Alert, Modal,
             StyleSheet, AppRegistry, ListView, Text, View } from 'react-native';
-import{Button} from 'native-base';
 
 // These are different styles that components use.
 const styles = StyleSheet.create({
@@ -43,7 +42,6 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         marginBottom: 3,
         backgroundColor: '#642D64',
-        color: 'white',
     },
   welcome: {
       fontSize: 20,
@@ -134,18 +132,19 @@ class Row extends Component {
                       <Text>Organization: {this.organization}</Text>
                       <Text>Tags: {this.tags}</Text>
                       <Text>Time Posted: {this.time}</Text>
-                      <Button close style={styles.button} onPress={() => { this.setModalVisible(!this.state.modalVisible)}}>Return to Feed</Button>
+                      <TouchableHighlight style={styles.orgButton} onPress={() => { this.setModalVisible(!this.state.modalVisible)}} ><Text style={{color:'#FFFFFF'}}>Return to Feed</Text></TouchableHighlight>
                   </View>
                   </View>
           </Modal>
           <Text style={{fontSize: 20}}>  {this.title}</Text>
-          <Text style={styles.orgButton}
-              onPress={()=>Alert.alert('Organization Info', this.organization,
+         <TouchableHighlight style={styles.orgButton}
+              onPress={()=>
+                           Alert.alert('Organization Info', this.organization + " " + this.title,
                           [{text: 'Subscribe', onPress: ()=>console.log('subscribe, yo!')},
                           {text: 'Close', onPress:()=>console.log('done')}])}
-                          >{this.organization}</Text>
+                          ><Text style={{color:'#FFFFFF'}}>{this.organization}</Text></TouchableHighlight>
           <Text style={{alignItems: 'center'}, {fontSize: 18}}>{this.description}</Text>
-          <Text style={styles.orgButton} onPress={() => {this.setModalVisible(true)}}> More info . . . </Text>
+          <TouchableHighlight style={styles.orgButton} onPress={() => {this.setModalVisible(true)}}><Text style={{color:'#FFFFFF'}}> More info . . . </Text></TouchableHighlight>
         </View>);
     }
 }
@@ -172,18 +171,29 @@ class OrgRow extends Component {
     }
 
     // This method will create update the request for the request that the orgrow represents
-    async updateRequest() {
+    async updateRequest(edit) {
+        params = null;
+        if (!edit) {
+            params = JSON.stringify({ organization: window.org.uuid,
+                                                          time: this.state.time,
+                                                          username: window.org.userName,
+                                                          auth: window.org.auth})
+        } else {
+            JSON.stringify({ organization: window.org.uuid,
+                                                 time: this.state.time,
+                                                 title: this.state.title,
+                                                 description: this.state.description,
+                                                 tags: this.state.tags,
+                                                 username: window.org.userName,
+                                                 auth: window.org.auth})
+        }
         return fetch('https://u116vqy0l2.execute-api.us-west-2.amazonaws.com/prod/requests/update', {
               method: 'POST',
               headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
               },
-              body: JSON.stringify({ organization: this.state.organization,
-                                     time: this.state.time,
-                                     title: this.state.title,
-                                     description: this.state.description,
-                                     tags: this.state.tags})
+              body: params
         })
     }
 
@@ -220,20 +230,20 @@ class OrgRow extends Component {
                 tag='keywordsInput'
                 onChangeText={(text) => this.setState({tags: text})}
                 />
-              <Button
-                  style={styles.button}
+              <TouchableHighlight
+                  style={styles.orgButton}
                 onPress={() => {Alert.alert('Update Successful', 'Sent your edited request.');
                     this.title = this.state.title;
                     this.description = this.state.description;
                     this.setModalVisible(!this.state.modalVisible);
                     this.updateRequest();}}
-                    tag='submitButton'>Submit Edit</Button>
-              <Button
-                  style={styles.button}
+                    tag='submitButton'><Text style={{color:'#FFFFFF'}}> Submit Edit</Text></TouchableHighlight>
+              <TouchableHighlight
+                  style={styles.orgButton}
                   onPress={() => {this.setModalVisible(!this.state.modalVisible);
                                   this.state.title = this.title;
-                                  this.state.description = this.description;}}> Cancel
-              </Button>
+                                  this.state.description = this.description;}}
+                  ><Text style={{color:'#FFFFFF'}}>Cancel</Text></TouchableHighlight>
             </View>
           </Modal>
           <Text style={{fontSize: 20}}>  {this.title}</Text>
@@ -258,7 +268,9 @@ export default class RequestFeed extends Component {
            "description": "If this takes too long, check your internet connection.",
         }];
 
-        this.organization = props.organization;
+        if (props.organization != null) {
+            this.organization = window.org.uuid; // yeah i blame the weird backend documentation
+        }
 
         // Sets the initial page to a loading page
         this.state = {
