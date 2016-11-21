@@ -13,7 +13,6 @@ import {
   TouchableHighlight,
   View
 } from 'react-native';
-import{Button} from 'native-base';
 
 /*Builds a OrganizationCreator, which an Organization User uses upon
 their first login to set up their organization's information to be
@@ -82,7 +81,7 @@ export default class OrganizationCreator extends Component {
 			onChangeText={(text) => this.setState({typedPass: text})}
 		/>
 		
-		<Button
+		<TouchableHighlight
 			onPress= {() => {this.org.name = this.state.typedName;
 							 this.org.loc = this.state.typedLoc;
 							 this.org.description = this.state.typedDesc;
@@ -103,10 +102,10 @@ export default class OrganizationCreator extends Component {
 								});
 							}
 					}
-			style={styles.button}> Save
-		</Button>
+			style={styles.button}
+			><Text style={{color:'#FFFFFF'}}>Save</Text></TouchableHighlight>
 		
-		<Button style={styles.button} onPress={ this.props.onContinue }>Continue</Button>
+		<TouchableHighlight style={styles.button} onPress={ this.props.onContinue }><Text style={{color:'#FFFFFF'}}>Continue</Text></TouchableHighlight>
       </View>
 		
     );
