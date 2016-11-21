@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { AsyncStorage, PickerIOS, TouchableHighlight, TextInput, Alert,
             StyleSheet, AppRegistry, ListView, Text, View } from 'react-native';
-import{Button} from 'native-base';
 
 
 'use strict';

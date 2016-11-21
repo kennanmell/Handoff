@@ -15,7 +15,6 @@ import {
   TouchableHighlight,
   Navigator
 } from 'react-native';
-import{Button} from 'native-base';
 
 /*Builds a EditRequests class, which an organization User uses to
 select a request to edit and edit it in a pop-up. Has a RequestFeed
@@ -39,9 +38,9 @@ export default class EditRequests extends Component {
 
     <View style={{padding: 10}}>
 
-        <Button style={styles.button} onPress={() => {
+       <TouchableHighlight style={styles.button} onPress={() => {
                  this.setModalVisible(true)
-               }}>Edit a Request</Button>
+               }}><Text style={{color:'#FFFFFF'}}>Edit a Request</Text></TouchableHighlight>
         <Text style={styles.welcome}> Handoff </Text>
         <Text style={styles.instructions}> Request Feed Goes Here </Text>
         <Modal
@@ -53,8 +52,8 @@ export default class EditRequests extends Component {
                     <View style={{marginTop: 22}}>
                     <View>
                         <Text>Edit Request Here. Click Save When Done.</Text>
-                         <Button save style={styles.button} onPress={() => { this.setModalVisible(!this.state.modalVisible)}}>Save</Button>
-                        <Button close style={styles.button} onPress={this.props.onClose}> Cancel </Button>
+                        <TouchableHighlight save style={styles.button} onPress={() => { this.setModalVisible(!this.state.modalVisible)}}><Text style={{color:'#FFFFFF'}}>Save</Text></TouchableHighlight>
+                        <TouchableHighlight close style={styles.button} onPress={this.props.onClose}> <Text style={{color:'#FFFFFF'}}>Cancel </Text></TouchableHighlight>
                     </View>
                     </View>
                 </Modal>

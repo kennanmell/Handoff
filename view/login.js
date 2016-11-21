@@ -6,10 +6,9 @@ import {
   TextInput,
   Navigator,
   View,
+  TouchableHighlight,
 } from 'react-native';
 import Organization from '../model/Organization';
-import{Button} from 'native-base';
-
 /**
 The login screen. Allows the user to log in with Facebook. Currently offers dummy log-in buttons to allow access
 to the rest of the app.
@@ -46,10 +45,10 @@ export default class FacebookLoginPage extends Component {
 			style={{height: 40}}
 			onChangeText={(text) => this.setState({typedPass: text})}
 		/>
-        <Button style={styles.button} onPress={ this.beforeOrgLogin.bind(this) }>Login</Button>
-        <Button style={styles.button} onPress={ this.props.onOrgCreation }>New Organization</Button>
-		    <Button style={styles.button} onPress={ this.props.onUserLogin }>I'm a donator</Button>
-        <Button style={styles.button} onPress={ this.props.onSubAccess}>Subscriptions</Button>
+		<TouchableHighlight style={styles.button} onPress={ this.beforeOrgLogin.bind(this) }><Text style={{color:'#FFFFFF'}}>Login</Text></TouchableHighlight>
+        <TouchableHighlight style={styles.button} onPress={ this.props.onOrgCreation }><Text style={{color:'#FFFFFF'}}>New Organization</Text></TouchableHighlight>
+		    <TouchableHighlight style={styles.button} onPress={ this.props.onUserLogin }><Text style={{color:'#FFFFFF'}}>Donor Login</Text></TouchableHighlight>
+        <TouchableHighlight style={styles.button} onPress={ this.props.onSubAccess}><Text style={{color:'#FFFFFF'}}>Subscriptions</Text></TouchableHighlight>
       </View>
     );
   }
