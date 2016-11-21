@@ -57,6 +57,7 @@ export default class FacebookLoginPage extends Component {
   beforeOrgLogin() {
     window.org.name = this.state.typedName
     window.org.password = this.state.typedPass
+	window.org.userName = this.state.typedName
           this.serverLogin()
               .then((response) => response.json())
               .then((responseJson) => {
@@ -68,7 +69,7 @@ export default class FacebookLoginPage extends Component {
               		.then((responseJson) => {
             	  		window.org.name = responseJson.info.name
             	  		window.org.description = responseJson.info.description
-            	  		window.org.location = responseJson.info.location
+            	  		window.org.loc = responseJson.info.location
             	  		if (window.org.description != null) {
         					// Login successful.
         					this.props.onOrgLogin()

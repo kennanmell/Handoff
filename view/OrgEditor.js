@@ -26,8 +26,8 @@ export default class OrganizationEditor extends Component {
 
   constructor(props) {
     super(props);
-	this.org = new Organization(window.org.name, "1516 Brooklyn Ave",
-							   "Providing a space for those in need", window.org.password);
+	this.org = new Organization(window.org.name, window.org.loc,
+							   window.org.description, window.org.password);
     this.state = {text: '',
 				  typedName: this.org.name,
 				  typedLoc: this.org.loc,
@@ -70,6 +70,27 @@ export default class OrganizationEditor extends Component {
 			onPress= {() => {this.org.name = this.state.typedName;
 							 this.org.loc = this.state.typedLoc;
 							 this.org.description = this.state.typedDesc;
+							 console.log(window.org.uuid)
+							 console.log(this.state.typedName)
+							 console.log(this.state.typedDesc)
+							 console.log(this.state.typedLoc)
+							 console.log(window.org.userName)
+							 console.log(window.org.auth)
+							 editOrg(window.org.uuid, this.state.typedName, 
+									 this.state.typedDesc, this.state.typedLoc,
+									 window.org.userName, window.org.auth)
+								.then((response) => response.json())
+								.then((responseJson) => {
+									if (responseJson.old != null){
+										console.log(responseJson.old.name);
+									} else {
+										console.log("null!")
+									}
+									
+								})
+								.catch((error) => {
+									console.error(error);
+								});
 							 this.props.onSave}}
 			style={styles.button}> Save
 		</Button>
@@ -79,6 +100,24 @@ export default class OrganizationEditor extends Component {
 		
     );
   }
+}
+
+async function editOrg(uuid, name, description, loc, username, auth) {
+    return fetch('https://u116vqy0l2.execute-api.us-west-2.amazonaws.com/prod/organizations/update', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body:  JSON.stringify({
+			"uuid": uuid,
+            "name": name,
+			"description": description,
+			"location": loc,
+			"username": username,
+			"auth": auth
+      })
+    })
 }
 
 const styles = StyleSheet.create({
