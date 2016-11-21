@@ -2,3 +2,4 @@
 android/app/build/
 android/local.properties
 android/.gradle/2.4/taskArtifacts/
+node_modules/
