@@ -11,7 +11,8 @@ import {
   Text,
   TextInput,
   TouchableHighlight,
-  View
+  View,
+  Alert
 } from 'react-native';
 
 /*Builds a OrganizationCreator, which an Organization User uses upon
@@ -92,10 +93,15 @@ export default class OrganizationCreator extends Component {
 									this.state.typedUserName, this.state.typedPass)
 								.then((response) => response.json())
 								.then((responseJson) => {
-									this.org.uuid = responseJson.uuid;
-									window.org.uuid = responseJson.uuid;
-									console.log("uuid = ");
-									console.log(responseJson.uuid);
+									if (responseJson != null){
+										this.org.uuid = responseJson.uuid;
+										window.org.uuid = responseJson.uuid;
+										console.log("uuid = ");
+										console.log(responseJson.uuid);
+										Alert.alert('Account created', 'Press continue to return to login screen');
+									} else {
+										Alert.alert('Account not created', 'Something went wrong.');
+									}
 								})
 								.catch((error) => {
 									console.error(error);

@@ -108,9 +108,7 @@ class MainNavigator extends Component {
 	if (route.name == 'OrgCreateProfile') {
     	return <OrganizationCreator
     	    onContinue={ () => {
-				navigator.push({
-					name: 'MakeRequest',
-				})
+				navigator.pop()
     		}}
     	/>
     }
