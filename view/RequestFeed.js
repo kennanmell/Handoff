@@ -172,18 +172,29 @@ class OrgRow extends Component {
     }
 
     // This method will create update the request for the request that the orgrow represents
-    async updateRequest() {
+    async updateRequest(edit) {
+        params = null;
+        if (!edit) {
+            params = JSON.stringify({ organization: window.org.uuid,
+                                                          time: this.state.time,
+                                                          username: window.org.userName,
+                                                          auth: window.org.auth})
+        } else {
+            JSON.stringify({ organization: window.org.uuid,
+                                                 time: this.state.time,
+                                                 title: this.state.title,
+                                                 description: this.state.description,
+                                                 tags: this.state.tags,
+                                                 username: window.org.userName,
+                                                 auth: window.org.auth})
+        }
         return fetch('https://u116vqy0l2.execute-api.us-west-2.amazonaws.com/prod/requests/update', {
               method: 'POST',
               headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
               },
-              body: JSON.stringify({ organization: this.state.organization,
-                                     time: this.state.time,
-                                     title: this.state.title,
-                                     description: this.state.description,
-                                     tags: this.state.tags})
+              body: params
         })
     }
 
@@ -226,8 +237,16 @@ class OrgRow extends Component {
                     this.title = this.state.title;
                     this.description = this.state.description;
                     this.setModalVisible(!this.state.modalVisible);
-                    this.updateRequest();}}
+                    this.updateRequest(true);}}
                     tag='submitButton'>Submit Edit</Button>
+              <Button
+                  style={styles.button}
+                onPress={() => {Alert.alert('Delete Successful', 'Deleted the unwanted request.');
+                  this.title = "<deleted>";
+                  this.description = "Reload page to make this disappear";
+                  this.setModalVisible(!this.state.modalVisible);
+                  this.updateRequest(false);}}
+                  tag='submitButton'>Delete Request</Button>
               <Button
                   style={styles.button}
                   onPress={() => {this.setModalVisible(!this.state.modalVisible);
@@ -258,7 +277,9 @@ export default class RequestFeed extends Component {
            "description": "If this takes too long, check your internet connection.",
         }];
 
-        this.organization = props.organization;
+        if (props.organization != null) {
+            this.organization = window.org.uuid; // yeah i blame the weird backend documentation
+        }
 
         // Sets the initial page to a loading page
         this.state = {
