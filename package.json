@@ -13,17 +13,34 @@
     "react-native-fbsdk": "^0.4.0"
   },
   "devDependencies": {
+    "ava": "^0.17.0",
     "babel-cli": "^6.18.0",
     "babel-jest": "^16.0.0",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
     "babel-preset-react-native": "^1.9.0",
+    "enzyme": "^2.6.0",
     "jest": "^16.0.2",
     "jest-react-native": "^16.1.0",
+    "mockery": "^2.0.0",
+    "nyc": "^9.0.1",
+    "react-addons-test-utils": "^15.4.0",
+    "react-dom": "^15.4.0",
+    "react-native-mock": "^0.2.8",
     "react-test-renderer": "^15.4.0"
   },
   "jest": {
     "preset": "jest-react-native"
+  },
+  "ava": {
+    "babel": "inherit",
+    "files": [ "__tests__/**/*.js", "!Tests/Setup.js" ],
+    "require": [
+      "babel-register",
+      "babel-polyfill",
+      "react-native-mock/mock",
+      "./__tests__/Setup"
+    ]
   },
   "description": "Handoff is a mobile application that bridges the communication gap between local organizations such as food banks and non-profits, and community members looking to donate. The app allows organizations to post requests about general or specific needs, and then users can browse through this information through either a request feed or a map that displays requests at the location of the organization. A user might want to use it because it can keep them aware of the needs of organizations, and it provides an easy way to find a place where items to donate can be dropped off.",
   "main": "index.android.js",

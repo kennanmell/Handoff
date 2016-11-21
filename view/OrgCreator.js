@@ -11,9 +11,9 @@ import {
   Text,
   TextInput,
   TouchableHighlight,
-  View,
-  Button
+  View
 } from 'react-native';
+import{Button} from 'native-base';
 
 /*Builds a OrganizationCreator, which an Organization User uses upon
 their first login to set up their organization's information to be
