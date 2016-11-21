@@ -15,9 +15,9 @@ import {
   Modal,
   TouchableHighlight,
   Navigator,
-  Alert
+  Alert,
+  Button
 } from 'react-native';
-import{Button} from 'native-base';
 
 /*Builds a RequestMaker, which an Organization User uses to
 submit requests. Has text boxes for the request title, description,

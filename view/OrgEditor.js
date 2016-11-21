@@ -11,9 +11,9 @@ import {
   Text,
   TextInput,
   TouchableHighlight,
-  View
+  View,
+  Button
 } from 'react-native';
-import{Button} from 'native-base';
 
 /*Builds a OrganizationEditor, which an Organization User uses to
 edit information about their organization. Has text boxes for their

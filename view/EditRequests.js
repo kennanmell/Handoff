@@ -13,9 +13,9 @@ import {
   TouchableNativeFeedback,
   Modal,
   TouchableHighlight,
-  Navigator
+  Navigator,
+  Button
 } from 'react-native';
-import{Button} from 'native-base';
 
 /*Builds a EditRequests class, which an organization User uses to
 select a request to edit and edit it in a pop-up. Has a RequestFeed

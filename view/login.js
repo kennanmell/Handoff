@@ -5,9 +5,9 @@ import {
   Text,
   TextInput,
   Navigator,
-  View
+  View,
+  Button
 } from 'react-native';
-import{Button} from 'native-base';
 import Organization from '../model/Organization';
 
 /**
@@ -66,9 +66,9 @@ export default class FacebookLoginPage extends Component {
             	  this.serverOrgData(window.org.uuid)
               		.then((response) => response.json())
               		.then((responseJson) => {
-            	  		window.org.name = responseJson.name
-            	  		window.org.description = responseJson.description
-            	  		window.org.location = responseJson.location
+            	  		window.org.name = responseJson.info.name
+            	  		window.org.description = responseJson.info.description
+            	  		window.org.location = responseJson.info.location
             	  		if (window.org.description != null) {
         					// Login successful.
         					this.props.onOrgLogin()

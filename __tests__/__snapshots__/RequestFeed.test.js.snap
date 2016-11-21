@@ -3,9 +3,10 @@ exports[`test renders correctly 1`] = `
   <ScrollView
     dataSource={
       ListViewDataSource {
-        "items": 1,
+        "items": 0,
       }
     }
+    enableEmptySections={true}
     initialListSize={10}
     onContentSizeChange={[Function]}
     onEndReachedThreshold={1000}
@@ -27,7 +28,7 @@ exports[`test renders correctly 1`] = `
       style={
         Object {
           "alignItems": "center",
-          "backgroundColor": "#C1C1C1",
+          "backgroundColor": "#642D64",
           "flex": 1,
           "flexDirection": "row",
           "height": 70,
@@ -48,57 +49,6 @@ exports[`test renders correctly 1`] = `
           }
         } />
     </View>
-    <View
-      style={
-        Object {
-          "padding": 10,
-        }
-      }>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "fontSize": 20,
-          }
-        }>
-          
-        Waiting on data
-      </Text>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "fontSize": 20,
-          }
-        }>
-          
-        HandOff Team
-      </Text>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "fontSize": 18,
-          }
-        }>
-          
-        Should be fetching requests, if this takes too long, checkyour internet connection.
-      </Text>
-    </View>
-    <View
-      style={
-        Object {
-          "backgroundColor": "#C1C1C1",
-          "flex": 1,
-          "height": 6,
-        }
-      } />
   </ScrollView>
 </View>
 `;
