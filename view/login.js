@@ -62,24 +62,23 @@ export default class FacebookLoginPage extends Component {
               .then((responseJson) => {
             	  window.org.uuid = responseJson.uuid
             	  window.org.auth = responseJson.auth
-                })
-                .then(() => {
-                	this.serverOrgData(window.org.uuid)
+            	  
+            	  this.serverOrgData(window.org.uuid)
               		.then((response) => response.json())
               		.then((responseJson) => {
             	  		window.org.name = responseJson.name
             	  		window.org.description = responseJson.description
             	  		window.org.location = responseJson.location
+            	  		if (window.org.description != null) {
+        					// Login successful.
+        					this.props.onOrgLogin()
+        				}
                 	})
-                }).then(() => {
-                	if (window.org.description != null) {
-        				// Login successful.
-        				this.props.onOrgLogin()
-        			}
+
                 })
               .catch((error) => {
                 console.error(error);
-                })        
+                })
   }
   
   async serverLogin() {
