@@ -92,6 +92,10 @@ export default class RequestMaker extends Component {
 For the moment, the request's organization and its tags are not modifiable. This functionality
 will be added later.*/
 async function makeRequest(requestName, requestDescription) {
+    console.log(window.org.name);
+    console.log(requestName);
+    console.log(window.org.userName);
+    console.log(window.org.auth);
     fetch('https://u116vqy0l2.execute-api.us-west-2.amazonaws.com/prod/requests/new', {
       method: 'POST',
       headers: {
@@ -99,11 +103,12 @@ async function makeRequest(requestName, requestDescription) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-            "organization": "Hope Shelter",
-			"time": 50,
+            "organization": window.org.uuid,
 			"title": requestName,
 	        "description": requestDescription,
-			"tags": ["food","test"]
+			"tags": ["food","test"],
+			"username": window.org.userName,
+			"auth": window.org.auth
       })
     })
 	console.log("fetch maybe did something");
