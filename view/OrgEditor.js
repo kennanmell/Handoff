@@ -82,6 +82,9 @@ export default class OrganizationEditor extends Component {
 								.then((responseJson) => {
 									if (responseJson.old != null){
 										console.log(responseJson.old.name);
+										window.org.name = this.state.typedName;
+										window.org.loc = this.state.typedLoc;
+										window.org.description = this.state.typedDesc;
 									} else {
 										console.log("null!")
 									}
