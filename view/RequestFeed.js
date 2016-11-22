@@ -179,7 +179,7 @@ class OrgRow extends Component {
                                                           username: window.org.userName,
                                                           auth: window.org.auth})
         } else {
-            JSON.stringify({ organization: window.org.uuid,
+            params = JSON.stringify({ organization: window.org.uuid,
                                                  time: this.state.time,
                                                  title: this.state.title,
                                                  description: this.state.description,
@@ -236,8 +236,16 @@ class OrgRow extends Component {
                     this.title = this.state.title;
                     this.description = this.state.description;
                     this.setModalVisible(!this.state.modalVisible);
-                    this.updateRequest();}}
+                    this.updateRequest(true);}}
                     tag='submitButton'><Text style={{color:'#FFFFFF'}}> Submit Edit</Text></TouchableHighlight>
+              <TouchableHighlight
+                    style={styles.orgButton}
+                  onPress={() => {Alert.alert('Update Successful', 'Sent your edited request.');
+                      this.title = "<deleted>";
+                      this.description = "";
+                      this.setModalVisible(!this.state.modalVisible);
+                      this.updateRequest(false);}}
+                      tag='submitButton'><Text style={{color:'#FFFFFF'}}> Delete Request</Text></TouchableHighlight>
               <TouchableHighlight
                   style={styles.orgButton}
                   onPress={() => {this.setModalVisible(!this.state.modalVisible);
@@ -248,8 +256,8 @@ class OrgRow extends Component {
           </Modal>
           <Text style={{fontSize: 20}}>  {this.title}</Text>
           <Text style={{alignItems: 'center'}, {fontSize: 18}}>{this.description}</Text>
-          <Text style={styles.orgButton} onPress={() => {this.setModalVisible(true)}}>
-                Edit Request </Text>
+          <TouchableHighlight style={styles.orgButton} onPress={() => {this.setModalVisible(true)}}>
+                <Text style={{color:'#FFFFFF'}}>Edit Request </Text></TouchableHighlight>
         </View>);
     }
 }

@@ -17,8 +17,9 @@ import {
 
 /*Builds a OrganizationCreator, which an Organization User uses upon
 their first login to set up their organization's information to be
-displayed to users. Has text boxes for theirorganization's name, 
-description, and location. Has a save buttonto save changes, and a
+displayed to users. Has text boxes for the organization's name, 
+description, and location. Also has text boxes for the user's
+username and password. Has a save button create the organization, and a
 continue button for when they are finished. */
 export default class OrganizationCreator extends Component {
   static propTypes = {
@@ -118,6 +119,9 @@ export default class OrganizationCreator extends Component {
   }
 }
 
+/*Sends a request to the backend to make a new organization,
+taking an organization name, location, description, a username,
+and a password. */
 async function createOrg(name, loc, description, username, pass) {
     return fetch('https://u116vqy0l2.execute-api.us-west-2.amazonaws.com/prod/organizations/new', {
       method: 'POST',
