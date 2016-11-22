@@ -261,13 +261,6 @@ export default class RequestFeed extends Component {
     constructor(props) {
         super(props);
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-        startPage = [{
-           "organization": "HandOff Team",
-           "time": 7,
-           "title": "Waiting on data",
-           "description": "If this takes too long, check your internet connection.",
-        }];
-
         if (props.organization != null) {
             this.organization = window.org.uuid; // yeah i blame the weird backend documentation
         }
