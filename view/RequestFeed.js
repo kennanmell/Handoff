@@ -62,11 +62,11 @@ const Header = (props) => (
 );
 
 // This method returns a Promise that will at some point, probably very quickly return
-// a list of 30 requests. Passed organization is a string to filter by
+// a list of 30 requests. Passed organization is a string to filter by, if null it will return
+// all requests.
 async function getRequests(organization) {
     params = null;
     listOfOrg = [organization];
-    console.log(organization);
     if (organization != null) {
         params = JSON.stringify({ limit: 30, organizations: listOfOrg})
     } else {
@@ -82,28 +82,15 @@ async function getRequests(organization) {
     })
 }
 
-// The row is a component that should have a title, organization, and description passed in as props
-// This component will display these components.
-/*const Row = (props) => (
-  <View style={{padding: 10}}>
-    <Text style={{fontSize: 20}}>  {props.title}</Text>
-    <Text style={styles.orgButton}
-        onPress={()=>Alert.alert('Organization Info', props.organization,
-                    [{text: 'Subscribe', onPress: ()=>console.log('subscribe, yo!')},
-                    {text: 'Close', onPress:()=>console.log('done')}])}
-                    >  {props.organization}</Text>
-    <Text style={{alignItems: 'center'}, {fontSize: 18}}>{props.description}</Text>
-    <Text style={styles.orgButton}> More info . . . </Text>
-  </View>
-);*/
-
+// This class is a display of the individual requests and will provide buttons to see more info
+// about either the request or the organization that posted it.
 class Row extends Component {
     constructor(props) {
         super(props);
         // These are what is displayed, while the this.state variables are what the edit is set to
         this.title = props.title;
         this.description = props.description;
-        this.organization = props.organization;
+        this.organization = props.organization_name; // sadly organization is now uuid so
         this.tags = props.tags;
         this.time = (new Date(props.time)).toString();
 
@@ -163,14 +150,15 @@ class OrgRow extends Component {
         this.state = {
           title: props.title,
           time: props.time,
-          organization: props.organization,
+          organization: props.organization_name, //sadly organization is now the uuid
           description: props.description,
           tags: props.tags,
           modalVisible: false,
         }
     }
 
-    // This method will create update the request for the request that the orgrow represents
+    // This method will create update the request for the request that the orgrow represents,
+    // takes in a boolean to indicate whether to edit or delete the request, true means edit.
     async updateRequest(edit) {
         params = null;
         if (!edit) {
@@ -179,7 +167,7 @@ class OrgRow extends Component {
                                                           username: window.org.userName,
                                                           auth: window.org.auth})
         } else {
-            JSON.stringify({ organization: window.org.uuid,
+            params = JSON.stringify({ organization: window.org.uuid,
                                                  time: this.state.time,
                                                  title: this.state.title,
                                                  description: this.state.description,
@@ -236,8 +224,16 @@ class OrgRow extends Component {
                     this.title = this.state.title;
                     this.description = this.state.description;
                     this.setModalVisible(!this.state.modalVisible);
-                    this.updateRequest();}}
+                    this.updateRequest(true);}}
                     tag='submitButton'><Text style={{color:'#FFFFFF'}}> Submit Edit</Text></TouchableHighlight>
+              <TouchableHighlight
+                    style={styles.orgButton}
+                  onPress={() => {Alert.alert('Update Successful', 'Sent your edited request.');
+                      this.title = "<deleted>";
+                      this.description = "";
+                      this.setModalVisible(!this.state.modalVisible);
+                      this.updateRequest(false);}}
+                      tag='submitButton'><Text style={{color:'#FFFFFF'}}> Delete Request</Text></TouchableHighlight>
               <TouchableHighlight
                   style={styles.orgButton}
                   onPress={() => {this.setModalVisible(!this.state.modalVisible);
@@ -248,26 +244,20 @@ class OrgRow extends Component {
           </Modal>
           <Text style={{fontSize: 20}}>  {this.title}</Text>
           <Text style={{alignItems: 'center'}, {fontSize: 18}}>{this.description}</Text>
-          <Text style={styles.orgButton} onPress={() => {this.setModalVisible(true)}}>
-                Edit Request </Text>
+          <TouchableHighlight style={styles.orgButton} onPress={() => {this.setModalVisible(true)}}>
+                <Text style={{color:'#FFFFFF'}}>Edit Request </Text></TouchableHighlight>
         </View>);
     }
 }
 
 // This component is a scrollable list of requests. Intially it will display a text that shows we
 // are still waiting on the server to provide our requests, but once the request to the server has
-// been completed the received requests will be displayed in the scrollable list.
+// been completed the received requests will be displayed in the scrollable list, with buttons for
+// more information.
 export default class RequestFeed extends Component {
     constructor(props) {
         super(props);
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-        startPage = [{
-           "organization": "HandOff Team",
-           "time": 7,
-           "title": "Waiting on data",
-           "description": "If this takes too long, check your internet connection.",
-        }];
-
         if (props.organization != null) {
             this.organization = window.org.uuid; // yeah i blame the weird backend documentation
         }

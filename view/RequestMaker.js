@@ -107,6 +107,7 @@ async function makeRequest(requestName, requestDescription) {
       },
       body: JSON.stringify({
             "organization": window.org.uuid,
+            "organization_name": window.org.name,
 			"title": requestName,
 	        "description": requestDescription,
 			"tags": ["food","test"],

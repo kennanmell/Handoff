@@ -1,0 +1,170 @@
+exports[`test renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "padding": 10,
+    }
+  }>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "#612e5f",
+        "fontSize": 15,
+        "fontWeight": "bold",
+        "margin": 0,
+        "textAlign": "left",
+      }
+    }>
+    Name
+  </Text>
+  <TextInput
+    defaultValue="Hope Shelter"
+    onChangeText={[Function]}
+    style={
+      Object {
+        "height": 40,
+      }
+    } />
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "#612e5f",
+        "fontSize": 15,
+        "fontWeight": "bold",
+        "margin": 0,
+        "textAlign": "left",
+      }
+    }>
+    Location
+  </Text>
+  <TextInput
+    defaultValue="Seattle"
+    onChangeText={[Function]}
+    style={
+      Object {
+        "height": 40,
+      }
+    } />
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "#612e5f",
+        "fontSize": 15,
+        "fontWeight": "bold",
+        "margin": 0,
+        "textAlign": "left",
+      }
+    }>
+    Mission Statement
+  </Text>
+  <TextInput
+    defaultValue="This is hope shelter"
+    multiline={true}
+    numberOfLines={4}
+    onChangeText={[Function]}
+    style={
+      Object {
+        "height": 90,
+      }
+    } />
+  <View
+    accessibilityComponentType={undefined}
+    accessibilityLabel={undefined}
+    accessibilityTraits={undefined}
+    accessible={true}
+    hitSlop={undefined}
+    onLayout={undefined}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+        },
+        Object {
+          "alignItems": "flex-end",
+          "backgroundColor": "#642D64",
+          "borderColor": "black",
+          "borderWidth": 1,
+          "flexDirection": "column",
+          "justifyContent": "center",
+          "marginBottom": 15,
+          "marginLeft": 3,
+          "marginTop": 10,
+          "padding": 5,
+        },
+      ]
+    }
+    testID={undefined}>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#FFFFFF",
+        }
+      }>
+      Save
+    </Text>
+  </View>
+  <View
+    accessibilityComponentType={undefined}
+    accessibilityLabel={undefined}
+    accessibilityTraits={undefined}
+    accessible={true}
+    hitSlop={undefined}
+    onLayout={undefined}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+        },
+        Object {
+          "alignItems": "flex-end",
+          "backgroundColor": "#642D64",
+          "borderColor": "black",
+          "borderWidth": 1,
+          "flexDirection": "column",
+          "justifyContent": "center",
+          "marginBottom": 15,
+          "marginLeft": 3,
+          "marginTop": 10,
+          "padding": 5,
+        },
+      ]
+    }
+    testID={undefined}>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#FFFFFF",
+        }
+      }>
+      Close
+    </Text>
+  </View>
+</View>
+`;

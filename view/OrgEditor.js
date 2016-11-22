@@ -25,8 +25,13 @@ export default class OrganizationEditor extends Component {
 
   constructor(props) {
     super(props);
-	this.org = new Organization(window.org.name, window.org.loc,
-							   window.org.description, window.org.password);
+    if (window.org == null) {
+    	this.org = new Organization("Hope Shelter", "Seattle", 
+    								"This is hope shelter", "pass", "22212");
+    } else {
+    	this.org = new Organization(window.org.name, window.org.loc,
+							   window.org.description, window.org.password, window.org.auth);
+    }
     this.state = {text: '',
 				  typedName: this.org.name,
 				  typedLoc: this.org.loc,
