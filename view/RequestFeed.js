@@ -90,6 +90,7 @@ class Row extends Component {
         // These are what is displayed, while the this.state variables are what the edit is set to
         this.title = props.title;
         this.description = props.description;
+        this.uuid = props.organization;
         this.organization = props.organization_name; // sadly organization is now uuid so
         this.tags = props.tags;
         this.time = (new Date(props.time)).toString();
@@ -101,6 +102,17 @@ class Row extends Component {
 
     setModalVisible(visible) {
       this.setState({modalVisible: visible});
+    }
+
+    async getOrganization(organization) {
+        return fetch('https://u116vqy0l2.execute-api.us-west-2.amazonaws.com/prod/organizations/info', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({uuid: organization})
+        })
     }
 
     render() {
@@ -125,10 +137,16 @@ class Row extends Component {
           </Modal>
           <Text style={{fontSize: 20}}>  {this.title}</Text>
          <TouchableHighlight style={styles.orgButton}
-              onPress={()=>
-                           Alert.alert('Organization Info', this.organization + " " + this.title,
-                          [{text: 'Subscribe', onPress: ()=>console.log('subscribe, yo!')},
-                          {text: 'Close', onPress:()=>console.log('done')}])}
+              onPress={()=> this.getOrganization(this.uuid)
+                                .then((response) => response.json())
+                                .then((responseJson) => {
+                                      Alert.alert('Organization Info', "Name: " + responseJson.info.name + "\nLocation: " + responseJson.info.location,
+                                        [{text: 'Subscribe', onPress: ()=>console.log('subscribe, yo!')},
+                                        {text: 'Close', onPress:()=>console.log('done')}])
+                                })
+                                .catch((error) => {
+                                    console.error(error);
+                                })}
                           ><Text style={{color:'#FFFFFF'}}>{this.organization}</Text></TouchableHighlight>
           <Text style={{alignItems: 'center'}, {fontSize: 18}}>{this.description}</Text>
           <TouchableHighlight style={styles.orgButton} onPress={() => {this.setModalVisible(true)}}><Text style={{color:'#FFFFFF'}}> More info . . . </Text></TouchableHighlight>
