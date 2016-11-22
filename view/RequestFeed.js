@@ -103,7 +103,7 @@ class Row extends Component {
         // These are what is displayed, while the this.state variables are what the edit is set to
         this.title = props.title;
         this.description = props.description;
-        this.organization = props.organization;
+        this.organization = props.organization_name; // sadly organization is now uuid so
         this.tags = props.tags;
         this.time = (new Date(props.time)).toString();
 
@@ -163,7 +163,7 @@ class OrgRow extends Component {
         this.state = {
           title: props.title,
           time: props.time,
-          organization: props.organization,
+          organization: props.organization_name, //sadly organization is now the uuid
           description: props.description,
           tags: props.tags,
           modalVisible: false,
