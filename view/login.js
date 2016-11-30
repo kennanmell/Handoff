@@ -7,6 +7,7 @@ import {
   Navigator,
   View,
   Alert,
+  NetInfo,
   TouchableHighlight,
 } from 'react-native';
 import Organization from '../model/Organization';
@@ -17,7 +18,8 @@ export default class FacebookLoginPage extends Component {
   static propTypes = {
     onOrgLogin:PropTypes.func.isRequired,
     onUserLogin:PropTypes.func.isRequired,
-    onSubAccess:PropTypes.func.isRequired
+    onSubAccess:PropTypes.func.isRequired,
+    onNoInternet:PropTypes.func.isRequired
   }
     
   constructor(props) {
@@ -26,6 +28,11 @@ export default class FacebookLoginPage extends Component {
 				  typedName: "a",
 				  typedPass: "b"
 	};
+    NetInfo.isConnected.fetch().then(isConnected => {
+      if (!isConnected) {
+        this.props.onNoInternet
+      }
+    });
   }
   render() {
     return (
