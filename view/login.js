@@ -6,12 +6,12 @@ import {
   TextInput,
   Navigator,
   View,
+  Alert,
   TouchableHighlight,
 } from 'react-native';
 import Organization from '../model/Organization';
 /**
-The login screen. Allows the user to log in with Facebook. Currently offers dummy log-in buttons to allow access
-to the rest of the app.
+The login screen. Allows organizations to log in, and for donators to access their feed/subscription.
 */
 export default class FacebookLoginPage extends Component {
   static propTypes = {
@@ -66,13 +66,17 @@ export default class FacebookLoginPage extends Component {
             	  this.serverOrgData(window.org.uuid)
               		.then((response) => response.json())
               		.then((responseJson) => {
-            	  		window.org.name = responseJson.info.name
-            	  		window.org.description = responseJson.info.description
-            	  		window.org.loc = responseJson.info.location
-            	  		if (window.org.description != null) {
-        					// Login successful.
-        					this.props.onOrgLogin()
-        				}
+              		    if (responseJson != null && responseJson.info != null) {
+              		  		window.org.name = responseJson.info.name
+            	  			window.org.description = responseJson.info.description
+            	  			window.org.loc = responseJson.info.location
+            	  			if (window.org.description != null) {
+        						// Login successful.
+        						this.props.onOrgLogin()
+        					}
+              		    } else {
+              		        Alert.alert('Login failed', 'Your username-password combination is invalid. Create a new account or email kmell96@gmail.com for help logging in.');
+              		    }
                 	})
 
                 })
