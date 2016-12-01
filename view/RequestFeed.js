@@ -55,7 +55,7 @@ const Header = (props) => (
   <View style={styles.container}>
     <TextInput
       style={styles.input}
-      placeholder="Search..."
+      placeholder={props.org}
       onChangeText={(text) => console.log('searching for ', text)}
     />
   </View>
@@ -282,7 +282,8 @@ export default class RequestFeed extends Component {
 
         // Sets the initial page to a loading page
         this.state = {
-          dataSource: ds.cloneWithRows([])
+          tags = [];
+          dataSource: ds.cloneWithRows([]);
         }
 
         // the .then statements will then handle the response
@@ -297,6 +298,10 @@ export default class RequestFeed extends Component {
               .catch((error) => {
                 console.error(error);
         });
+    }
+
+    setTags(listofTags) {
+        this.setState({tags=listofTags});
     }
 
     render() {
@@ -320,7 +325,7 @@ export default class RequestFeed extends Component {
                 dataSource={this.state.dataSource}
                 renderRow={(rowData) => <OrgRow {...rowData}/>}
                 renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
-                renderHeader={() => <Header />}
+                renderHeader={() => <Header org={this.organization}/>}
               />
             </View>
         );
