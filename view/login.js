@@ -9,6 +9,7 @@ import {
   Alert,
   NetInfo,
   TouchableHighlight,
+  Image,
 } from 'react-native';
 import Organization from '../model/Organization';
 /**
@@ -37,25 +38,36 @@ export default class FacebookLoginPage extends Component {
   render() {
     return (
       <View>
-        <Text style={{fontSize: 20, textAlign: 'center'}}>Handoff Login</Text>
-        <Text style={styles.editing}>
-			Name
-        </Text>
-		<TextInput
-			style={{height: 40}}
-			onChangeText={(text) => this.setState({typedName: text})}
-		/>
-        <Text style={styles.editing}>
-        	Password
-        </Text>
-		<TextInput
-			style={{height: 40}}
-			onChangeText={(text) => this.setState({typedPass: text})}
-		/>
-		<TouchableHighlight style={styles.button} onPress={ this.beforeOrgLogin.bind(this) }><Text style={{color:'#FFFFFF', textAlign:'center'}}>Login</Text></TouchableHighlight>
-        <TouchableHighlight style={styles.button} onPress={ this.props.onOrgCreation }><Text style={{color:'#FFFFFF', textAlign:'center'}}>New Organization</Text></TouchableHighlight>
-		    <TouchableHighlight style={styles.button} onPress={ this.props.onUserLogin }><Text style={{color:'#FFFFFF', textAlign:'center'}}>Donor Login</Text></TouchableHighlight>
-        <TouchableHighlight style={styles.button} onPress={ this.props.onSubAccess}><Text style={{color:'#FFFFFF', textAlign:'center'}}>Subscriptions</Text></TouchableHighlight>
+        <View style={styles.container}>
+        <Image
+                  source={require('./img/handofflogo.png')}
+                />
+        </View>
+        <View style={styles.box}>
+            <Text style={{fontSize: 20, textAlign: 'center', color:"#000000"}}>Organizations</Text>
+            <Text style={styles.editing}>
+                Name
+            </Text>
+            <TextInput
+                style={{height: 40}}
+                onChangeText={(text) => this.setState({typedName: text})}
+            />
+            <Text style={styles.editing}>
+                Password
+            </Text>
+            <TextInput
+                style={{height: 40}}
+                onChangeText={(text) => this.setState({typedPass: text})}
+            />
+            <TouchableHighlight style={styles.button} onPress={ this.beforeOrgLogin.bind(this) }><Text style={{color:'#FFFFFF', textAlign:'center', fontSize: 18}}>Login</Text></TouchableHighlight>
+            <TouchableHighlight style={styles.button} onPress={ this.props.onOrgCreation }><Text style={{color:'#FFFFFF', textAlign:'center', fontSize: 18}}>New Organization</Text></TouchableHighlight>
+
+        </View>
+        <View style={styles.box}>
+            <Text style={{fontSize: 20, textAlign: 'center', color:"#000000"}}>Donors</Text>
+            <TouchableHighlight style={styles.button} onPress={ this.props.onUserLogin }><Text style={{color:'#FFFFFF', textAlign:'center', fontSize: 18}}>Donor Login</Text></TouchableHighlight>
+            <TouchableHighlight style={styles.button} onPress={ this.props.onSubAccess}><Text style={{color:'#FFFFFF', textAlign:'center', fontSize: 18}}>Subscriptions</Text></TouchableHighlight>
+        </View>
       </View>
     );
   }
@@ -126,13 +138,35 @@ const styles = StyleSheet.create({
   },
   button: {
         flexDirection: 'column',
-        marginLeft: 3,
-        marginRight:3,
+        marginLeft: 5,
+        marginRight:5,
         marginTop: 10,
         borderWidth: 1,
-        padding: 5,
+        padding: 2,
         borderColor: 'black',
+        borderRadius: 3,
         marginBottom: 15,
         backgroundColor: '#642D64',
+    },
+    container: {
+         justifyContent: 'center',
+         alignItems: 'center',
+    },
+    image: {
+       width: 288,
+       height: 172,
+
+    },
+    box: {
+        marginTop: 10,
+        marginBottom: 20,
+        borderColor: "#999999",
+        borderRadius: 4,
+        borderWidth: 2,
+        marginLeft: 3,
+        marginRight: 3,
+        padding: 5,
     }
+
+
 });
