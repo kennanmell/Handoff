@@ -64,8 +64,8 @@ export default class RequestMaker extends Component {
                 />
         <TouchableHighlight
                     style={styles.button}
-					onPress={() => {Alert.alert('Request Successful', 'Your request was successfully posted.');
-					makeRequest(this.state.requestName, this.state.requestDescription);
+					onPress={() => {
+					makeRequest(this.state.requestName, this.state.requestDescription).then(function(){Alert.alert('Request Successful', 'Your request was successfully posted.')});
 					console.log("attempting to make request"); }}
                     tag='submitButton'>
                     <Text style={{color:'#FFFFFF', textAlign:'left', textAlign:'center'}}>Submit Request</Text>
