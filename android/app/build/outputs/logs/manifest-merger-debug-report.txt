@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:1:1-31:12
+ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:1:1-32:12
 	package
 		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:2:5-26
 		INJECTED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml
@@ -25,8 +25,12 @@ MERGED from [com.facebook.react:react-native:0.36.0] /Users/Kennan/Documents/CSE
 MERGED from [com.facebook.react:react-native:0.36.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.36.0/AndroidManifest.xml:11:5-78
 	android:name
 		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:7:22-75
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:8:5-79
+	android:name
+		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:8:22-76
 uses-sdk
-ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:9:5-11:41
+ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:10:5-12:41
 MERGED from [HandOff:react-native-fbsdk:unspecified] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/HandOff/react-native-fbsdk/unspecified/AndroidManifest.xml:26:5-28:41
 MERGED from [com.android.support:appcompat-v7:25.0.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/AndroidManifest.xml:21:5-23:78
 MERGED from [com.android.support:support-v4:25.0.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.0.0/AndroidManifest.xml:21:5-23:54
@@ -429,15 +433,15 @@ MERGED from [com.android.support:support-compat:25.0.0] /Users/Kennan/Documents/
 	tools:overrideLibrary
 		ADDED from [com.android.support:appcompat-v7:25.0.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/AndroidManifest.xml:23:9-75
 	android:targetSdkVersion
-		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:11:9-38
+		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:12:9-38
 		INJECTED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml
 	android:minSdkVersion
-		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:10:9-35
+		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:11:9-35
 		INJECTED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml
 application
-ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:13:5-29:19
+ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:14:5-30:19
 MERGED from [HandOff:react-native-fbsdk:unspecified] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/HandOff/react-native-fbsdk/unspecified/AndroidManifest.xml:30:5-20
 MERGED from [com.android.support:appcompat-v7:25.0.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-v4:25.0.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.0.0/AndroidManifest.xml:25:5-20
@@ -810,49 +814,49 @@ MERGED from [com.android.support:cardview-v7:25.0.0] /Users/Kennan/Documents/CSE
 MERGED from [com.android.support:customtabs:25.0.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/customtabs/25.0.0/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-compat:25.0.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.0/AndroidManifest.xml:25:5-20
 	android:label
-		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:16:7-39
+		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:17:7-39
 	android:allowBackup
-		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:15:7-33
+		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:16:7-33
 	android:icon
-		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:17:7-41
+		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:18:7-41
 	android:theme
-		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:18:7-38
+		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:19:7-38
 	android:name
-		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:14:7-38
+		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:15:7-38
 activity#com.handoff.MainActivity
-ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:19:7-27:18
+ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:20:7-28:18
 	android:label
-		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:21:9-41
+		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:22:9-41
 	android:configChanges
-		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:22:9-79
+		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:23:9-79
 	android:name
-		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:20:9-37
+		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:21:9-37
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:23:9-26:25
+ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:24:9-27:25
 action#android.intent.action.MAIN
-ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:24:13-65
+ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:25:13-65
 	android:name
-		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:24:21-62
+		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:25:21-62
 category#android.intent.category.LAUNCHER
-ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:25:13-73
+ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:26:13-73
 	android:name
-		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:25:23-70
+		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:26:23-70
 activity#com.facebook.react.devsupport.DevSettingsActivity
-ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:28:7-84
+ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:29:7-84
 	android:name
-		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:28:17-81
+		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:29:17-81
 meta-data#com.facebook.sdk.ApplicationId
-ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:30:5-103
+ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:31:5-103
 	android:value
-		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:30:62-101
+		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:31:62-101
 	android:name
-		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:30:16-61
+		ADDED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:31:16-61
 android:uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-IMPLIED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:1:1-31:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4
+IMPLIED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:1:1-32:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4
 android:uses-permission#android.permission.READ_PHONE_STATE
-IMPLIED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:1:1-31:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4
+IMPLIED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:1:1-32:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4
 android:uses-permission#android.permission.READ_EXTERNAL_STORAGE
-IMPLIED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:1:1-31:12 reason: org.webkit.android_jsc requested WRITE_EXTERNAL_STORAGE
+IMPLIED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:1:1-32:12 reason: org.webkit.android_jsc requested WRITE_EXTERNAL_STORAGE
 activity#com.facebook.FacebookActivity
 ADDED from [com.facebook.android:facebook-android-sdk:4.17.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/AndroidManifest.xml:29:9-32:66
 MERGED from [com.facebook.android:facebook-android-sdk:4.17.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/AndroidManifest.xml:29:9-32:66

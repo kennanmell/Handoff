@@ -40,7 +40,7 @@ export default class EditRequests extends Component {
 
        <TouchableHighlight style={styles.button} onPress={() => {
                  this.setModalVisible(true)
-               }}><Text style={{color:'#FFFFFF'}}>Edit a Request</Text></TouchableHighlight>
+               }}><Text style={{color:'#FFFFFF', textAlign:'center'}}>Edit a Request</Text></TouchableHighlight>
         <Text style={styles.welcome}> Handoff </Text>
         <Text style={styles.instructions}> Request Feed Goes Here </Text>
         <Modal
@@ -52,8 +52,8 @@ export default class EditRequests extends Component {
                     <View style={{marginTop: 22}}>
                     <View>
                         <Text>Edit Request Here. Click Save When Done.</Text>
-                        <TouchableHighlight save style={styles.button} onPress={() => { this.setModalVisible(!this.state.modalVisible)}}><Text style={{color:'#FFFFFF'}}>Save</Text></TouchableHighlight>
-                        <TouchableHighlight close style={styles.button} onPress={this.props.onClose}> <Text style={{color:'#FFFFFF'}}>Cancel </Text></TouchableHighlight>
+                        <TouchableHighlight save style={styles.button} onPress={() => { this.setModalVisible(!this.state.modalVisible)}}><Text style={{color:'#FFFFFF', textAlign:'center'}}>Save</Text></TouchableHighlight>
+                        <TouchableHighlight close style={styles.button} onPress={this.props.onClose}> <Text style={{color:'#FFFFFF', textAlign:'center'}}>Cancel </Text></TouchableHighlight>
                     </View>
                     </View>
                 </Modal>
@@ -81,8 +81,6 @@ const styles = StyleSheet.create({
   },
   button: {
         flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'flex-end',
         marginLeft: 3,
         marginTop: 10,
         borderWidth: 1,

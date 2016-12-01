@@ -6,18 +6,20 @@ import {
   TextInput,
   Navigator,
   View,
+  Alert,
+  NetInfo,
   TouchableHighlight,
 } from 'react-native';
 import Organization from '../model/Organization';
 /**
-The login screen. Allows the user to log in with Facebook. Currently offers dummy log-in buttons to allow access
-to the rest of the app.
+The login screen. Allows organizations to log in, and for donators to access their feed/subscription.
 */
 export default class FacebookLoginPage extends Component {
   static propTypes = {
     onOrgLogin:PropTypes.func.isRequired,
     onUserLogin:PropTypes.func.isRequired,
-    onSubAccess:PropTypes.func.isRequired
+    onSubAccess:PropTypes.func.isRequired,
+    onNoInternet:PropTypes.func.isRequired
   }
     
   constructor(props) {
@@ -26,6 +28,11 @@ export default class FacebookLoginPage extends Component {
 				  typedName: "a",
 				  typedPass: "b"
 	};
+    NetInfo.isConnected.fetch().then(isConnected => {
+      if (!isConnected) {
+        this.props.onNoInternet
+      }
+    });
   }
   render() {
     return (
@@ -45,10 +52,10 @@ export default class FacebookLoginPage extends Component {
 			style={{height: 40}}
 			onChangeText={(text) => this.setState({typedPass: text})}
 		/>
-		<TouchableHighlight style={styles.button} onPress={ this.beforeOrgLogin.bind(this) }><Text style={{color:'#FFFFFF'}}>Login</Text></TouchableHighlight>
-        <TouchableHighlight style={styles.button} onPress={ this.props.onOrgCreation }><Text style={{color:'#FFFFFF'}}>New Organization</Text></TouchableHighlight>
-		    <TouchableHighlight style={styles.button} onPress={ this.props.onUserLogin }><Text style={{color:'#FFFFFF'}}>Donor Login</Text></TouchableHighlight>
-        <TouchableHighlight style={styles.button} onPress={ this.props.onSubAccess}><Text style={{color:'#FFFFFF'}}>Subscriptions</Text></TouchableHighlight>
+		<TouchableHighlight style={styles.button} onPress={ this.beforeOrgLogin.bind(this) }><Text style={{color:'#FFFFFF', textAlign:'center'}}>Login</Text></TouchableHighlight>
+        <TouchableHighlight style={styles.button} onPress={ this.props.onOrgCreation }><Text style={{color:'#FFFFFF', textAlign:'center'}}>New Organization</Text></TouchableHighlight>
+		    <TouchableHighlight style={styles.button} onPress={ this.props.onUserLogin }><Text style={{color:'#FFFFFF', textAlign:'center'}}>Donor Login</Text></TouchableHighlight>
+        <TouchableHighlight style={styles.button} onPress={ this.props.onSubAccess}><Text style={{color:'#FFFFFF', textAlign:'center'}}>Subscriptions</Text></TouchableHighlight>
       </View>
     );
   }
@@ -66,13 +73,17 @@ export default class FacebookLoginPage extends Component {
             	  this.serverOrgData(window.org.uuid)
               		.then((response) => response.json())
               		.then((responseJson) => {
-            	  		window.org.name = responseJson.info.name
-            	  		window.org.description = responseJson.info.description
-            	  		window.org.loc = responseJson.info.location
-            	  		if (window.org.description != null) {
-        					// Login successful.
-        					this.props.onOrgLogin()
-        				}
+              		    if (responseJson != null && responseJson.info != null) {
+              		  		window.org.name = responseJson.info.name
+            	  			window.org.description = responseJson.info.description
+            	  			window.org.loc = responseJson.info.location
+            	  			if (window.org.description != null) {
+        						// Login successful.
+        						this.props.onOrgLogin()
+        					}
+              		    } else {
+              		        Alert.alert('Login failed', 'Your username-password combination is invalid. Create a new account or email kmell96@gmail.com for help logging in.');
+              		    }
                 	})
 
                 })
@@ -115,9 +126,8 @@ const styles = StyleSheet.create({
   },
   button: {
         flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'flex-end',
         marginLeft: 3,
+        marginRight:3,
         marginTop: 10,
         borderWidth: 1,
         padding: 5,

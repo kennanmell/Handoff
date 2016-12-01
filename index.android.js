@@ -14,6 +14,7 @@ import RequestFeed from './view/RequestFeed';
 import SubList from './view/SubList';
 import Request from './model/Request';
 import Organization from './model/Organization';
+import NoInternetView from './view/NoInternetView';
 
 import React, { Component, PropTypes } from 'react';
 import {
@@ -26,7 +27,8 @@ import {
   Modal,
   TouchableHighlight,
   BackAndroid,
-  Navigator
+  Navigator,
+  NetInfo
 } from 'react-native';
 
 //to store a reference to the navigator to use for event listeners
@@ -73,6 +75,12 @@ class MainNavigator extends Component {
 			onOrgCreation={ () => {
     			navigator.push({
     				name: 'OrgCreateProfile',
+    			})
+    		}}
+    		
+    		onNoInternet={ () => {
+    			navigator.push({
+    				name: 'NoInternet',
     			})
     		}}
     	/>
@@ -124,16 +132,40 @@ class MainNavigator extends Component {
     if (route.name == 'SubList') {
       return <SubList />
     }
+    
+    if (route.name == 'NoInternet') {
+      return <NoInternetView />
+    }
   }
 }
 
-//Add an event listener to handle android's back button
+// Add an event listener to handle android's back button
 BackAndroid.addEventListener('hardwareBackPress', function() {
   if (_navigator.getCurrentRoutes().length > 1){
 	  _navigator.pop();
   }
   return true;
 });
+
+// Add an event listener to handle changes in network connectivity
+NetInfo.isConnected.fetch().then(isConnected => {
+  console.log('First, is ' + (isConnected ? 'online' : 'offline'));
+});
+
+function handleConnectivityChange(isConnected) {
+  if (isConnected) {
+  	_navigator.pop();
+  } else {
+    _navigator.push({
+      name: 'NoInternet',
+    })
+  }
+}
+
+NetInfo.isConnected.addEventListener(
+  'change',
+  handleConnectivityChange
+);
 
 window.org = new Organization(null, null, null, null);
 
