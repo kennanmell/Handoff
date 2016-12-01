@@ -100,9 +100,9 @@ export default class OrganizationEditor extends Component {
 								});
 							 this.props.onSave}}
 			style={styles.button}
-			><Text style={{color:'#FFFFFF'}}>Save</Text></TouchableHighlight>
+			><Text style={{color:'#FFFFFF', textAlign:'center'}}>Save</Text></TouchableHighlight>
 		
-		<TouchableHighlight style={styles.button} onPress={ this.props.onSave }><Text style={{color:'#FFFFFF'}}>Close</Text></TouchableHighlight>
+		<TouchableHighlight style={styles.button} onPress={ this.props.onSave }><Text style={{color:'#FFFFFF', textAlign:'center'}}>Close</Text></TouchableHighlight>
       </View>
 		
     );
@@ -144,8 +144,6 @@ const styles = StyleSheet.create({
   },
     button: {
           flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'flex-end',
           marginLeft: 3,
           marginTop: 10,
           borderWidth: 1,

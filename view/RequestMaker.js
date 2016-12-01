@@ -68,23 +68,23 @@ export default class RequestMaker extends Component {
 					makeRequest(this.state.requestName, this.state.requestDescription);
 					console.log("attempting to make request"); }}
                     tag='submitButton'>
-                    <Text style={{color:'#FFFFFF', textAlign:'left'}}>Submit Request</Text>
+                    <Text style={{color:'#FFFFFF', textAlign:'left', textAlign:'center'}}>Submit Request</Text>
                     </TouchableHighlight>
         <TouchableHighlight
                     style={styles.button}
                     onPress={this.props.onEditProfile}>
-                    <Text style={{color:'#FFFFFF'}}>Edit Profile</Text>
+                    <Text style={{color:'#FFFFFF', textAlign:'center'}}>Edit Profile</Text>
                     </TouchableHighlight>
         <TouchableHighlight
                     style={styles.button}
                     onPress={this.props.onEditRequest}>
-                    <Text style={{color:'#FFFFFF'}}>Edit Requests</Text>
+                    <Text style={{color:'#FFFFFF', textAlign:'center'}}>Edit Requests</Text>
                     </TouchableHighlight>
         <TouchableHighlight
                   style={styles.button}
                   tag='logoutButton'
                   onPress={this.props.onLogout}>
-                  <Text style={{color:'#FFFFFF'}}>Logout</Text>
+                  <Text style={{color:'#FFFFFF', textAlign:'center'}}>Logout</Text>
                   </TouchableHighlight>
       </View>
     );
@@ -133,8 +133,6 @@ const styles = StyleSheet.create({
 
     button: {
           flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'flex-end',
           marginLeft: 3,
           marginTop: 10,
           borderWidth: 1,

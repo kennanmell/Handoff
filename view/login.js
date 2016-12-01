@@ -52,10 +52,10 @@ export default class FacebookLoginPage extends Component {
 			style={{height: 40}}
 			onChangeText={(text) => this.setState({typedPass: text})}
 		/>
-		<TouchableHighlight style={styles.button} onPress={ this.beforeOrgLogin.bind(this) }><Text style={{color:'#FFFFFF'}}>Login</Text></TouchableHighlight>
-        <TouchableHighlight style={styles.button} onPress={ this.props.onOrgCreation }><Text style={{color:'#FFFFFF'}}>New Organization</Text></TouchableHighlight>
-		    <TouchableHighlight style={styles.button} onPress={ this.props.onUserLogin }><Text style={{color:'#FFFFFF'}}>Donor Login</Text></TouchableHighlight>
-        <TouchableHighlight style={styles.button} onPress={ this.props.onSubAccess}><Text style={{color:'#FFFFFF'}}>Subscriptions</Text></TouchableHighlight>
+		<TouchableHighlight style={styles.button} onPress={ this.beforeOrgLogin.bind(this) }><Text style={{color:'#FFFFFF', textAlign:'center'}}>Login</Text></TouchableHighlight>
+        <TouchableHighlight style={styles.button} onPress={ this.props.onOrgCreation }><Text style={{color:'#FFFFFF', textAlign:'center'}}>New Organization</Text></TouchableHighlight>
+		    <TouchableHighlight style={styles.button} onPress={ this.props.onUserLogin }><Text style={{color:'#FFFFFF', textAlign:'center'}}>Donor Login</Text></TouchableHighlight>
+        <TouchableHighlight style={styles.button} onPress={ this.props.onSubAccess}><Text style={{color:'#FFFFFF', textAlign:'center'}}>Subscriptions</Text></TouchableHighlight>
       </View>
     );
   }
@@ -126,9 +126,8 @@ const styles = StyleSheet.create({
   },
   button: {
         flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'flex-end',
         marginLeft: 3,
+        marginRight:3,
         marginTop: 10,
         borderWidth: 1,
         padding: 5,

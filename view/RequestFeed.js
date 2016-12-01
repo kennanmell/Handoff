@@ -31,8 +31,6 @@ const styles = StyleSheet.create({
   },
     orgButton: {
         flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'flex-end',
         marginLeft: 3,
         marginTop: 3,
         marginRight: 3,
@@ -131,7 +129,7 @@ class Row extends Component {
                       <Text>Organization: {this.organization}</Text>
                       <Text>Tags: {this.tags}</Text>
                       <Text>Time Posted: {this.time}</Text>
-                      <TouchableHighlight style={styles.orgButton} onPress={() => { this.setModalVisible(!this.state.modalVisible)}} ><Text style={{color:'#FFFFFF'}}>Return to Feed</Text></TouchableHighlight>
+                      <TouchableHighlight style={styles.orgButton} onPress={() => { this.setModalVisible(!this.state.modalVisible)}} ><Text style={{color:'#FFFFFF', textAlign:'center'}}>Return to Feed</Text></TouchableHighlight>
                   </View>
                   </View>
           </Modal>
@@ -147,9 +145,9 @@ class Row extends Component {
                                 .catch((error) => {
                                     console.error(error);
                                 })}
-                          ><Text style={{color:'#FFFFFF'}}>{this.organization}</Text></TouchableHighlight>
+                          ><Text style={{color:'#FFFFFF', textAlign:'center'}}>{this.organization}</Text></TouchableHighlight>
           <Text style={{alignItems: 'center'}, {fontSize: 18}}>{this.description}</Text>
-          <TouchableHighlight style={styles.orgButton} onPress={() => {this.setModalVisible(true)}}><Text style={{color:'#FFFFFF'}}> More info . . . </Text></TouchableHighlight>
+          <TouchableHighlight style={styles.orgButton} onPress={() => {this.setModalVisible(true)}}><Text style={{color:'#FFFFFF', textAlign:'center'}}> More info . . . </Text></TouchableHighlight>
         </View>);
     }
 }
@@ -243,7 +241,7 @@ class OrgRow extends Component {
                     this.description = this.state.description;
                     this.setModalVisible(!this.state.modalVisible);
                     this.updateRequest(true);}}
-                    tag='submitButton'><Text style={{color:'#FFFFFF'}}> Submit Edit</Text></TouchableHighlight>
+                    tag='submitButton'><Text style={{color:'#FFFFFF', textAlign:'center'}}> Submit Edit</Text></TouchableHighlight>
               <TouchableHighlight
                     style={styles.orgButton}
                   onPress={() => {Alert.alert('Update Successful', 'Sent your edited request.');
@@ -251,19 +249,19 @@ class OrgRow extends Component {
                       this.description = "";
                       this.setModalVisible(!this.state.modalVisible);
                       this.updateRequest(false);}}
-                      tag='submitButton'><Text style={{color:'#FFFFFF'}}> Delete Request</Text></TouchableHighlight>
+                      tag='submitButton'><Text style={{color:'#FFFFFF', textAlign:'center'}}> Delete Request</Text></TouchableHighlight>
               <TouchableHighlight
                   style={styles.orgButton}
                   onPress={() => {this.setModalVisible(!this.state.modalVisible);
                                   this.state.title = this.title;
                                   this.state.description = this.description;}}
-                  ><Text style={{color:'#FFFFFF'}}>Cancel</Text></TouchableHighlight>
+                  ><Text style={{color:'#FFFFFF', textAlign:'center'}}>Cancel</Text></TouchableHighlight>
             </View>
           </Modal>
           <Text style={{fontSize: 20}}>  {this.title}</Text>
           <Text style={{alignItems: 'center'}, {fontSize: 18}}>{this.description}</Text>
           <TouchableHighlight style={styles.orgButton} onPress={() => {this.setModalVisible(true)}}>
-                <Text style={{color:'#FFFFFF'}}>Edit Request </Text></TouchableHighlight>
+                <Text style={{color:'#FFFFFF', textAlign:'center'}}>Edit Request </Text></TouchableHighlight>
         </View>);
     }
 }
