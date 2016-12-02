@@ -38,12 +38,6 @@ export default class FacebookLoginPage extends Component {
   render() {
     return (
       <View>
-        <View style={styles.container}>
-        <Image
-                  style={{width: 288, height: 172}}
-                  source={{uri: 'https://epeach.github.io/HandOff/handofflogo.PNG'}}
-                />
-        </View>
         <View style={styles.box}>
             <Text style={{fontSize: 20, textAlign: 'center', color:"#000000"}}>Organizations</Text>
             <Text style={styles.editing}>
