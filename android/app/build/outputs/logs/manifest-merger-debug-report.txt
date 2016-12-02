@@ -189,7 +189,7 @@ MERGED from [com.android.support:support-core-utils:25.0.0] /Users/Kennan/Docume
 MERGED from [com.android.support:support-compat:25.0.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.0/AndroidManifest.xml:21:5-23:58
 MERGED from [com.facebook.fresco:fbcore:0.11.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/0.11.0/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.soloader:soloader:0.1.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/AndroidManifest.xml:2:3-70
-MERGED from [com.facebook.android:facebook-android-sdk:4.17.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-android-sdk:4.18.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.18.0/AndroidManifest.xml:24:5-26:41
 MERGED from [com.android.support:support-v4:25.0.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.0.0/AndroidManifest.xml:21:5-23:54
 MERGED from [com.android.support:support-compat:25.0.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.0/AndroidManifest.xml:21:5-23:58
 MERGED from [com.android.support:support-media-compat:25.0.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.0/AndroidManifest.xml:21:5-23:63
@@ -388,7 +388,7 @@ MERGED from [com.android.support:support-core-utils:25.0.0] /Users/Kennan/Docume
 MERGED from [com.android.support:support-compat:25.0.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.0/AndroidManifest.xml:21:5-23:58
 MERGED from [com.facebook.fresco:fbcore:0.11.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/0.11.0/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.soloader:soloader:0.1.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/AndroidManifest.xml:2:3-70
-MERGED from [com.facebook.android:facebook-android-sdk:4.17.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-android-sdk:4.18.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.18.0/AndroidManifest.xml:24:5-26:41
 MERGED from [com.android.support:support-v4:25.0.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.0.0/AndroidManifest.xml:21:5-23:54
 MERGED from [com.android.support:support-compat:25.0.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.0/AndroidManifest.xml:21:5-23:58
 MERGED from [com.android.support:support-media-compat:25.0.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.0/AndroidManifest.xml:21:5-23:63
@@ -586,7 +586,7 @@ MERGED from [com.android.support:support-core-utils:25.0.0] /Users/Kennan/Docume
 MERGED from [com.android.support:support-compat:25.0.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.0/AndroidManifest.xml:25:5-20
 MERGED from [com.facebook.soloader:soloader:0.1.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/AndroidManifest.xml:3:3-17
 MERGED from [org.webkit:android-jsc:r174650] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/org.webkit/android-jsc/r174650/AndroidManifest.xml:2:3-17
-MERGED from [com.facebook.android:facebook-android-sdk:4.17.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/AndroidManifest.xml:28:5-38:19
+MERGED from [com.facebook.android:facebook-android-sdk:4.18.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.18.0/AndroidManifest.xml:28:5-38:19
 MERGED from [com.android.support:support-v4:25.0.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.0.0/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-compat:25.0.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.0/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-media-compat:25.0.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.0/AndroidManifest.xml:25:5-20
@@ -771,7 +771,7 @@ MERGED from [com.android.support:support-core-utils:25.0.0] /Users/Kennan/Docume
 MERGED from [com.android.support:support-compat:25.0.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.0/AndroidManifest.xml:25:5-20
 MERGED from [com.facebook.soloader:soloader:0.1.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/AndroidManifest.xml:3:3-17
 MERGED from [org.webkit:android-jsc:r174650] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/org.webkit/android-jsc/r174650/AndroidManifest.xml:2:3-17
-MERGED from [com.facebook.android:facebook-android-sdk:4.17.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/AndroidManifest.xml:28:5-38:19
+MERGED from [com.facebook.android:facebook-android-sdk:4.18.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.18.0/AndroidManifest.xml:28:5-38:19
 MERGED from [com.android.support:support-v4:25.0.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.0.0/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-compat:25.0.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.0/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-media-compat:25.0.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.0/AndroidManifest.xml:25:5-20
@@ -858,23 +858,23 @@ IMPLIED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/Android
 android:uses-permission#android.permission.READ_EXTERNAL_STORAGE
 IMPLIED from /Users/Kennan/Documents/CSE403/Handoff/android/app/src/main/AndroidManifest.xml:1:1-32:12 reason: org.webkit.android_jsc requested WRITE_EXTERNAL_STORAGE
 activity#com.facebook.FacebookActivity
-ADDED from [com.facebook.android:facebook-android-sdk:4.17.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/AndroidManifest.xml:29:9-32:66
-MERGED from [com.facebook.android:facebook-android-sdk:4.17.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/AndroidManifest.xml:29:9-32:66
+ADDED from [com.facebook.android:facebook-android-sdk:4.18.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.18.0/AndroidManifest.xml:29:9-32:66
+MERGED from [com.facebook.android:facebook-android-sdk:4.18.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.18.0/AndroidManifest.xml:29:9-32:66
 	android:configChanges
-		ADDED from [com.facebook.android:facebook-android-sdk:4.17.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/AndroidManifest.xml:31:13-96
+		ADDED from [com.facebook.android:facebook-android-sdk:4.18.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.18.0/AndroidManifest.xml:31:13-96
 	android:theme
-		ADDED from [com.facebook.android:facebook-android-sdk:4.17.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/AndroidManifest.xml:32:13-63
+		ADDED from [com.facebook.android:facebook-android-sdk:4.18.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.18.0/AndroidManifest.xml:32:13-63
 	android:name
-		ADDED from [com.facebook.android:facebook-android-sdk:4.17.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/AndroidManifest.xml:30:13-57
+		ADDED from [com.facebook.android:facebook-android-sdk:4.18.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.18.0/AndroidManifest.xml:30:13-57
 activity#com.facebook.CustomTabActivity
-ADDED from [com.facebook.android:facebook-android-sdk:4.17.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/AndroidManifest.xml:33:9-36:20
-MERGED from [com.facebook.android:facebook-android-sdk:4.17.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/AndroidManifest.xml:33:9-36:20
+ADDED from [com.facebook.android:facebook-android-sdk:4.18.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.18.0/AndroidManifest.xml:33:9-36:20
+MERGED from [com.facebook.android:facebook-android-sdk:4.18.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.18.0/AndroidManifest.xml:33:9-36:20
 	android:exported
-		ADDED from [com.facebook.android:facebook-android-sdk:4.17.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/AndroidManifest.xml:35:13-36
+		ADDED from [com.facebook.android:facebook-android-sdk:4.18.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.18.0/AndroidManifest.xml:35:13-36
 	android:name
-		ADDED from [com.facebook.android:facebook-android-sdk:4.17.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/AndroidManifest.xml:34:13-58
+		ADDED from [com.facebook.android:facebook-android-sdk:4.18.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.18.0/AndroidManifest.xml:34:13-58
 activity#com.facebook.CustomTabMainActivity
-ADDED from [com.facebook.android:facebook-android-sdk:4.17.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/AndroidManifest.xml:37:9-71
-MERGED from [com.facebook.android:facebook-android-sdk:4.17.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/AndroidManifest.xml:37:9-71
+ADDED from [com.facebook.android:facebook-android-sdk:4.18.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.18.0/AndroidManifest.xml:37:9-71
+MERGED from [com.facebook.android:facebook-android-sdk:4.18.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.18.0/AndroidManifest.xml:37:9-71
 	android:name
-		ADDED from [com.facebook.android:facebook-android-sdk:4.17.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.17.0/AndroidManifest.xml:37:19-68
+		ADDED from [com.facebook.android:facebook-android-sdk:4.18.0] /Users/Kennan/Documents/CSE403/Handoff/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.18.0/AndroidManifest.xml:37:19-68

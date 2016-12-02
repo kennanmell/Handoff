@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { AsyncStorage, PickerIOS, TouchableHighlight, TextInput, Alert,
+import { AsyncStorage, TouchableHighlight, TextInput, Alert,
             StyleSheet, AppRegistry, ListView, Text, View } from 'react-native';
 
 
@@ -70,7 +70,22 @@ const Row = (props) => (
                     // getOrgID needs to be able to get the ID for the org we are currently looking
                     // at the request of
                     [{text: 'Close', onPress:()=>console.log('done')},
-                    {text: 'Unsubscribe', onPress:()=>console.log('Unsubscribed')},
+                    {text: 'Unsubscribe', onPress:()=>{
+                      AsyncStorage.getItem('subNames').then((value) => {    	                
+    	                list = JSON.parse(value)
+            			for (var i = 0; i < list.length; i++) {
+    					  dict = list[i]
+    					  str = dict["organization"]
+    					  if (str === props.organization) {
+    	                    list.splice(i, 1)
+    	                     AsyncStorage.setItem('subNames', JSON.stringify(list)).then(() => {
+    	                      props.onUnsubscribe()
+    	                    })
+    						break
+    					  }
+						}
+                      })
+                    }},
                     //{text: 'Unsubscribe', onPress:()=> asyncStrorage.removeItem(**OrgID**)},
                     {text: 'Organization Page', onPress: ()=> console.log('Take me to org page, yo')}])}
                     >  {props.organization}</Text>
@@ -93,7 +108,19 @@ const OrgRow = (props) => (
 export default class SubList extends Component {
   constructor(props) {
     super(props);
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    //orgList = [{"organization": "Hope Shelter"}]
+    this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+
+    AsyncStorage.getItem('subNames').then((value) => {
+    	orgList = JSON.parse(value)
+    	        // Sets the initial page to a loading page
+        this.setState({
+          data: this.ds.cloneWithRows(orgList),
+          test: 'hello'
+        });
+
+    })
+
     startPage = [{
       "organization": "HandOff Team",
       "time": 7,
@@ -113,7 +140,7 @@ export default class SubList extends Component {
 
         // Sets the initial page to a loading page
         this.state = {
-          data: ds.cloneWithRows(orgList),
+          data: this.ds.cloneWithRows(orgList),
           test: 'hello'
         }
 
@@ -140,7 +167,16 @@ export default class SubList extends Component {
         </View>
         <ListView
           dataSource={this.state.data}
-          renderRow={(rowData) => <Row {...rowData} />}
+          enableEmptySections={true}
+          renderRow={(rowData) => <Row {...rowData} onUnsubscribe={ () => {
+            AsyncStorage.getItem('subNames').then((value) => {
+    	      orgList = JSON.parse(value)
+              this.setState({
+                data: this.ds.cloneWithRows(orgList),
+                test: 'hello'
+              });
+            })
+          }}/>}
           renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
         />
       </View>
