@@ -40,7 +40,8 @@ export default class FacebookLoginPage extends Component {
       <View>
         <View style={styles.container}>
         <Image
-                  source={require('./img/handofflogo.png')}
+                  style={{width: 288, height: 172}}
+                  source={{uri: 'https://epeach.github.io/HandOff/handofflogo.PNG'}}
                 />
         </View>
         <View style={styles.box}>
