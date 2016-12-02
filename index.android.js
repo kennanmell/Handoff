@@ -127,7 +127,7 @@ class MainNavigator extends Component {
     }
     
     if (route.name == 'SubViewRequests') {
-    	return <RequestFeed organization={window.currSub} />
+    	return <RequestFeed uuid={window.currSub} />
     }
     
     if (route.name == 'UserFeed') {
