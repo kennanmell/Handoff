@@ -64,7 +64,7 @@ const Header = (props) => (
 class Header extends Component {
     constructor(props) {
         super(props);
-        this.setTags = props.setTags;
+        this.listView = props.listView;
         this.state = {text: ""};
     }
 
@@ -83,8 +83,11 @@ class Header extends Component {
                 />
                 <TouchableHighlight style={styles.orgButton}
                                     onPress={() =>
-                                        {this.setTags(this.state.text.split(" ").filter(function(n){
-                                            return n != "" }))}}
+                                        {this.listView.setTags(this.state.text.split(" ").filter(function(n){return n != "" }));
+                                         console.log("hopefully the next line is nothing or null");
+                                         console.log(this.tags);
+                                        }
+                                    }
                 >
                     <Text style={{color:'#FFFFFF',
                                   textAlign:'center',
@@ -237,6 +240,7 @@ class OrgRequestRow extends ParentRow {
             tags: props.tags,
             modalVisible: false,
         }
+        console.log(props.tags);
     }
 
     // This method will create update the request for the request that the orgrow represents,
@@ -291,9 +295,9 @@ class OrgRequestRow extends ParentRow {
                         />
                         <TextInput
                             style={{height: 40}}
-                            defaultValue={this.state.tags}
+                            defaultValue={this.state.tags.toString()}
                             tag='keywordsInput'
-                            onChangeText={(text) => this.setState({tags: text})}
+                            onChangeText={(text) => this.setState({tags: text.split(" ")})}
                         />
                         <TouchableHighlight
                             style={styles.orgButton}
@@ -418,10 +422,10 @@ export default class RequestFeed extends Component {
     setTags(listOfTags) {
         this.tags = listOfTags;
        // ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-        getRequests2(this.organization, this.tags, this.updateList);
+        //getRequests2(this.organization, this.tags, this.updateList);
         console.log("next this is what tags are set to");
         console.log(this.tags);
-        /*getRequests(this.organization, this.tags)
+        getRequests(this.organization, this.tags)
                       .then((response) => response.json())
                       .then((responseJson) => {
                           this.setState({
@@ -430,7 +434,7 @@ export default class RequestFeed extends Component {
                         })
                       .catch((error) => {
                         console.error(error);
-                });*/
+                });
     }
 
     render() {
@@ -442,7 +446,7 @@ export default class RequestFeed extends Component {
                              renderRow={(rowData) => <RequestRow {...rowData} />}
                              renderSeparator={(sectionId, rowId) =>
                                  <View key={rowId} style={styles.separator} />}
-                             renderHeader={() => <Header setTags={this.setTags}/>}
+                             renderHeader={() => <Header listView={this}/>}
                    />
                </View>
            );
@@ -454,7 +458,7 @@ export default class RequestFeed extends Component {
                         dataSource={this.state.dataSource}
                         renderRow={(rowData) => <OrgRequestRow {...rowData}/>}
                         renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
-                        renderHeader={() => <Header setTags={this.setTags}/>}
+                        renderHeader={() => <Header listView={this}/>}
                     />
                 </View>
             );
