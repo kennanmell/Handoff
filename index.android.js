@@ -136,7 +136,9 @@ class MainNavigator extends Component {
 
     if (route.name == 'SubList') {
       return <SubList onGoToPage={() => {
-      	 navigator.push('SubViewRequests')
+      	 navigator.push({
+      	   name:'SubViewRequests',
+      	 })
       }}/>
     }
     

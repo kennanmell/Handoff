@@ -88,11 +88,10 @@ const Row = (props) => (
                     }},
                     //{text: 'Unsubscribe', onPress:()=> asyncStrorage.removeItem(**OrgID**)},
                     {text: 'Organization Page', onPress: ()=> {
-                    	window.currSub = props.organization
+                    	window.currSub = props.uuid
                     	props.onGoToPage()
                     }}])}
                     >  {props.organization}</Text>
-    <Text style={{alignItems: 'center'}, {fontSize: 18}}>  Local Seattle Homeless Shelter</Text>
   </View>
 );
 
