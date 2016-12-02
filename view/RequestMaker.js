@@ -64,8 +64,8 @@ export default class RequestMaker extends Component {
                 />
         <TouchableHighlight
                     style={styles.button}
-					onPress={() => {Alert.alert('Request Successful', 'Your request was successfully posted.');
-					makeRequest(this.state.requestName, this.state.requestDescription);
+					onPress={() => {
+					makeRequest(this.state.requestName, this.state.requestDescription, this.state.requestTags).then(function(){Alert.alert('Request Successful', 'Your request was successfully posted.')});
 					console.log("attempting to make request"); }}
                     tag='submitButton'>
                     <Text style={{color:'#FFFFFF', textAlign:'left', textAlign:'center'}}>Submit Request</Text>
@@ -94,11 +94,13 @@ export default class RequestMaker extends Component {
 /* Given a requestName and a requestDescription, creates a request in the database.
 For the moment, the request's organization and its tags are not modifiable. This functionality
 will be added later.*/
-async function makeRequest(requestName, requestDescription) {
+async function makeRequest(requestName, requestDescription, tags) {
     console.log(window.org.name);
     console.log(requestName);
     console.log(window.org.userName);
     console.log(window.org.auth);
+	var tagsArray = tags.split(" ");
+	console.log(tagsArray);
     fetch('https://u116vqy0l2.execute-api.us-west-2.amazonaws.com/prod/requests/new', {
       method: 'POST',
       headers: {
@@ -110,7 +112,7 @@ async function makeRequest(requestName, requestDescription) {
             "organization_name": window.org.name,
 			"title": requestName,
 	        "description": requestDescription,
-			"tags": ["food","test"],
+			"tags": tagsArray,
 			"username": window.org.userName,
 			"auth": window.org.auth
       })
