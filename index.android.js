@@ -126,12 +126,20 @@ class MainNavigator extends Component {
     	return <RequestFeed isOrg={true} uuid={window.org.uuid} />
     }
     
+    if (route.name == 'SubViewRequests') {
+    	return <RequestFeed uuid={window.currSub} />
+    }
+    
     if (route.name == 'UserFeed') {
     	return <RequestFeed/>
     }
 
     if (route.name == 'SubList') {
-      return <SubList />
+      return <SubList onGoToPage={() => {
+      	 navigator.push({
+      	   name:'SubViewRequests',
+      	 })
+      }}/>
     }
     
     if (route.name == 'NoInternet') {

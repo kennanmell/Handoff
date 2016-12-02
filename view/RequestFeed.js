@@ -193,7 +193,7 @@ class RequestRow extends ParentRow {
                                                                     responseJson.info.location,
                                                                 [{text: 'Subscribe',
                                                                     onPress: ()=>
-                                                                        {this.checkSub(responseJson.info.name)}},
+                                                                        {this.checkSub(responseJson.info.name, this.uuid)}},
                                                                  {text: 'Close',
                                                                     onPress:()=>console.log('done')}
                                                                 ])
@@ -211,7 +211,7 @@ class RequestRow extends ParentRow {
         </View>);
     }
 
-    checkSub(orgName) {
+    checkSub(orgName, uuid) {
         AsyncStorage.getItem('subNames')
             .then((value) => {console.log(value);
             				  list = JSON.parse(value)
@@ -226,7 +226,7 @@ class RequestRow extends ParentRow {
 							  }
 							  
 							  if (!found) {
-							    list.push({"organization": orgName})
+							    list.push({"organization": orgName, "uuid": uuid})
             				  	AsyncStorage.setItem('subNames', JSON.stringify(list))
 							  }
                               })
