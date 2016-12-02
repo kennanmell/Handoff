@@ -68,11 +68,6 @@ class Header extends Component {
         this.state = {text: ""};
     }
 
-    // Parses tags passed as a string by spaces into a list of strings, which it returns
-    parseTags(tags) {
-        return tags;
-    }
-
     render() {
         return (
             <View style={styles.container}>
@@ -83,9 +78,8 @@ class Header extends Component {
                 />
                 <TouchableHighlight style={styles.orgButton}
                                     onPress={() =>
-                                        {this.listView.setTags(this.state.text.split(" ").filter(function(n){return n != "" }));
-                                         console.log("hopefully the next line is nothing or null");
-                                         console.log(this.tags);
+                                        {this.listView.setTags(this.state.text.split(" ")
+                                            .filter(function(n){return n != "" }));
                                         }
                                     }
                 >
@@ -142,6 +136,8 @@ class ParentRow extends Component {
 async function getRequests(organization, tags) {
     params = null;
     listOfOrg = [organization];
+    console.log('getting requests, next is tags');
+    console.log(tags);
     if (organization != null && tags == []) {
         params = JSON.stringify({ limit: 30, organizations: listOfOrg});
     } else if (organization != null) {
@@ -154,6 +150,7 @@ async function getRequests(organization, tags) {
         console.log("case2");
         params = JSON.stringify({ limit: 30});
     }
+    console.log(params);
     return fetchInfo('requests', params)
 }
 
@@ -171,13 +168,13 @@ class RequestRow extends ParentRow {
                     animationType={"slide"}
                     transparent={false}
                     visible={this.state.modalVisible}
-                    onRequestClose={() => {alert("Close through the cancel button.")}}
+                    onRequestClose={() => {alert("Close through the \"Return to Feed\" button.")}}
                 >
                   <View style={{marginTop: 22}}>
                       <Text>{this.title}</Text>
                       <Text>{this.description}</Text>
                       <Text>Organization: {this.organization}</Text>
-                      <Text>Tags: {this.tags}</Text>
+                      <Text>Tags: {this.tags.toString()}</Text>
                       <Text>Time Posted: {this.time}</Text>
                       <TouchableHighlight style={styles.orgButton}
                           onPress={() => { this.setModalVisible(!this.state.modalVisible)}} >
@@ -297,7 +294,7 @@ class OrgRequestRow extends ParentRow {
                             style={{height: 40}}
                             defaultValue={this.state.tags.toString()}
                             tag='keywordsInput'
-                            onChangeText={(text) => this.setState({tags: text.split(" ")})}
+                            onChangeText={(text) => this.setState({tags: text.split(",")})}
                         />
                         <TouchableHighlight
                             style={styles.orgButton}
@@ -305,6 +302,8 @@ class OrgRequestRow extends ParentRow {
                                     {Alert.alert('Update Successful', 'Sent your edited request.');
                                      this.title = this.state.title;
                                      this.description = this.state.description;
+                                     this.tags = this.state.tags;
+                                     console.log(this.tags);
                                      this.setModalVisible(!this.state.modalVisible);
                                      this.updateRequest(true);}}
                             tag='submitButton'>
@@ -316,6 +315,7 @@ class OrgRequestRow extends ParentRow {
                                 {Alert.alert('Update Successful', 'Sent your edited request.');
                                  this.title = "<deleted>";
                                  this.description = "";
+                                 this.tags = [];
                                  this.setModalVisible(!this.state.modalVisible);
                                  this.updateRequest(false);}}
                                  tag='submitButton'>
@@ -325,6 +325,7 @@ class OrgRequestRow extends ParentRow {
                             style={styles.orgButton}
                             onPress={() => {this.setModalVisible(!this.state.modalVisible);
                                             this.state.title = this.title;
+                                            this.state.tags = this.tags.toString();
                                             this.state.description = this.description;}}>
                             <Text style={{color:'#FFFFFF', textAlign:'center'}}>Cancel</Text>
                         </TouchableHighlight>
@@ -341,7 +342,7 @@ class OrgRequestRow extends ParentRow {
     }
 }
 
-async function getRequests2(organization, tagsList, updateList) {
+/*async function getRequests2(organization, tagsList, updateList) {
     params = null;
     listOfOrg = [organization];
     if (this.organization != null) {
@@ -358,7 +359,7 @@ async function getRequests2(organization, tagsList, updateList) {
         .catch((error) => {
           console.error(error);
         });
-}
+}*/
 
 // This component is a scrollable list of requests. Intially it will display a text that shows we
 // are still waiting on the server to provide our requests, but once the request to the server has
@@ -368,9 +369,10 @@ export default class RequestFeed extends Component {
     constructor(props) {
         super(props);
         this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-        if (props.organization != null) {
-            this.organization = window.org.uuid; // yeah i blame the weird backend documentation
-        }
+
+        this.organization = props.uuid; // this is uuid, not organization name
+        this.isOrg = props.isOrg;
+
         this.tags = [];
 
         // Sets the initial page to a blank page
@@ -389,12 +391,6 @@ export default class RequestFeed extends Component {
               })
               .catch((error) => {
                   console.error(error);
-        });
-    }
-
-    updateList(list) {
-        this.setState({
-            dataSource: this.ds.cloneWithRows(list)
         });
     }
 
@@ -422,23 +418,23 @@ export default class RequestFeed extends Component {
     setTags(listOfTags) {
         this.tags = listOfTags;
        // ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-        //getRequests2(this.organization, this.tags, this.updateList);
         console.log("next this is what tags are set to");
         console.log(this.tags);
         getRequests(this.organization, this.tags)
                       .then((response) => response.json())
                       .then((responseJson) => {
+                          console.log(responseJson);
                           this.setState({
-                            dataSource: this.ds.cloneWithRows(responseJson.requests)
+                              dataSource: this.ds.cloneWithRows(responseJson.requests)
                           });
-                        })
+                      })
                       .catch((error) => {
-                        console.error(error);
-                });
+                          console.error(error);
+                      });
     }
 
     render() {
-        if (this.organization == null) {
+        if (this.isOrg != true) {
            return (
                <View>
                    <ListView enableEmptySections={true}
