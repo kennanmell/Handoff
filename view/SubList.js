@@ -87,7 +87,10 @@ const Row = (props) => (
                       })
                     }},
                     //{text: 'Unsubscribe', onPress:()=> asyncStrorage.removeItem(**OrgID**)},
-                    {text: 'Organization Page', onPress: ()=> console.log('Take me to org page, yo')}])}
+                    {text: 'Organization Page', onPress: ()=> {
+                    	window.currSub = props.organization
+                    	props.onGoToPage()
+                    }}])}
                     >  {props.organization}</Text>
     <Text style={{alignItems: 'center'}, {fontSize: 18}}>  Local Seattle Homeless Shelter</Text>
   </View>
@@ -168,7 +171,7 @@ export default class SubList extends Component {
         <ListView
           dataSource={this.state.data}
           enableEmptySections={true}
-          renderRow={(rowData) => <Row {...rowData} onUnsubscribe={ () => {
+          renderRow={(rowData) => <Row {...rowData} onGoToPage={this.props.onGoToPage} onUnsubscribe={ () => {
             AsyncStorage.getItem('subNames').then((value) => {
     	      orgList = JSON.parse(value)
               this.setState({

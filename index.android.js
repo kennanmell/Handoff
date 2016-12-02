@@ -126,12 +126,18 @@ class MainNavigator extends Component {
     	return <RequestFeed organization={window.org.name} />
     }
     
+    if (route.name == 'SubViewRequests') {
+    	return <RequestFeed organization={window.currSub} />
+    }
+    
     if (route.name == 'UserFeed') {
     	return <RequestFeed />
     }
 
     if (route.name == 'SubList') {
-      return <SubList />
+      return <SubList onGoToPage={() => {
+      	 navigator.push('SubViewRequests')
+      }}/>
     }
     
     if (route.name == 'NoInternet') {
