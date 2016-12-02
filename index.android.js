@@ -28,7 +28,8 @@ import {
   TouchableHighlight,
   BackAndroid,
   Navigator,
-  NetInfo
+  NetInfo,
+  AsyncStorage
 } from 'react-native';
 
 //to store a reference to the navigator to use for event listeners
@@ -167,7 +168,15 @@ NetInfo.isConnected.addEventListener(
   handleConnectivityChange
 );
 
+// Initialize global organization.
 window.org = new Organization(null, null, null, null);
+
+// Initialize subscription list if necessary.
+AsyncStorage.getItem('subNames', (value) => {
+	if (value == null) {
+		AsyncStorage.setItem('subNames', JSON.stringify([{"organization": "Hope Shelter"}]))
+	}
+})
 
 // Register the main navigator so it will run when the app starts.
 AppRegistry.registerComponent('MainNavigator', () => MainNavigator);

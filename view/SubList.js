@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { AsyncStorage, PickerIOS, TouchableHighlight, TextInput, Alert,
+import { AsyncStorage, TouchableHighlight, TextInput, Alert,
             StyleSheet, AppRegistry, ListView, Text, View } from 'react-native';
 
 
@@ -93,7 +93,19 @@ const OrgRow = (props) => (
 export default class SubList extends Component {
   constructor(props) {
     super(props);
+    //orgList = [{"organization": "Hope Shelter"}]
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+
+    AsyncStorage.getItem('subNames').then((value) => {
+    	orgList = [{"organization": "Hope Shelter"}]
+    	        // Sets the initial page to a loading page
+        this.state = {
+          data: ds.cloneWithRows([{"organization": "Hope Shelter"}]),
+          test: 'hello'
+        }
+
+    })
+
     startPage = [{
       "organization": "HandOff Team",
       "time": 7,
