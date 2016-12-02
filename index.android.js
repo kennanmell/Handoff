@@ -123,7 +123,7 @@ class MainNavigator extends Component {
     }
     
     if (route.name == 'OrgViewRequests') {
-    	return <RequestFeed organization={window.org.name} />
+    	return <RequestFeed isOrg={true} organization={window.org.uuid} />
     }
     
     if (route.name == 'SubViewRequests') {
