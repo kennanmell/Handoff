@@ -173,8 +173,8 @@ window.org = new Organization(null, null, null, null);
 
 // Initialize subscription list if necessary.
 AsyncStorage.getItem('subNames').then((value) => {
-	if (true || value == null) {
-		AsyncStorage.setItem('subNames', JSON.stringify([{"organization": "Hope Shelter"}, {"organization": "org3"}]))
+	if (value == null) {
+		AsyncStorage.setItem('subNames', JSON.stringify([]))
 	}
 })
 

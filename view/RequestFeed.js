@@ -196,7 +196,7 @@ class RequestRow extends ParentRow {
                                                                     responseJson.info.location,
                                                                 [{text: 'Subscribe',
                                                                     onPress: ()=>
-                                                                        {this.checkSub(this.uuid)}},
+                                                                        {this.checkSub(responseJson.info.name)}},
                                                                  {text: 'Close',
                                                                     onPress:()=>console.log('done')}
                                                                 ])
@@ -215,13 +215,24 @@ class RequestRow extends ParentRow {
     }
 
     checkSub(orgName) {
-        AsyncStorage.getItem('@MySuperStore:key')
+        AsyncStorage.getItem('subNames')
             .then((value) => {console.log(value);
-                              if (value == null) {
-                                  AsyncStorage.setItem('@MySuperStore:key', orgName)
-                              } else if (!value.includes(orgName)) {
-                                  AsyncStorage.setItem('@MySuperStore:key', value + ',' + orgName)
-                              }})
+            				  list = JSON.parse(value)
+            				  found = false
+            				  for (var i = 0; i < list.length; i++) {
+    							dict = list[i]
+    							str = dict["organization"]
+    							if (str === orgName) {
+    								found = true
+    								break
+    							}
+							  }
+							  
+							  if (!found) {
+							    list.push({"organization": orgName})
+            				  	AsyncStorage.setItem('subNames', JSON.stringify(list))
+							  }
+                              })
     }
 }
 

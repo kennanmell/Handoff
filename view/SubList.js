@@ -71,15 +71,19 @@ const Row = (props) => (
                     // at the request of
                     [{text: 'Close', onPress:()=>console.log('done')},
                     {text: 'Unsubscribe', onPress:()=>{
-                      AsyncStorage.getItem('subNames').then((value) => {
+                      AsyncStorage.getItem('subNames').then((value) => {    	                
     	                list = JSON.parse(value)
-    	                index = list.indexOf({"organization": props.organization})
-    	                if (index > -1) {
-    	                  list.splice(index, 1)
-    	                }
-    	                AsyncStorage.setItem('subNames', JSON.stringify(list)).then(() => {
-    	                  props.onUnsubscribe()
-    	                })
+            			for (var i = 0; i < list.length; i++) {
+    					  dict = list[i]
+    					  str = dict["organization"]
+    					  if (str === props.organization) {
+    	                    list.splice(i, 1)
+    	                     AsyncStorage.setItem('subNames', JSON.stringify(list)).then(() => {
+    	                      props.onUnsubscribe()
+    	                    })
+    						break
+    					  }
+						}
                       })
                     }},
                     //{text: 'Unsubscribe', onPress:()=> asyncStrorage.removeItem(**OrgID**)},

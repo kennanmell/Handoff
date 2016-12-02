@@ -60,7 +60,7 @@ export default class FacebookLoginPage extends Component {
         </View>
         <View style={styles.box}>
             <Text style={{fontSize: 20, textAlign: 'center', color:"#000000"}}>Donors</Text>
-            <TouchableHighlight style={styles.button} onPress={ this.props.onUserLogin }><Text style={{color:'#FFFFFF', textAlign:'center', fontSize: 18}}>Donor Login</Text></TouchableHighlight>
+            <TouchableHighlight style={styles.button} onPress={ this.props.onUserLogin }><Text style={{color:'#FFFFFF', textAlign:'center', fontSize: 18}}>Donor Feed</Text></TouchableHighlight>
             <TouchableHighlight style={styles.button} onPress={ this.props.onSubAccess}><Text style={{color:'#FFFFFF', textAlign:'center', fontSize: 18}}>Subscriptions</Text></TouchableHighlight>
         </View>
       </View>
