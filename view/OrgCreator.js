@@ -41,45 +41,40 @@ export default class OrganizationCreator extends Component {
   render() {
     return (
 		<View style={{padding: 10}}>
-		<Text style={styles.editing}>
-			Organization Name
-        </Text>
+		   <View style={styles.container}>
+              <Text style={styles.welcome}>
+                            Register Your Organization
+                          </Text>
+          </View>
 		<TextInput
 			style={{height: 40}}
+			placeholder="Organization Name"
 			onChangeText={(text) => this.setState({typedName: text})}
 		/>
-		
-		<Text style={styles.editing}>
-                    Location
-        </Text>
+
 		<TextInput
 			style={{height: 40}}
+			placeholder="Location"
 			onChangeText={(text) => this.setState({typedLoc: text})}
 		/>
-		
-		<Text style={styles.editing}>
-                    Mission Statement
-        </Text>
+
 		<TextInput
 			multiline={true}
 			numberOfLines={4}
+			placeholder="Mission Statement"
 			style={{height: 90}}
 			onChangeText={(text) => this.setState({typedDesc: text})}
 		/>
-		
-		<Text style={styles.editing}>
-                    User Name
-        </Text>
+
 		<TextInput
 			style={{height: 40}}
+			placeholder="Username"
 			onChangeText={(text) => this.setState({typedUserName: text})}
 		/>
-		
-		<Text style={styles.editing}>
-                    Password
-        </Text>
+
 		<TextInput
 			style={{height: 40}}
+			placeholder="Password"
 			onChangeText={(text) => this.setState({typedPass: text})}
 		/>
 		
@@ -99,7 +94,7 @@ export default class OrganizationCreator extends Component {
 										window.org.uuid = responseJson.uuid;
 										console.log("uuid = ");
 										console.log(responseJson.uuid);
-										Alert.alert('Account created', 'Press continue to return to login screen');
+										Alert.alert('Account created', 'Account creation successful.');
 									} else {
 										Alert.alert('Account not created', 'Something went wrong.');
 									}
@@ -110,9 +105,9 @@ export default class OrganizationCreator extends Component {
 							}
 					}
 			style={styles.button}
-			><Text style={{color:'#FFFFFF', textAlign:'center'}}>Save</Text></TouchableHighlight>
+			><Text style={{color:'#FFFFFF', textAlign:'center', fontSize: 18}}>Save</Text></TouchableHighlight>
 		
-		<TouchableHighlight style={styles.button} onPress={ this.props.onContinue }><Text style={{color:'#FFFFFF', textAlign:'center'}}>Continue</Text></TouchableHighlight>
+		<TouchableHighlight style={styles.button} onPress={ this.props.onContinue }><Text style={{color:'#FFFFFF', textAlign:'center', fontSize: 18}}>Return to Log-In</Text></TouchableHighlight>
       </View>
 		
     );
@@ -154,14 +149,29 @@ const styles = StyleSheet.create({
     margin: 0,
 	color: '#00cc99',
   },
-    button: {
+  welcome: {
+      fontSize: 20,
+      textAlign: 'center',
+      margin: 10,
+      color:'white'
+    },
+  button: {
           flexDirection: 'column',
-          marginLeft: 3,
+          marginLeft: 5,
+          marginRight:5,
           marginTop: 10,
           borderWidth: 1,
-          padding: 5,
+          padding: 2,
           borderColor: 'black',
-          marginBottom: 15,
+          borderRadius: 3,
           backgroundColor: '#642D64',
-      }
+      },
+      container: {
+            flex: 1,
+            padding: 8,
+            height: 70,
+            flexDirection: 'row',
+            alignItems: 'center',
+            backgroundColor: '#642D64',
+        },
   });

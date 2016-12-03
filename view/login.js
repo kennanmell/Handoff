@@ -37,21 +37,24 @@ export default class FacebookLoginPage extends Component {
   }
   render() {
     return (
+      <View style={styles.allContent}>
       <View>
+        <View style={styles.container}>
+            <Image
+                style={{width: 288, height: 172}}
+                source={{uri: 'https://epeach.github.io/HandOff/handofflogo.PNG'}}
+            />
+        </View>
         <View style={styles.box}>
             <Text style={{fontSize: 20, textAlign: 'center', color:"#000000"}}>Organizations</Text>
-            <Text style={styles.editing}>
-                Name
-            </Text>
             <TextInput
                 style={{height: 40}}
+                placeholder="Username"
                 onChangeText={(text) => this.setState({typedName: text})}
             />
-            <Text style={styles.editing}>
-                Password
-            </Text>
             <TextInput
                 style={{height: 40}}
+                placeholder="Password"
                 onChangeText={(text) => this.setState({typedPass: text})}
             />
             <TouchableHighlight style={styles.button} onPress={ this.beforeOrgLogin.bind(this) }><Text style={{color:'#FFFFFF', textAlign:'center', fontSize: 18}}>Login</Text></TouchableHighlight>
@@ -60,9 +63,10 @@ export default class FacebookLoginPage extends Component {
         </View>
         <View style={styles.box}>
             <Text style={{fontSize: 20, textAlign: 'center', color:"#000000"}}>Donors</Text>
-            <TouchableHighlight style={styles.button} onPress={ this.props.onUserLogin }><Text style={{color:'#FFFFFF', textAlign:'center', fontSize: 18}}>Donor Feed</Text></TouchableHighlight>
+            <TouchableHighlight style={styles.button} onPress={ this.props.onUserLogin }><Text style={{color:'#FFFFFF', textAlign:'center', fontSize: 18}}>See Local Requests</Text></TouchableHighlight>
             <TouchableHighlight style={styles.button} onPress={ this.props.onSubAccess}><Text style={{color:'#FFFFFF', textAlign:'center', fontSize: 18}}>Subscriptions</Text></TouchableHighlight>
         </View>
+      </View>
       </View>
     );
   }
@@ -140,16 +144,17 @@ const styles = StyleSheet.create({
         padding: 2,
         borderColor: 'black',
         borderRadius: 3,
-        marginBottom: 15,
         backgroundColor: '#642D64',
     },
     container: {
          justifyContent: 'center',
          alignItems: 'center',
+
     },
     image: {
        width: 288,
        height: 172,
+       flex:1
 
     },
     box: {
@@ -161,7 +166,11 @@ const styles = StyleSheet.create({
         marginLeft: 3,
         marginRight: 3,
         padding: 5,
-    }
+
+    },
+  allContent: {
+    flex:1
+  }
 
 
 });

@@ -31,7 +31,7 @@ export default class EditRequests extends Component {
     var regex = new RegExp(',', 'g');
     return (
         <View style={{marginTop: 22}}>
-            <Text style={styles.welcome}> Handoff</Text>
+            <Text style={styles.welcome}> Edit Your Request</Text>
             <TextInput
                 style={{height: 40}}
                 defaultValue={ window.requestToEditTitle}
@@ -51,28 +51,28 @@ export default class EditRequests extends Component {
                 onChangeText={(text) => {window.requestToEditTags = text.split(",")}}
             />
             <TouchableHighlight
-                style={styles.orgButton}
+                style={styles.button}
                     onPress={() =>
                         {Alert.alert('Update Successful', 'Sent your edited request.');
                          window.requestToEditUpdateRequest(true);
                          this.onEditRequestClose();}}
                 tag='submitButton'>
-                <Text style={{color:'#FFFFFF', textAlign:'center'}}> Submit Edit</Text>
+                <Text style={{color:'#FFFFFF', textAlign:'center', fontSize: 18}}> Submit Edit</Text>
             </TouchableHighlight>
             <TouchableHighlight
-                style={styles.orgButton}
+                style={styles.button}
                 onPress={() =>
                     {Alert.alert('Update Successful', 'Sent your edited request.');
                      window.requestToEditUpdateRequest(false);
                      this.onEditRequestClose();}}
                      tag='submitButton'>
-                <Text style={{color:'#FFFFFF', textAlign:'center'}}> Delete Request</Text>
+                <Text style={{color:'#FFFFFF', textAlign:'center', fontSize: 18}}> Delete Request</Text>
             </TouchableHighlight>
             <TouchableHighlight
-                style={styles.orgButton}
+                style={styles.button}
                 onPress={() => { this.onEditRequestClose();}}
                 tag='submitButton'>
-                <Text style={{color:'#FFFFFF', textAlign:'center'}}> Cancel</Text>
+                <Text style={{color:'#FFFFFF', textAlign:'center', fontSize: 18}}> Cancel</Text>
             </TouchableHighlight>
         </View>
     );
@@ -99,23 +99,26 @@ const styles = StyleSheet.create({
       backgroundColor: '#642D64',
   },
   welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+      fontSize: 20,
+      textAlign: 'center',
+      margin: 10,
+      color: 'white',
   },
   instructions: {
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
   },
-  button: {
-        flexDirection: 'column',
-        marginLeft: 3,
-        marginTop: 10,
-        borderWidth: 1,
-        padding: 5,
-        borderColor: 'black',
-        marginBottom: 15,
-        backgroundColor: '#642D64',
-    }
+  button:{
+    flexDirection: 'column',
+    marginLeft: 5,
+    marginRight:5,
+    marginTop: 10,
+    borderWidth: 1,
+    padding: 5,
+    borderColor: 'black',
+    marginBottom: 15,
+    borderRadius: 3,
+    backgroundColor: '#642D64',
+  }
 });

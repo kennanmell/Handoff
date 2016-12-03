@@ -11,7 +11,8 @@ import {
   Text,
   TextInput,
   TouchableHighlight,
-  View
+  View,
+  Alert
 } from 'react-native';
 
 /*Builds a OrganizationEditor, which an Organization User uses to
@@ -42,6 +43,11 @@ export default class OrganizationEditor extends Component {
   render() {
     return (
 		<View style={{padding: 10}}>
+		<View style={styles.container}>
+		<Text style={styles.welcome}>
+                            Edit Your Organization Profile
+                          </Text>
+        </View>
 		<Text style={styles.editing}>
 			Name
         </Text>
@@ -90,6 +96,7 @@ export default class OrganizationEditor extends Component {
 										window.org.name = this.state.typedName;
 										window.org.loc = this.state.typedLoc;
 										window.org.description = this.state.typedDesc;
+										Alert.alert('Profile Edited', 'Editing profile successful.');
 									} else {
 										console.log("null!")
 									}
@@ -100,9 +107,9 @@ export default class OrganizationEditor extends Component {
 								});
 							 this.props.onSave}}
 			style={styles.button}
-			><Text style={{color:'#FFFFFF', textAlign:'center'}}>Save</Text></TouchableHighlight>
+			><Text style={{color:'#FFFFFF', textAlign:'center',  fontSize: 18}}>Save</Text></TouchableHighlight>
 		
-		<TouchableHighlight style={styles.button} onPress={ this.props.onSave }><Text style={{color:'#FFFFFF', textAlign:'center'}}>Close</Text></TouchableHighlight>
+		<TouchableHighlight style={styles.button} onPress={ this.props.onSave }><Text style={{color:'#FFFFFF', textAlign:'center',  fontSize: 18}}>Close</Text></TouchableHighlight>
       </View>
 		
     );
@@ -135,6 +142,12 @@ const styles = StyleSheet.create({
     margin: 0,
 	color: '#612e5f',
   },
+  welcome: {
+      fontSize: 20,
+      textAlign: 'center',
+      margin: 10,
+      color:'white'
+    },
   handoffButton: {
 	fontWeight: 'bold',
     fontSize: 18,
@@ -143,13 +156,23 @@ const styles = StyleSheet.create({
 	color: '#00cc99',
   },
     button: {
-          flexDirection: 'column',
-          marginLeft: 3,
-          marginTop: 10,
-          borderWidth: 1,
-          padding: 5,
-          borderColor: 'black',
-          marginBottom: 15,
-          backgroundColor: '#642D64',
-      }
+      flexDirection: 'column',
+        marginLeft: 5,
+        marginRight:5,
+        marginTop: 10,
+        borderWidth: 1,
+        padding: 5,
+        borderColor: 'black',
+        marginBottom: 15,
+        borderRadius: 3,
+        backgroundColor: '#642D64',
+      },
+      container: {
+                  flex: 1,
+                  padding: 8,
+                  height: 70,
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  backgroundColor: '#642D64',
+              },
   });

@@ -41,10 +41,23 @@ const styles = StyleSheet.create({
         marginBottom: 3,
         backgroundColor: '#642D64',
     },
+    button:{
+        flexDirection: 'column',
+          marginLeft: 5,
+          marginRight:5,
+          marginTop: 10,
+          borderWidth: 1,
+          padding: 5,
+          borderColor: 'black',
+          marginBottom: 15,
+          borderRadius: 3,
+          backgroundColor: '#642D64',
+     },
   welcome: {
       fontSize: 20,
       textAlign: 'center',
       margin: 10,
+      color: 'white',
   },
 });
 
@@ -133,14 +146,15 @@ async function getRequests(organization, tags, listView) {
 const RequestRow = (props) => (
   <View style={{padding: 10}}>
       <Text style={{fontSize: 20}}>  {props.title}</Text>
-      <TouchableHighlight style={styles.orgButton}
+      <Text style={{alignItems: 'center'}, {fontSize: 18}}>{"Details: " + props.description}</Text>
+            <TouchableHighlight style={styles.orgButton}
           onPress={()=> fetchInfo('organizations/info',
                                   JSON.stringify({uuid: props.organization}))
                             .then((response) => response.json())
                             .then((responseJson) => { Alert.alert('Organization Info',
-                                                      "Name: " + responseJson.info.name +
-                                                          "\nLocation: " +
-                                                          responseJson.info.location,
+                                                      "Name: " + responseJson.info.name
+                                                          + "\nLocation: " + responseJson.info.location
+                                                          + "\nLast Active: " + (new Date(props.time)).toString(),
                                                       [{text: 'Subscribe',
                                                           onPress: ()=>
                                                               {checkSub(responseJson.info.name, props.organization)}},
@@ -151,9 +165,8 @@ const RequestRow = (props) => (
                             .catch((error) => {
                                 console.error(error);
                             })}>
-          <Text style={{color:'#FFFFFF', textAlign:'center'}}>{props.organization_name}</Text>
+          <Text style={{color:'#FFFFFF', textAlign:'center'}}>{"Organization: " + props.organization_name}</Text>
           </TouchableHighlight>
-          <Text style={{alignItems: 'center'}, {fontSize: 18}}>{props.description}</Text>
   </View>
 );
 
@@ -214,7 +227,7 @@ const OrgRequestRow = (props) => (
     <View style={{padding: 10}}>
         <Text style={{fontSize: 20}}>  {props.title}</Text>
         <Text style={{alignItems: 'center'}, {fontSize: 18}}>{props.description}</Text>
-        <TouchableHighlight style={styles.orgButton}
+        <TouchableHighlight style={styles.button}
                             onPress={() => {window.requestToEditTitle = props.title;
                                             window.requestToEditDescription = props.description;
                                             window.requestToEditTags = props.tags;
