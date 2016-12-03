@@ -5,6 +5,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import {
+  Alert,
   AppRegistry,
   StyleSheet,
   Text,
@@ -20,44 +21,60 @@ import {
 select a request to edit and edit it in a pop-up. Has a RequestFeed
 that the donor can interact with for more information in pop-ups.*/
 export default class EditRequests extends Component {
-  static propTypes = {
-      onClose:PropTypes.func.isRequired,
-  }
 
   constructor(props) {
     super(props);
-    this.state = {text: '', modalVisible:false};
-  }
-
-  setModalVisible(visible) {
-    this.setState({modalVisible: visible});
+    this.onEditRequestClose = props.onEditRequestClose;
   }
 
   render() {
+    var regex = new RegExp(',', 'g');
     return (
-
-    <View style={{padding: 10}}>
-
-       <TouchableHighlight style={styles.button} onPress={() => {
-                 this.setModalVisible(true)
-               }}><Text style={{color:'#FFFFFF', textAlign:'center'}}>Edit a Request</Text></TouchableHighlight>
-        <Text style={styles.welcome}> Handoff </Text>
-        <Text style={styles.instructions}> Request Feed Goes Here </Text>
-        <Modal
-                        animationType={"slide"}
-                        transparent={false}
-                        visible={this.state.modalVisible}
-                        onRequestClose={() => {this.props.onClose}}
-                >
-                    <View style={{marginTop: 22}}>
-                    <View>
-                        <Text>Edit Request Here. Click Save When Done.</Text>
-                        <TouchableHighlight save style={styles.button} onPress={() => { this.setModalVisible(!this.state.modalVisible)}}><Text style={{color:'#FFFFFF', textAlign:'center'}}>Save</Text></TouchableHighlight>
-                        <TouchableHighlight close style={styles.button} onPress={this.props.onClose}> <Text style={{color:'#FFFFFF', textAlign:'center'}}>Cancel </Text></TouchableHighlight>
-                    </View>
-                    </View>
-                </Modal>
-  </View>
+        <View style={{marginTop: 22}}>
+            <Text style={styles.welcome}> Handoff</Text>
+            <TextInput
+                style={{height: 40}}
+                defaultValue={ window.requestToEditTitle}
+                onChangeText={(text) => {window.requestToEditTitle = text}}
+                tag='titleInput'
+            />
+            <TextInput
+                style={{height: 40}}
+                defaultValue={window.requestToEditDescription}
+                onChangeText={(text) => {window.requestToEditDescription = text}}
+                tag='detailsInput'
+            />
+            <TextInput
+                style={{height: 40}}
+                defaultValue={window.requestToEditTags.toString().replace(regex,' ')}
+                tag='keywordsInput'
+                onChangeText={(text) => {window.requestToEditTags = text.split(",")}}
+            />
+            <TouchableHighlight
+                style={styles.orgButton}
+                    onPress={() =>
+                        {Alert.alert('Update Successful', 'Sent your edited request.');
+                         window.requestToEditUpdateRequest(true);
+                         this.onEditRequestClose();}}
+                tag='submitButton'>
+                <Text style={{color:'#FFFFFF', textAlign:'center'}}> Submit Edit</Text>
+            </TouchableHighlight>
+            <TouchableHighlight
+                style={styles.orgButton}
+                onPress={() =>
+                    {Alert.alert('Update Successful', 'Sent your edited request.');
+                     window.requestToEditUpdateRequest(false);
+                     this.onEditRequestClose();}}
+                     tag='submitButton'>
+                <Text style={{color:'#FFFFFF', textAlign:'center'}}> Delete Request</Text>
+            </TouchableHighlight>
+            <TouchableHighlight
+                style={styles.orgButton}
+                onPress={() => { this.onEditRequestClose();}}
+                tag='submitButton'>
+                <Text style={{color:'#FFFFFF', textAlign:'center'}}> Cancel</Text>
+            </TouchableHighlight>
+        </View>
     );
   }
 }
@@ -68,6 +85,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+  },
+  orgButton: {
+      flexDirection: 'column',
+      marginLeft: 3,
+      marginTop: 3,
+      marginRight: 3,
+      borderWidth: 1,
+      borderRadius: 5,
+      padding: 3,
+      borderColor: 'black',
+      marginBottom: 3,
+      backgroundColor: '#642D64',
   },
   welcome: {
     fontSize: 20,

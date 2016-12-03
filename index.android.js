@@ -123,7 +123,13 @@ class MainNavigator extends Component {
     }
     
     if (route.name == 'OrgViewRequests') {
-    	return <RequestFeed isOrg={true} uuid={window.org.uuid} />
+    	return <RequestFeed isOrg={true}
+    	                    uuid={window.org.uuid}
+    	                    onEditRequest={ () => {
+    	                        navigator.push({
+    	                            name:'EditRequests'
+    	                        })
+    	                    }}/>
     }
     
     if (route.name == 'SubViewRequests') {
@@ -141,7 +147,11 @@ class MainNavigator extends Component {
       	 })
       }}/>
     }
-    
+
+    if (route.name == 'EditRequests') {
+        return <EditRequests onEditRequestClose={() => {navigator.pop()}}/>
+    }
+
     if (route.name == 'NoInternet') {
       return <NoInternetView />
     }
