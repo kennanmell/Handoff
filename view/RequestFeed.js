@@ -64,13 +64,8 @@ const Header = (props) => (
 class Header extends Component {
     constructor(props) {
         super(props);
-        this.setTags = props.setTags;
+        this.listView = props.listView;
         this.state = {text: ""};
-    }
-
-    // Parses tags passed as a string by spaces into a list of strings, which it returns
-    parseTags(tags) {
-        return tags;
     }
 
     render() {
@@ -83,8 +78,10 @@ class Header extends Component {
                 />
                 <TouchableHighlight style={styles.orgButton}
                                     onPress={() =>
-                                        {this.setTags(this.state.text.split(" ").filter(function(n){
-                                            return n != "" }))}}
+                                        {this.listView.setTags(this.state.text.split(" ")
+                                            .filter(function(n){return n != "" }));
+                                        }
+                                    }
                 >
                     <Text style={{color:'#FFFFFF',
                                   textAlign:'center',
@@ -136,9 +133,11 @@ class ParentRow extends Component {
 // This method returns a Promise that will at some point, probably very quickly return
 // a list of 30 requests. Passed organization is a string to filter by, if null it will return
 // all requests.
-async function getRequests(organization, tags) {
+async function getRequests(organization, tags, listView) {
     params = null;
     listOfOrg = [organization];
+    console.log('getting requests, next is tags');
+    console.log(tags);
     if (organization != null && tags == []) {
         params = JSON.stringify({ limit: 30, organizations: listOfOrg});
     } else if (organization != null) {
@@ -151,7 +150,17 @@ async function getRequests(organization, tags) {
         console.log("case2");
         params = JSON.stringify({ limit: 30});
     }
-    return fetchInfo('requests', params)
+    console.log(params);
+    fetchInfo('requests', params)
+        .then((response) => response.json())
+        .then((responseJson) => {
+            listView.setState({
+                dataSource: listView.ds.cloneWithRows(responseJson.requests)
+            });
+        })
+        .catch((error) => {
+            console.error(error);
+        });
 }
 
 // This class is a display of the individual requests and will provide buttons to see more info
@@ -168,13 +177,13 @@ class RequestRow extends ParentRow {
                     animationType={"slide"}
                     transparent={false}
                     visible={this.state.modalVisible}
-                    onRequestClose={() => {alert("Close through the cancel button.")}}
+                    onRequestClose={() => {alert("Close through the \"Return to Feed\" button.")}}
                 >
                   <View style={{marginTop: 22}}>
                       <Text>{this.title}</Text>
                       <Text>{this.description}</Text>
                       <Text>Organization: {this.organization}</Text>
-                      <Text>Tags: {this.tags}</Text>
+                      <Text>Tags: {this.tags.toString()}</Text>
                       <Text>Time Posted: {this.time}</Text>
                       <TouchableHighlight style={styles.orgButton}
                           onPress={() => { this.setModalVisible(!this.state.modalVisible)}} >
@@ -193,7 +202,7 @@ class RequestRow extends ParentRow {
                                                                     responseJson.info.location,
                                                                 [{text: 'Subscribe',
                                                                     onPress: ()=>
-                                                                        {this.checkSub(this.uuid)}},
+                                                                        {this.checkSub(responseJson.info.name, this.uuid)}},
                                                                  {text: 'Close',
                                                                     onPress:()=>console.log('done')}
                                                                 ])
@@ -211,14 +220,25 @@ class RequestRow extends ParentRow {
         </View>);
     }
 
-    checkSub(orgName) {
-        AsyncStorage.getItem('@MySuperStore:key')
+    checkSub(orgName, uuid) {
+        AsyncStorage.getItem('subNames')
             .then((value) => {console.log(value);
-                              if (value == null) {
-                                  AsyncStorage.setItem('@MySuperStore:key', orgName)
-                              } else if (!value.includes(orgName)) {
-                                  AsyncStorage.setItem('@MySuperStore:key', value + ',' + orgName)
-                              }})
+            				  list = JSON.parse(value)
+            				  found = false
+            				  for (var i = 0; i < list.length; i++) {
+    							dict = list[i]
+    							str = dict["organization"]
+    							if (str === orgName) {
+    								found = true
+    								break
+    							}
+							  }
+							  
+							  if (!found) {
+							    list.push({"organization": orgName, "uuid": uuid})
+            				  	AsyncStorage.setItem('subNames', JSON.stringify(list))
+							  }
+                              })
     }
 }
 
@@ -237,6 +257,7 @@ class OrgRequestRow extends ParentRow {
             tags: props.tags,
             modalVisible: false,
         }
+        console.log(props.tags);
     }
 
     // This method will create update the request for the request that the orgrow represents,
@@ -291,9 +312,9 @@ class OrgRequestRow extends ParentRow {
                         />
                         <TextInput
                             style={{height: 40}}
-                            defaultValue={this.state.tags}
+                            defaultValue={this.state.tags.toString()}
                             tag='keywordsInput'
-                            onChangeText={(text) => this.setState({tags: text})}
+                            onChangeText={(text) => this.setState({tags: text.split(",")})}
                         />
                         <TouchableHighlight
                             style={styles.orgButton}
@@ -301,6 +322,8 @@ class OrgRequestRow extends ParentRow {
                                     {Alert.alert('Update Successful', 'Sent your edited request.');
                                      this.title = this.state.title;
                                      this.description = this.state.description;
+                                     this.tags = this.state.tags;
+                                     console.log(this.tags);
                                      this.setModalVisible(!this.state.modalVisible);
                                      this.updateRequest(true);}}
                             tag='submitButton'>
@@ -312,6 +335,7 @@ class OrgRequestRow extends ParentRow {
                                 {Alert.alert('Update Successful', 'Sent your edited request.');
                                  this.title = "<deleted>";
                                  this.description = "";
+                                 this.tags = [];
                                  this.setModalVisible(!this.state.modalVisible);
                                  this.updateRequest(false);}}
                                  tag='submitButton'>
@@ -321,6 +345,7 @@ class OrgRequestRow extends ParentRow {
                             style={styles.orgButton}
                             onPress={() => {this.setModalVisible(!this.state.modalVisible);
                                             this.state.title = this.title;
+                                            this.state.tags = this.tags.toString();
                                             this.state.description = this.description;}}>
                             <Text style={{color:'#FFFFFF', textAlign:'center'}}>Cancel</Text>
                         </TouchableHighlight>
@@ -337,25 +362,6 @@ class OrgRequestRow extends ParentRow {
     }
 }
 
-async function getRequests2(organization, tagsList, updateList) {
-    params = null;
-    listOfOrg = [organization];
-    if (this.organization != null) {
-        params = JSON.stringify({ limit: 30, organizations: listOfOrg})
-    } else {
-        params = JSON.stringify({ limit: 30, tags: tagsList}) // NEED TO CHANGE THE TAGS BEING ONLY HERE
-    }
-    fetchInfo('requests', params)
-        .then((response) => response.json())
-        .then((responseJson) => {
-          //ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-          updateList(responseJson.requests)
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-}
-
 // This component is a scrollable list of requests. Intially it will display a text that shows we
 // are still waiting on the server to provide our requests, but once the request to the server has
 // been completed the received requests will be displayed in the scrollable list, with buttons for
@@ -364,9 +370,10 @@ export default class RequestFeed extends Component {
     constructor(props) {
         super(props);
         this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-        if (props.organization != null) {
-            this.organization = window.org.uuid; // yeah i blame the weird backend documentation
-        }
+
+        this.organization = props.uuid; // this is uuid, not organization name
+        this.isOrg = props.isOrg;
+
         this.tags = [];
 
         // Sets the initial page to a blank page
@@ -376,65 +383,19 @@ export default class RequestFeed extends Component {
 
         // the .then statements will then handle the response
         // and update the listviews datasource once there is data to update it with.
-        getRequests(this.organization, this.state.tags)
-              .then((response) => response.json())
-              .then((responseJson) => {
-                  this.setState({
-                      dataSource: this.ds.cloneWithRows(responseJson.requests)
-                  });
-              })
-              .catch((error) => {
-                  console.error(error);
-        });
+        getRequests(this.organization, this.state.tags, this)
     }
-
-    updateList(list) {
-        this.setState({
-            dataSource: this.ds.cloneWithRows(list)
-        });
-    }
-
-    /*async getRequests2() {
-        params = null;
-        listOfOrg = [this.organization];
-        if (this.organization != null) {
-            params = JSON.stringify({ limit: 30, organizations: listOfOrg})
-        } else {
-            params = JSON.stringify({ limit: 30, tags: this.tags}) // NEED TO CHANGE THE TAGS BEING ONLY HERE
-        }
-        fetchInfo('requests', params);
-            .then((response) => response.json())
-            .then((responseJson) => {
-              //ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-              this.setState({
-                  dataSource: this.ds.cloneWithRows(responseJson.requests)
-              });
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-    }*/
 
     setTags(listOfTags) {
         this.tags = listOfTags;
        // ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-        getRequests2(this.organization, this.tags, this.updateList);
         console.log("next this is what tags are set to");
         console.log(this.tags);
-        /*getRequests(this.organization, this.tags)
-                      .then((response) => response.json())
-                      .then((responseJson) => {
-                          this.setState({
-                            dataSource: this.ds.cloneWithRows(responseJson.requests)
-                          });
-                        })
-                      .catch((error) => {
-                        console.error(error);
-                });*/
+        getRequests(this.organization, this.tags, this);
     }
 
     render() {
-        if (this.organization == null) {
+        if (!this.isOrg) {
            return (
                <View>
                    <ListView enableEmptySections={true}
@@ -442,7 +403,7 @@ export default class RequestFeed extends Component {
                              renderRow={(rowData) => <RequestRow {...rowData} />}
                              renderSeparator={(sectionId, rowId) =>
                                  <View key={rowId} style={styles.separator} />}
-                             renderHeader={() => <Header setTags={this.setTags}/>}
+                             renderHeader={() => <Header listView={this}/>}
                    />
                </View>
            );
@@ -454,7 +415,7 @@ export default class RequestFeed extends Component {
                         dataSource={this.state.dataSource}
                         renderRow={(rowData) => <OrgRequestRow {...rowData}/>}
                         renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
-                        renderHeader={() => <Header setTags={this.setTags}/>}
+                        renderHeader={() => <Header listView={this}/>}
                     />
                 </View>
             );

@@ -28,7 +28,8 @@ import {
   TouchableHighlight,
   BackAndroid,
   Navigator,
-  NetInfo
+  NetInfo,
+  AsyncStorage
 } from 'react-native';
 
 //to store a reference to the navigator to use for event listeners
@@ -122,15 +123,23 @@ class MainNavigator extends Component {
     }
     
     if (route.name == 'OrgViewRequests') {
-    	return <RequestFeed organization={window.org.name} />
+    	return <RequestFeed isOrg={true} uuid={window.org.uuid} />
+    }
+    
+    if (route.name == 'SubViewRequests') {
+    	return <RequestFeed uuid={window.currSub} />
     }
     
     if (route.name == 'UserFeed') {
-    	return <RequestFeed />
+    	return <RequestFeed/>
     }
 
     if (route.name == 'SubList') {
-      return <SubList />
+      return <SubList onGoToPage={() => {
+      	 navigator.push({
+      	   name:'SubViewRequests',
+      	 })
+      }}/>
     }
     
     if (route.name == 'NoInternet') {
@@ -167,7 +176,15 @@ NetInfo.isConnected.addEventListener(
   handleConnectivityChange
 );
 
+// Initialize global organization.
 window.org = new Organization(null, null, null, null);
+
+// Initialize subscription list if necessary.
+AsyncStorage.getItem('subNames').then((value) => {
+	if (value == null) {
+		AsyncStorage.setItem('subNames', JSON.stringify([]))
+	}
+})
 
 // Register the main navigator so it will run when the app starts.
 AppRegistry.registerComponent('MainNavigator', () => MainNavigator);
