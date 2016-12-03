@@ -163,6 +163,34 @@ async function getRequests(organization, tags, listView) {
         });
 }
 
+const RequestRow = (props) => (
+  <View style={{padding: 10}}>
+      <Text style={{fontSize: 20}}>  {props.title}</Text>
+      <TouchableHighlight style={styles.orgButton}
+          onPress={()=> fetchInfo('organizations/info',
+                                  JSON.stringify({uuid: props.organization}))
+                            .then((response) => response.json())
+                            .then((responseJson) => { Alert.alert('Organization Info',
+                                                      "Name: " + responseJson.info.name +
+                                                          "\nLocation: " +
+                                                          responseJson.info.location,
+                                                      [{text: 'Subscribe',
+                                                          onPress: ()=>
+                                                              {checkSub(responseJson.info.name, props.organization)}},
+                                                       {text: 'Close',
+                                                          onPress:()=>console.log('done')}
+                                                      ])
+                            })
+                            .catch((error) => {
+                                console.error(error);
+                            })}>
+          <Text style={{color:'#FFFFFF', textAlign:'center'}}>{props.organization_name}</Text>
+          </TouchableHighlight>
+          <Text style={{alignItems: 'center'}, {fontSize: 18}}>{props.description}</Text>
+  </View>
+);
+
+/*
 // This class is a display of the individual requests and will provide buttons to see more info
 // about either the request or the organization that posted it.
 class RequestRow extends ParentRow {
@@ -240,6 +268,29 @@ class RequestRow extends ParentRow {
 							  }
                               })
     }
+}*/
+
+// This method checks to see if the user has already subscriped to it, and if not then adds the sub
+function checkSub(orgName, uuid) {
+        AsyncStorage.getItem('subNames')
+            .then((value) => {console.log(value);
+            				  list = JSON.parse(value)
+            				  found = false
+            				  for (var i = 0; i < list.length; i++) {
+    							dict = list[i]
+    							str = dict["organization"]
+    							if (str === orgName) {
+    								found = true
+    								break
+    							}
+							  }
+
+							  if (!found) {
+							    list.push({"organization": orgName, "uuid": uuid})
+            				  	AsyncStorage.setItem('subNames', JSON.stringify(list))
+							  }
+                             }
+            )
 }
 
 
