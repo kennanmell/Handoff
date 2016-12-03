@@ -133,7 +133,7 @@ class ParentRow extends Component {
 // This method returns a Promise that will at some point, probably very quickly return
 // a list of 30 requests. Passed organization is a string to filter by, if null it will return
 // all requests.
-async function getRequests(organization, tags) {
+async function getRequests(organization, tags, listView) {
     params = null;
     listOfOrg = [organization];
     console.log('getting requests, next is tags');
@@ -151,7 +151,16 @@ async function getRequests(organization, tags) {
         params = JSON.stringify({ limit: 30});
     }
     console.log(params);
-    return fetchInfo('requests', params)
+    fetchInfo('requests', params)
+        .then((response) => response.json())
+        .then((responseJson) => {
+            listView.setState({
+                dataSource: listView.ds.cloneWithRows(responseJson.requests)
+            });
+        })
+        .catch((error) => {
+            console.error(error);
+        });
 }
 
 // This class is a display of the individual requests and will provide buttons to see more info
@@ -353,25 +362,6 @@ class OrgRequestRow extends ParentRow {
     }
 }
 
-/*async function getRequests2(organization, tagsList, updateList) {
-    params = null;
-    listOfOrg = [organization];
-    if (this.organization != null) {
-        params = JSON.stringify({ limit: 30, organizations: listOfOrg})
-    } else {
-        params = JSON.stringify({ limit: 30, tags: tagsList}) // NEED TO CHANGE THE TAGS BEING ONLY HERE
-    }
-    fetchInfo('requests', params)
-        .then((response) => response.json())
-        .then((responseJson) => {
-          //ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-          updateList(responseJson.requests)
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-}*/
-
 // This component is a scrollable list of requests. Intially it will display a text that shows we
 // are still waiting on the server to provide our requests, but once the request to the server has
 // been completed the received requests will be displayed in the scrollable list, with buttons for
@@ -393,59 +383,19 @@ export default class RequestFeed extends Component {
 
         // the .then statements will then handle the response
         // and update the listviews datasource once there is data to update it with.
-        getRequests(this.organization, this.state.tags)
-              .then((response) => response.json())
-              .then((responseJson) => {
-                  this.setState({
-                      dataSource: this.ds.cloneWithRows(responseJson.requests)
-                  });
-              })
-              .catch((error) => {
-                  console.error(error);
-        });
+        getRequests(this.organization, this.state.tags, this)
     }
-
-    /*async getRequests2() {
-        params = null;
-        listOfOrg = [this.organization];
-        if (this.organization != null) {
-            params = JSON.stringify({ limit: 30, organizations: listOfOrg})
-        } else {
-            params = JSON.stringify({ limit: 30, tags: this.tags}) // NEED TO CHANGE THE TAGS BEING ONLY HERE
-        }
-        fetchInfo('requests', params);
-            .then((response) => response.json())
-            .then((responseJson) => {
-              //ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-              this.setState({
-                  dataSource: this.ds.cloneWithRows(responseJson.requests)
-              });
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-    }*/
 
     setTags(listOfTags) {
         this.tags = listOfTags;
        // ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         console.log("next this is what tags are set to");
         console.log(this.tags);
-        getRequests(this.organization, this.tags)
-                      .then((response) => response.json())
-                      .then((responseJson) => {
-                          console.log(responseJson);
-                          this.setState({
-                              dataSource: this.ds.cloneWithRows(responseJson.requests)
-                          });
-                      })
-                      .catch((error) => {
-                          console.error(error);
-                      });
+        getRequests(this.organization, this.tags, this);
     }
 
     render() {
-        if (this.isOrg != true) {
+        if (!this.isOrg) {
            return (
                <View>
                    <ListView enableEmptySections={true}
