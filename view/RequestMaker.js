@@ -42,7 +42,7 @@ export default class RequestMaker extends Component {
 
       <View style={{padding: 10}}>
       <Text style={styles.welcome}>
-                    Handoff
+                    Create a Request
                   </Text>
         <TextInput
           style={{height: 40}}
@@ -62,30 +62,34 @@ export default class RequestMaker extends Component {
                   tag='keywordsInput'
                   onChangeText={(text) => this.setState({requestTags: text})}
                 />
+         <View style={styles.separate}>
         <TouchableHighlight
                     style={styles.button}
 					onPress={() => {
 					makeRequest(this.state.requestName, this.state.requestDescription, this.state.requestTags).then(function(){Alert.alert('Request Successful', 'Your request was successfully posted.')});
 					console.log("attempting to make request"); }}
                     tag='submitButton'>
-                    <Text style={{color:'#FFFFFF', textAlign:'left', textAlign:'center'}}>Submit Request</Text>
+                    <Text style={{color:'#FFFFFF', textAlign:'left', textAlign:'center', fontSize: 18}}>Submit Request</Text>
                     </TouchableHighlight>
+                    </View>
+        <View style={styles.bottomButton}>
         <TouchableHighlight
                     style={styles.button}
                     onPress={this.props.onEditProfile}>
-                    <Text style={{color:'#FFFFFF', textAlign:'center'}}>Edit Profile</Text>
+                    <Text style={{color:'#FFFFFF', textAlign:'center', fontSize: 18}}>Edit Profile</Text>
                     </TouchableHighlight>
         <TouchableHighlight
                     style={styles.button}
                     onPress={this.props.onEditRequest}>
-                    <Text style={{color:'#FFFFFF', textAlign:'center'}}>Edit Requests</Text>
+                    <Text style={{color:'#FFFFFF', textAlign:'center', fontSize: 18}}>Edit Requests</Text>
                     </TouchableHighlight>
         <TouchableHighlight
                   style={styles.button}
                   tag='logoutButton'
                   onPress={this.props.onLogout}>
-                  <Text style={{color:'#FFFFFF', textAlign:'center'}}>Logout</Text>
+                  <Text style={{color:'#FFFFFF', textAlign:'center', fontSize: 18}}>Logout</Text>
                   </TouchableHighlight>
+        </View>
       </View>
     );
   }
@@ -131,16 +135,22 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
+    color:'black'
   },
 
     button: {
           flexDirection: 'column',
-          marginLeft: 3,
+          marginLeft: 5,
+          marginRight:5,
           marginTop: 10,
           borderWidth: 1,
           padding: 5,
           borderColor: 'black',
           marginBottom: 15,
+          borderRadius: 3,
           backgroundColor: '#642D64',
-      }
+      },
+  separate: {
+    marginBottom: 60,
+  }
 });
