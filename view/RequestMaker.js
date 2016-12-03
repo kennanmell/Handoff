@@ -41,9 +41,11 @@ export default class RequestMaker extends Component {
     return (
 
       <View style={{padding: 10}}>
+      <View style={styles.billboard}>
       <Text style={styles.welcome}>
                     Create a Request
                   </Text>
+       </View>
         <TextInput
           style={{height: 40}}
           placeholder="Give your request a snappy title"
@@ -135,7 +137,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
-    color:'black'
+    color:'white'
   },
 
     button: {
@@ -152,5 +154,13 @@ const styles = StyleSheet.create({
       },
   separate: {
     marginBottom: 60,
-  }
+  },
+  billboard: {
+              flex: 1,
+              padding: 8,
+              height: 70,
+              flexDirection: 'row',
+              alignItems: 'center',
+              backgroundColor: '#642D64',
+          },
 });

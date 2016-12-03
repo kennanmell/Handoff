@@ -41,9 +41,11 @@ export default class OrganizationCreator extends Component {
   render() {
     return (
 		<View style={{padding: 10}}>
-          <Text style={styles.welcome}>
-                        Register Your Organization
-                      </Text>
+		   <View style={styles.container}>
+              <Text style={styles.welcome}>
+                            Register Your Organization
+                          </Text>
+          </View>
 		<TextInput
 			style={{height: 40}}
 			placeholder="Organization Name"
@@ -151,7 +153,7 @@ const styles = StyleSheet.create({
       fontSize: 20,
       textAlign: 'center',
       margin: 10,
-      color:'black'
+      color:'white'
     },
   button: {
           flexDirection: 'column',
@@ -163,5 +165,13 @@ const styles = StyleSheet.create({
           borderColor: 'black',
           borderRadius: 3,
           backgroundColor: '#642D64',
-      }
+      },
+      container: {
+            flex: 1,
+            padding: 8,
+            height: 70,
+            flexDirection: 'row',
+            alignItems: 'center',
+            backgroundColor: '#642D64',
+        },
   });

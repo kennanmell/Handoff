@@ -43,9 +43,11 @@ export default class OrganizationEditor extends Component {
   render() {
     return (
 		<View style={{padding: 10}}>
+		<View style={styles.container}>
 		<Text style={styles.welcome}>
                             Edit Your Organization Profile
                           </Text>
+        </View>
 		<Text style={styles.editing}>
 			Name
         </Text>
@@ -144,7 +146,7 @@ const styles = StyleSheet.create({
       fontSize: 20,
       textAlign: 'center',
       margin: 10,
-      color:'black'
+      color:'white'
     },
   handoffButton: {
 	fontWeight: 'bold',
@@ -164,5 +166,13 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         borderRadius: 3,
         backgroundColor: '#642D64',
-      }
+      },
+      container: {
+                  flex: 1,
+                  padding: 8,
+                  height: 70,
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  backgroundColor: '#642D64',
+              },
   });

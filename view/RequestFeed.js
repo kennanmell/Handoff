@@ -41,10 +41,23 @@ const styles = StyleSheet.create({
         marginBottom: 3,
         backgroundColor: '#642D64',
     },
+    button:{
+        flexDirection: 'column',
+          marginLeft: 5,
+          marginRight:5,
+          marginTop: 10,
+          borderWidth: 1,
+          padding: 5,
+          borderColor: 'black',
+          marginBottom: 15,
+          borderRadius: 3,
+          backgroundColor: '#642D64',
+     },
   welcome: {
       fontSize: 20,
       textAlign: 'center',
       margin: 10,
+      color: 'white',
   },
 });
 /*
@@ -348,7 +361,7 @@ class OrgRequestRow extends ParentRow {
                     onRequestClose={() => {alert("Close through the cancel button.")}}
                 >
                     <View style={{marginTop: 22}}>
-                        <Text style={styles.welcome}> Handoff</Text>
+                        <Text style={styles.welcome}> Edit Your Request</Text>
                         <TextInput
                             style={{height: 40}}
                             defaultValue={this.state.title}
@@ -368,7 +381,7 @@ class OrgRequestRow extends ParentRow {
                             onChangeText={(text) => this.setState({tags: text.split(",")})}
                         />
                         <TouchableHighlight
-                            style={styles.orgButton}
+                            style={styles.button}
                                 onPress={() =>
                                     {Alert.alert('Update Successful', 'Sent your edited request.');
                                      this.title = this.state.title;
@@ -378,10 +391,10 @@ class OrgRequestRow extends ParentRow {
                                      this.setModalVisible(!this.state.modalVisible);
                                      this.updateRequest(true);}}
                             tag='submitButton'>
-                            <Text style={{color:'#FFFFFF', textAlign:'center'}}> Submit Edit</Text>
+                            <Text style={{color:'#FFFFFF', textAlign:'center', fontSize: 18}}> Submit Edit</Text>
                         </TouchableHighlight>
                         <TouchableHighlight
-                            style={styles.orgButton}
+                            style={styles.button}
                             onPress={() =>
                                 {Alert.alert('Update Successful', 'Sent your edited request.');
                                  this.title = "<deleted>";
@@ -390,15 +403,15 @@ class OrgRequestRow extends ParentRow {
                                  this.setModalVisible(!this.state.modalVisible);
                                  this.updateRequest(false);}}
                                  tag='submitButton'>
-                            <Text style={{color:'#FFFFFF', textAlign:'center'}}> Delete Request</Text>
+                            <Text style={{color:'#FFFFFF', textAlign:'center', fontSize: 18}}> Delete Request</Text>
                         </TouchableHighlight>
                         <TouchableHighlight
-                            style={styles.orgButton}
+                            style={styles.button}
                             onPress={() => {this.setModalVisible(!this.state.modalVisible);
                                             this.state.title = this.title;
                                             this.state.tags = this.tags.toString();
                                             this.state.description = this.description;}}>
-                            <Text style={{color:'#FFFFFF', textAlign:'center'}}>Cancel</Text>
+                            <Text style={{color:'#FFFFFF', textAlign:'center', fontSize: 18}}>Cancel</Text>
                         </TouchableHighlight>
                     </View>
                 </Modal>
