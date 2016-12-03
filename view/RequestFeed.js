@@ -166,14 +166,15 @@ async function getRequests(organization, tags, listView) {
 const RequestRow = (props) => (
   <View style={{padding: 10}}>
       <Text style={{fontSize: 20}}>  {props.title}</Text>
-      <TouchableHighlight style={styles.orgButton}
+      <Text style={{alignItems: 'center'}, {fontSize: 18}}>{"Details: " + props.description}</Text>
+            <TouchableHighlight style={styles.orgButton}
           onPress={()=> fetchInfo('organizations/info',
                                   JSON.stringify({uuid: props.organization}))
                             .then((response) => response.json())
                             .then((responseJson) => { Alert.alert('Organization Info',
-                                                      "Name: " + responseJson.info.name +
-                                                          "\nLocation: " +
-                                                          responseJson.info.location,
+                                                      "Name: " + responseJson.info.name
+                                                          + "\nLocation: " + responseJson.info.location
+                                                          + "\nLast Active: " + (new Date(props.time)).toString(),
                                                       [{text: 'Subscribe',
                                                           onPress: ()=>
                                                               {checkSub(responseJson.info.name, props.organization)}},
@@ -184,9 +185,8 @@ const RequestRow = (props) => (
                             .catch((error) => {
                                 console.error(error);
                             })}>
-          <Text style={{color:'#FFFFFF', textAlign:'center'}}>{props.organization_name}</Text>
+          <Text style={{color:'#FFFFFF', textAlign:'center'}}>{"Organization: " + props.organization_name}</Text>
           </TouchableHighlight>
-          <Text style={{alignItems: 'center'}, {fontSize: 18}}>{props.description}</Text>
   </View>
 );
 
@@ -403,7 +403,7 @@ class OrgRequestRow extends ParentRow {
                     </View>
                 </Modal>
                 <Text style={{fontSize: 20}}>  {this.title}</Text>
-                <Text style={{alignItems: 'center'}, {fontSize: 18}}>{this.description}</Text>
+                <Text style={{alignItems: 'center'}, {fontSize: 18}}>{"Details: " + this.description}</Text>
                 <TouchableHighlight style={styles.orgButton}
                                     onPress={() => {this.setModalVisible(true)}}>
                     <Text style={{color:'#FFFFFF', textAlign:'center'}}>Edit Request </Text>
